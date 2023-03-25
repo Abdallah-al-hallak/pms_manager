@@ -22,7 +22,7 @@ class CustomElevatedButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
             primary: gold,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(11),
+              borderRadius: BorderRadius.circular(10),
             ),
             minimumSize: Size(
               width ?? p1.maxWidth / 1.0,
