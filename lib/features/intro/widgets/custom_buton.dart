@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pms_manager/features/intro/widgets/custom_text.dart';
 
+import '../../../utils/colors.dart';
+
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
     super.key,
@@ -15,16 +17,22 @@ class CustomElevatedButton extends StatelessWidget {
   final double? height;
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          minimumSize: Size(width ?? 50, height ?? 30)),
-      onPressed: onPressed,
-      child: CustomText(
-        text: text,
-      ),
-    );
+    return LayoutBuilder(builder: (context, p1) {
+      return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            primary: gold,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            minimumSize: Size(
+              width ?? p1.maxWidth / 1.0,
+              height ?? p1.maxWidth / 7,
+            )),
+        onPressed: onPressed,
+        child: CustomText(
+          text: text,
+        ),
+      );
+    });
   }
 }
