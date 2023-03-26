@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pms_manager/features/intro/view/create_account.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
-import 'package:pms_manager/features/intro/widgets/my_textfield.dart';
 
 
 class VerifyNumber extends StatelessWidget {
@@ -115,7 +115,13 @@ class VerifyNumber extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 25, right: 25),
                             child: CustomElevatedButton(
-                              onPressed: () {  },
+                              onPressed: () {
+                                Navigator.pushReplacement(context, MaterialPageRoute(
+                                  builder: (context) {
+                                    return CreateAccount();
+                                  },
+                                ));
+                              },
                               text: 'Verify Phone',
                               height: 50,
                             ),
