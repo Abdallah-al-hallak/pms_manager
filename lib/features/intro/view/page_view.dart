@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:pms_manager/Screens/login_page.dart';
 import 'package:pms_manager/features/intro/view/register_account.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/utils/colors.dart';
@@ -117,7 +118,7 @@ class _PageViewIntroState extends State<PageViewIntro> {
                     if (isLastIndex) {
                       Navigator.pushReplacement(context, MaterialPageRoute(
                         builder: (context) {
-                          return const RegisterAccount();
+                          return LoginPage();
                         },
                       ));
                     }
