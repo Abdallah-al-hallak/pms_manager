@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pms_manager/Screens/login_page.dart';
 import 'package:pms_manager/utils/colors.dart';
-import 'package:pms_manager/utils/styles.dart';
 import 'package:pms_manager/utils/widgets/custom_radio_butt.dart';
 
 import 'features/intro/view/page_view.dart';
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: LoginPage(),
     );
   }
 }
