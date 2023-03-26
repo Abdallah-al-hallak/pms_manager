@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:pms_manager/features/intro/view/register_account.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/utils/colors.dart';
 
@@ -13,6 +14,7 @@ class PageViewIntro extends StatefulWidget {
 class _PageViewIntroState extends State<PageViewIntro> {
   final PageController _pageController = PageController();
   int pageindex = 0;
+  bool isLastIndex = false;
   List<IntroObject> list = [
     IntroObject(
       photo: 'assets/png/Group.png',
@@ -41,6 +43,7 @@ class _PageViewIntroState extends State<PageViewIntro> {
 
   void listenToPage() {
     pageindex = _pageController.pageIndex;
+    isLastIndex = pageindex >= list.length - 1;
     setState(() {});
     print('pageindex$pageindex');
   }
@@ -106,11 +109,18 @@ class _PageViewIntroState extends State<PageViewIntro> {
                 ),
               ),
               CustomElevatedButton(
-                  text: 'Next',
+                  text: isLastIndex ? 'Done' : 'Next',
                   onPressed: () {
                     _pageController.nextPage(
                         duration: const Duration(milliseconds: 400),
                         curve: Curves.ease);
+                    if (isLastIndex) {
+                      Navigator.pushReplacement(context, MaterialPageRoute(
+                        builder: (context) {
+                          return const RegisterAccount();
+                        },
+                      ));
+                    }
                   }),
             ],
           ),
