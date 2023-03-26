@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pms_manager/features/intro/widgets/my_textfield.dart';
 import 'package:pms_manager/features/intro/widgets/square_tile.dart';
 
+import '../features/intro/view/register_account.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -30,8 +31,8 @@ class LoginPage extends StatelessWidget {
                 Image.asset(
                   "assets/png/logo.png",
                   fit: BoxFit.contain,
-                   // height: size.height * 0.3,
-                   //  width: size.width * 0.3,
+                  // height: size.height * 0.3,
+                  //  width: size.width * 0.3,
                 ),
 
                 const SizedBox(height: 50),
@@ -132,11 +133,21 @@ class LoginPage extends StatelessWidget {
                       style: TextStyle(color: Colors.grey[700]),
                     ),
                     const SizedBox(width: 4),
-                    const Text(
-                      'Register now',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
+                    GestureDetector(
+                      onTap: () {
+                        // Temporary, needs validation
+                        Navigator.pushReplacement(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const RegisterAccount();
+                          },
+                        ));
+                      },
+                      child: const Text(
+                        'Register now',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ],

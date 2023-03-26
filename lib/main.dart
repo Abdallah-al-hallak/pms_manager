@@ -16,10 +16,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      home: const MyHomePage(),
     );
   }
 }
@@ -27,9 +28,9 @@ class MyApp extends StatelessWidget {
 enum Languages { arabic, english }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({
+    super.key,
+  });
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -40,73 +41,70 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
         body: LayoutBuilder(
-          builder: (p0, p1) => Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                ExpansionTile(
-                  iconColor: lightDark,
-                  textColor: lightDark,
-                  childrenPadding: const EdgeInsets.all(30),
-                  tilePadding: const EdgeInsets.symmetric(
-                    horizontal: 75,
+      builder: (p0, p1) => Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset('assets/png/lang.png'),
+            ExpansionTile(
+              iconColor: lightDark,
+              textColor: lightDark,
+              childrenPadding: const EdgeInsets.all(30),
+              tilePadding: const EdgeInsets.symmetric(
+                horizontal: 75,
+              ),
+              title: const Text('Select Your Language'),
+              children: [
+                SizedBox(
+                  height: p1.maxHeight / 4,
+                  width: p1.maxWidth / 1.5,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: gold,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        LanguageRadioRow(
+                          groupValue: language,
+                          value: Languages.english,
+                          onChanged: (value) {
+                            //TODO Engilsh logic language
+                            setState(() {
+                              language = value!;
+                            });
+                          },
+                          text: 'English',
+                        ),
+                        LanguageRadioRow(
+                          groupValue: language,
+                          value: Languages.arabic,
+                          onChanged: (value) async {
+                            //TODO Arabic logic language
+                            setState(() {
+                              language = value!;
+                            });
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const PageViewIntro(),
+                                ));
+                          },
+                          text: 'Arabic',
+                        ),
+                      ],
+                    ),
                   ),
-                  title: const Text('Select Your Language'),
-                  children: [
-                    SizedBox(
-                      height: p1.maxHeight / 4,
-                      width: p1.maxWidth / 1.5,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: gold,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            LanguageRadioRow(
-                              groupValue: language,
-                              value: Languages.english,
-                              onChanged: (value) {
-                                //TODO Engilsh logic language
-                                setState(() {
-                                  language = value!;
-                                });
-                              },
-                              text: 'English',
-                            ),
-                            LanguageRadioRow(
-                              groupValue: language,
-                              value: Languages.arabic,
-                              onChanged: (value) async {
-                                //TODO Arabic logic language
-                                setState(() {
-                                  language = value!;
-                                });
-                                await Future.delayed(
-                                    const Duration(milliseconds: 500));
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const PageViewIntro(),
-                                    ));
-                              },
-                              text: 'Arabic',
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+                )
               ],
             ),
-          ),
-        ));
+          ],
+        ),
+      ),
+    ));
   }
 }

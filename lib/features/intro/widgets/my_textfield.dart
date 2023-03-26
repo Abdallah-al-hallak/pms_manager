@@ -28,8 +28,9 @@ class MyTextField extends StatelessWidget {
                 borderSide: const BorderSide(color: gold),
                 borderRadius: BorderRadius.circular(9.0),
               ),
-              focusedBorder: const OutlineInputBorder(
-                borderSide: BorderSide(color: gold),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(9.0),
+                borderSide: const BorderSide(color: gold),
               ),
               fillColor: gold,
               filled: true,
