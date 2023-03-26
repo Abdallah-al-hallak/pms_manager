@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/features/intro/widgets/my_textfield.dart';
-import '../features/intro/view/register_account.dart';
+import 'package:pms_manager/features/phone_auth/view/add_number.dart';
+import 'register_account.dart';
 
 
 class LoginPage extends StatelessWidget {
@@ -83,7 +84,13 @@ class LoginPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 25, right: 25),
                         child: CustomElevatedButton(
-                          onPressed: () {  },
+                          onPressed: () {
+                            Navigator.pushReplacement(context, MaterialPageRoute(
+                              builder: (context) {
+                                return AddNumber();
+                              },
+                            ));
+                          },
                           text: 'Sign In',
                           height: 50,
                         ),
