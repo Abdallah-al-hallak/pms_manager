@@ -1,7 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:pms_manager/features/home/view/home_view.dart';
+import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
+import 'package:pms_manager/features/intro/widgets/custom_text.dart';
 import 'package:pms_manager/features/intro/widgets/my_textfield.dart';
+import 'package:pms_manager/utils/colors.dart';
 import 'package:pms_manager/utils/styles.dart';
+import 'package:pms_manager/utils/widgets/custom_radio_butt.dart';
 
 class RegisterAccount extends StatefulWidget {
   const RegisterAccount({super.key});
@@ -15,6 +20,7 @@ class _RegisterAccountState extends State<RegisterAccount> {
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
   final emailController = TextEditingController();
+  AccountType accountType = AccountType.own;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,41 +36,137 @@ class _RegisterAccountState extends State<RegisterAccount> {
                   'assets/png/logo.png',
                   width: p1.maxWidth,
                 ),
-                Container(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Account Type',
-                    style: gooldTextStyle(),
-                    textAlign: TextAlign.start,
+                Row(
+                  children: [
+                    Text(
+                      'Account Type',
+                      style: gooldTextStyle(),
+                      textAlign: TextAlign.start,
+                    ),
+                    const SizedBox(width: 10.0, height: 0.0),
+                    const Icon(
+                      Icons.info_outline,
+                      color: gold,
+                    ),
+                  ],
+                ),
+                SizedBox(width: 0.0, height: p1.maxHeight / 37),
+                const Text(
+                  'Do You Want To: ',
+                  style: TextStyle(fontSize: 17),
+                  textAlign: TextAlign.start,
+                ),
+                // Radio Buttons
+                SizedBox(
+                  width: 300,
+                  child: LanguageRadioRow(
+                    color: gold,
+                    textColor: lightDark,
+                    groupValue: accountType,
+                    value: AccountType.rent,
+                    onChanged: (value) {
+                      //TODO Engilsh logic language
+                      setState(() {
+                        accountType = value!;
+                      });
+                    },
+                    text: 'rent property',
                   ),
                 ),
-                Container(
-                  child: Text(
-                    'Account Type',
-                    style: gooldTextStyle(),
-                    textAlign: TextAlign.start,
+                SizedBox(
+                  width: 300,
+                  child: LanguageRadioRow(
+                    color: gold,
+                    textColor: lightDark,
+                    groupValue: accountType,
+                    value: AccountType.own,
+                    onChanged: (value) {
+                      //TODO Engilsh logic language
+                      setState(() {
+                        accountType = value!;
+                      });
+                    },
+                    text: 'own property',
                   ),
                 ),
-                MyTextField(
-                    controller: nameController,
-                    hintText: 'Name',
-                    obscureText: false),
-                SizedBox(width: 0.0, height: p1.maxHeight / 35),
-                MyTextField(
-                    controller: userNameController,
-                    hintText: 'UserName',
-                    obscureText: false),
-                SizedBox(width: 0.0, height: p1.maxHeight / 35),
-                MyTextField(
-                    controller: emailController,
-                    hintText: 'Email',
-                    obscureText: false),
-                SizedBox(width: 0.0, height: p1.maxHeight / 35),
-                MyTextField(
-                    controller: passwordController,
-                    hintText: 'Password',
-                    obscureText: false),
-                SizedBox(width: 0.0, height: p1.maxHeight / 35),
+                SizedBox(
+                  width: 300,
+                  child: LanguageRadioRow(
+                    color: gold,
+                    textColor: lightDark,
+                    groupValue: accountType,
+                    value: AccountType.manage,
+                    onChanged: (value) {
+                      //TODO Engilsh logic language
+                      setState(() {
+                        accountType = value!;
+                      });
+                    },
+                    text: 'manage property',
+                  ),
+                ),
+                // TextField
+                SizedBox(width: 0.0, height: p1.maxHeight / 37),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: Column(
+                    children: [
+                      MyTextField(
+                          controller: nameController,
+                          hintText: 'Name',
+                          obscureText: false),
+                      SizedBox(width: 0.0, height: p1.maxHeight / 37),
+                      MyTextField(
+                          controller: userNameController,
+                          hintText: 'UserName',
+                          obscureText: false),
+                      SizedBox(width: 0.0, height: p1.maxHeight / 37),
+                      MyTextField(
+                          controller: emailController,
+                          hintText: 'Email',
+                          obscureText: false),
+                      SizedBox(width: 0.0, height: p1.maxHeight / 37),
+                      MyTextField(
+                          controller: passwordController,
+                          hintText: 'Password',
+                          obscureText: false),
+                    ],
+                  ),
+                ),
+                SizedBox(width: 0.0, height: p1.maxHeight / 37),
+                //check nox
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Checkbox(
+                      side: const BorderSide(color: gold, width: 2),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                      value: false,
+                      onChanged: (value) {},
+                    ),
+                    const CustomText(text: 'Accept Eula', color: lightDark),
+                    const SizedBox(width: 10.0, height: 0.0),
+                    const Icon(
+                      Icons.info_outline,
+                      color: gold,
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                  child: CustomElevatedButton(
+                      text: 'Next',
+                      onPressed: () {
+                        Navigator.pushReplacement(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const HomeView();
+                          },
+                        ));
+                      }),
+                ),
               ],
             ),
           ),
@@ -74,7 +176,7 @@ class _RegisterAccountState extends State<RegisterAccount> {
   }
 }
 
-enum AccountType { rent, own, type }
+enum AccountType { rent, own, manage }
 
 class RegisterAccountObject extends Equatable {
   AccountType accountType;

@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:pms_manager/Screens/login_page.dart';
+import 'package:pms_manager/router/router.dart';
+
 import 'package:pms_manager/utils/colors.dart';
 import 'package:pms_manager/utils/widgets/custom_radio_butt.dart';
-
+import 'package:auto_route/auto_route.dart';
 import 'features/intro/view/page_view.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // routerConfig: _appRouter.config(),
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -70,11 +79,18 @@ class _MyHomePageState extends State<MyHomePage> {
                         LanguageRadioRow(
                           groupValue: language,
                           value: Languages.english,
-                          onChanged: (value) {
+                          onChanged: (value) async {
                             //TODO Engilsh logic language
                             setState(() {
                               language = value!;
                             });
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const PageViewIntro(),
+                                ));
                           },
                           text: 'English',
                         ),

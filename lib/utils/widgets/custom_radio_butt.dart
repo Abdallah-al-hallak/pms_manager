@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pms_manager/utils/colors.dart';
 
 import '../styles.dart';
 
@@ -10,27 +11,33 @@ class LanguageRadioRow extends StatelessWidget {
     required this.groupValue,
     required this.value,
     this.color,
+    this.textColor,
   });
   final void Function(dynamic)? onChanged;
   final String text;
   final dynamic groupValue;
   final dynamic value;
   final Color? color;
+  final Color? textColor;
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: RadioListTile<dynamic>(
-        activeColor: color ?? Colors.white,
-        value: value,
-        groupValue: groupValue,
-        secondary: Text(
+    return RadioListTile<dynamic>(
+      activeColor: color ?? Colors.white,
+      value: value,
+      groupValue: groupValue,
+      secondary: SizedBox(
+        width: 200,
+        child: Text(
           text,
-          style: standardTextStyle(),
+          textAlign: TextAlign.start,
+          style: TextStyle(
+            fontSize: 17,
+            color: textColor ?? Colors.white,
+          ),
         ),
-        toggleable: true,
-        onChanged: onChanged,
       ),
+      toggleable: true,
+      onChanged: onChanged,
     );
   }
 }
