@@ -1,5 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:pms_manager/features/intro/widgets/custom_text.dart';
 import 'package:pms_manager/router/router.dart';
+
 import 'package:pms_manager/utils/colors.dart';
 import 'package:pms_manager/utils/widgets/custom_radio_butt.dart';
 import 'features/intro/view/page_view.dart';
@@ -20,14 +23,16 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // routerConfig: _appRouter.config(),
+    return MaterialApp.router(
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser:
+          _appRouter.defaultRouteParser(includePrefixMatches: false),
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      // home: const MyHomePage(),
     );
   }
 }
@@ -74,42 +79,57 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        LanguageRadioRow(
-                          groupValue: language,
-                          value: Languages.english,
-                          onChanged: (value) async {
-                            //TODO Engilsh logic language
-                            setState(() {
-                              language = value!;
-                            });
-                            await Future.delayed(
-                                const Duration(milliseconds: 500));
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const PageViewIntro(),
-                                ));
-                          },
-                          text: 'English',
-                        ),
-                        LanguageRadioRow(
-                          groupValue: language,
-                          value: Languages.arabic,
-                          onChanged: (value) async {
-                            //TODO Arabic logic language
-                            setState(() {
-                              language = value!;
-                            });
-                            await Future.delayed(
-                                const Duration(milliseconds: 500));
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const PageViewIntro(),
-                                ));
-                          },
-                          text: 'Arabic',
-                        ),
+                        GestureDetector(
+                            onTap: () async {
+                              await Future.delayed(
+                                  const Duration(milliseconds: 500));
+                              AutoRouter.of(context)
+                                  .replace(const PageViewRoute());
+                            },
+                            child: const CustomText(
+                                size: 20,
+                                text: 'English',
+                                color: Colors.white)),
+                        SizedBox(width: 0.0, height: 30.0),
+                        // LanguageRadioRow(
+                        //   groupValue: language,
+                        //   value: Languages.english,
+                        //   onChanged: (value) async {
+                        //     //TODO Engilsh logic language
+                        //     setState(() {
+                        //       language = value!;
+                        //     });
+                        //     await Future.delayed(
+                        //         const Duration(milliseconds: 500));
+                        //     AutoRouter.of(context)
+                        //         .replace(const PageViewRoute());
+                        //   },
+                        //   text: 'English',
+                        // ),
+                        GestureDetector(
+                            onTap: () async {
+                              await Future.delayed(
+                                  const Duration(milliseconds: 500));
+                              AutoRouter.of(context)
+                                  .replace(const PageViewRoute());
+                            },
+                            child: const CustomText(
+                                size: 20, text: 'Arabic', color: Colors.white)),
+                        // LanguageRadioRow(
+                        //   groupValue: language,
+                        //   value: Languages.arabic,
+                        //   onChanged: (value) async {
+                        //     //TODO Arabic logic language
+                        //     setState(() {
+                        //       language = value!;
+                        //     });
+                        //     await Future.delayed(
+                        //         const Duration(milliseconds: 500));
+                        //     AutoRouter.of(context)
+                        //         .replace(const PageViewRoute());
+                        //   },
+                        //   text: 'Arabic',
+                        // ),
                       ],
                     ),
                   ),
