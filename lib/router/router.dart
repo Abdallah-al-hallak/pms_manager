@@ -1,19 +1,47 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-
-import '../features/home/view/home_view.dart';
-
+import 'package:pms_manager/features/chat/chat_view.dart';
+import 'package:pms_manager/features/home/view/home_page.dart';
+import 'package:pms_manager/features/home/view/home_view.dart';
+import 'package:pms_manager/features/intro/view/login_page.dart';
+import 'package:pms_manager/features/intro/view/page_view.dart';
+import 'package:pms_manager/features/intro/view/register_account.dart';
+import 'package:pms_manager/features/notification/notification.dart';
+import 'package:pms_manager/features/search/search_view.dart';
+import 'package:pms_manager/features/setting/view/setting_view.dart';
+import 'package:pms_manager/main.dart';
 part 'router.gr.dart';
 
-@AutoRouterConfig(replaceInRouteName: 'View,Route')
-class AppRouter extends $AppRouter {
-  @override
-  RouteType get defaultRouteType => const RouteType.material();
-  @override
-  final List<AutoRoute> routes = [
-    /// routes go here
-    AutoRoute(path: '/', page: HomeRoute.page)
-  ];
-}
-
-class $AppRouter {}
+@MaterialAutoRouter(
+  replaceInRouteName: 'View,Route',
+  routes: <AutoRoute>[
+    AutoRoute(page: MyHomePage, initial: true, name: 'MyHomeRoute'),
+    AutoRoute(page: PageViewIntro, name: 'PageViewRoute'),
+    AutoRoute(page: LoginPage, name: 'LogInRoute'),
+    AutoRoute(page: RegisterAccount, name: 'RegisterAccountRoute'),
+    AutoRoute(page: HomeView, name: 'HomeRoute', children: [
+      AutoRoute(
+        page: ChatView,
+        name: 'ChatViewRoute',
+      ),
+      AutoRoute(
+        page: NotificationView,
+        name: 'NotificationViewRoute',
+      ),
+      AutoRoute(
+        page: HomePage,
+        name: 'HomePageRoute',
+      ),
+      AutoRoute(
+        page: SearchView,
+        name: 'SearchViewRoute',
+      ),
+      AutoRoute(
+        page: SettingView,
+        name: 'SettingViewRoute',
+      ),
+    ]),
+  ],
+)
+// extend the generated private router
+class AppRouter extends _$AppRouter {}

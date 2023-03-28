@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:pms_manager/features/intro/view/login_page.dart';
 import 'package:pms_manager/features/intro/view/register_account.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
+import 'package:pms_manager/router/router.dart';
 import 'package:pms_manager/utils/colors.dart';
 
 class PageViewIntro extends StatefulWidget {
@@ -116,11 +118,7 @@ class _PageViewIntroState extends State<PageViewIntro> {
                         duration: const Duration(milliseconds: 400),
                         curve: Curves.ease);
                     if (isLastIndex) {
-                      Navigator.pushReplacement(context, MaterialPageRoute(
-                        builder: (context) {
-                          return LoginPage();
-                        },
-                      ));
+                      AutoRouter.of(context).replace(LogInRoute());
                     }
                   }),
             ],
