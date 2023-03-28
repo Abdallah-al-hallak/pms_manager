@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/features/intro/widgets/my_textfield.dart';
 import 'package:pms_manager/features/phone_auth/view/add_number.dart';
+import 'package:pms_manager/features/phone_auth/view/forgot_password.dart';
 import 'package:pms_manager/router/router.dart';
 import 'register_account.dart';
 
@@ -70,10 +71,20 @@ class LoginPage extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Text(
-                                  'Forgot Password?',
-                                  style: TextStyle(color: Colors.grey[600]),
+                                InkWell(
+                                  onTap: (){
+                                    Navigator.pushReplacement(context, MaterialPageRoute(
+                                      builder: (context) {
+                                        return ForgotPassword();
+                                      },
+                                    ));
+                                  },
+                                  child: Text(
+                                    'Forgot Password?',
+                                    style: TextStyle(color: Colors.grey[600]),
+                                  ),
                                 ),
+
                               ],
                             ),
                           ),
