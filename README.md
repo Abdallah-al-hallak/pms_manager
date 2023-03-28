@@ -16,3 +16,5 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 # for generating 
 flutter pub run build_runner build --delete-conflicting-outputs
+# splash screen 
+flutter pub run flutter_native_splash:create
