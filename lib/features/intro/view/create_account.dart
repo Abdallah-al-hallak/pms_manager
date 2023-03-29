@@ -1,13 +1,16 @@
 import 'dart:io';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:pms_manager/features/intro/view/register_account.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
+import 'package:pms_manager/router/router.dart';
 import 'package:pms_manager/utils/colors.dart';
 
 class CreateAccount extends StatefulWidget {
-  const CreateAccount({super.key});
-
+  const CreateAccount({super.key, required this.propertyAttachment});
+  final PropertyAttachment propertyAttachment;
   @override
   _CreateAccountState createState() => _CreateAccountState();
 }
@@ -28,6 +31,7 @@ class _CreateAccountState extends State<CreateAccount> {
 
   @override
   Widget build(BuildContext context) {
+    bool isOffice = PropertyAttachment.office == widget.propertyAttachment;
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -81,132 +85,134 @@ class _CreateAccountState extends State<CreateAccount> {
                 height: 30,
               ),
 
-              Container(
-                height: 100,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: greyCard,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0)),
-                  ),
-                  onPressed: () {
-                    myAlert();
-                  },
-                  child: Card(
-                    semanticContainer: true,
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+              if (isOffice)
+                Container(
+                  height: 100,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: greyCard,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
                     ),
-                    elevation: 5,
-                    margin: const EdgeInsets.all(10),
-                    child: Image.asset(
-                      'assets/png/Placeholder.png',
-                      fit: BoxFit.fill,
+                    onPressed: () {
+                      myAlert();
+                    },
+                    child: Card(
+                      semanticContainer: true,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      elevation: 5,
+                      margin: const EdgeInsets.all(10),
+                      child: Image.asset(
+                        'assets/png/Placeholder.png',
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
-              ),
               const SizedBox(
                 height: 10,
               ),
-              const Center(
-                child: Text(
-                  "Attach owner ID ",
-                  style: TextStyle(fontSize: 16),
+              if (isOffice)
+                const Center(
+                  child: Text(
+                    "Attach owner ID ",
+                    style: TextStyle(fontSize: 16),
+                  ),
                 ),
-              ),
 
               const SizedBox(
                 height: 30,
               ),
 
-              Container(
-                height: 100,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: greyCard,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0)),
-                  ),
-                  onPressed: () {
-                    myAlert();
-                  },
-                  child: Card(
-                    semanticContainer: true,
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+              if (!isOffice)
+                Container(
+                  height: 100,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: greyCard,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
                     ),
-                    elevation: 5,
-                    margin: const EdgeInsets.all(10),
-                    child: Image.asset(
-                      'assets/png/Placeholder.png',
-                      fit: BoxFit.fill,
+                    onPressed: () {
+                      myAlert();
+                    },
+                    child: Card(
+                      semanticContainer: true,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      elevation: 5,
+                      margin: const EdgeInsets.all(10),
+                      child: Image.asset(
+                        'assets/png/Placeholder.png',
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
-              ),
               const SizedBox(
                 height: 10,
               ),
-              const Center(
-                child: Text(
-                  "Attach electricity number",
-                  style: TextStyle(fontSize: 16),
+              if (isOffice)
+                const Center(
+                  child: Text(
+                    "Attach electricity number",
+                    style: TextStyle(fontSize: 16),
+                  ),
                 ),
-              ),
 
               const SizedBox(
                 height: 30,
               ),
 
-              Container(
-                height: 100,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: greyCard,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0)),
-                  ),
-                  onPressed: () {
-                    myAlert();
-                  },
-                  child: Card(
-                    semanticContainer: true,
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+              if (!isOffice)
+                Container(
+                  height: 100,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: greyCard,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
                     ),
-                    elevation: 5,
-                    margin: const EdgeInsets.all(10),
-                    child: Image.asset(
-                      'assets/png/Placeholder.png',
-                      fit: BoxFit.fill,
+                    onPressed: () {
+                      myAlert();
+                    },
+                    child: Card(
+                      semanticContainer: true,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      elevation: 5,
+                      margin: const EdgeInsets.all(10),
+                      child: Image.asset(
+                        'assets/png/Placeholder.png',
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
-              ),
               const SizedBox(
                 height: 10,
               ),
-              const Center(
-                child: Text(
-                  "Attach title deed",
-                  style: TextStyle(fontSize: 16),
+              if (!isOffice)
+                const Center(
+                  child: Text(
+                    "Attach title deed",
+                    style: TextStyle(fontSize: 16),
+                  ),
                 ),
-              ),
               const SizedBox(
                 height: 40,
               ),
 
               CustomElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(
-                    builder: (context) {
-                      return CreateAccount();
-                    },
-                  ));
+                  AutoRouter.of(context).replace(const HomeRoute());
                 },
                 text: 'Create Account',
                 height: 50,

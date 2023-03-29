@@ -322,6 +322,8 @@ class _DialogPropertWidgetState extends State<DialogPropertWidget> {
                     propertyAttachment = value!;
                   });
                   await Future.delayed(const Duration(milliseconds: 500));
+                  AutoRouter.of(context).push(CreateAccountRoute(
+                      propertyAttachment: propertyAttachment));
                   // ignore: use_build_context_synchronously
                 },
                 text: 'Are you a real estate Office',
@@ -336,6 +338,8 @@ class _DialogPropertWidgetState extends State<DialogPropertWidget> {
                     propertyAttachment = value!;
                   });
                   await Future.delayed(const Duration(milliseconds: 500));
+                  AutoRouter.of(context).push(CreateAccountRoute(
+                      propertyAttachment: propertyAttachment));
                   // ignore: use_build_context_synchronously
                   //TODO define routes to go to documents properrty
                   // takee the enum insede your page
@@ -345,9 +349,7 @@ class _DialogPropertWidgetState extends State<DialogPropertWidget> {
               const SizedBox(width: 0.0, height: 160.0),
               CustomElevatedButton(
                 text: 'Select',
-                onPressed: () {
-                  AutoRouter.of(context).replace(CreateAccountRoute());
-                },
+                onPressed: () {},
               ),
             ],
           )

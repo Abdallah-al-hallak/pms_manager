@@ -68,9 +68,13 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     CreateAccountRoute.name: (routeData) {
+      final args = routeData.argsAs<CreateAccountRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const CreateAccount(),
+        child: CreateAccount(
+          key: args.key,
+          propertyAttachment: args.propertyAttachment,
+        ),
       );
     },
     HomeRoute.name: (routeData) {
@@ -313,14 +317,36 @@ class ResetPasswordRouteArgs {
 
 /// generated route for
 /// [CreateAccount]
-class CreateAccountRoute extends PageRouteInfo<void> {
-  const CreateAccountRoute()
-      : super(
+class CreateAccountRoute extends PageRouteInfo<CreateAccountRouteArgs> {
+  CreateAccountRoute({
+    Key? key,
+    required PropertyAttachment propertyAttachment,
+  }) : super(
           CreateAccountRoute.name,
           path: '/create-account',
+          args: CreateAccountRouteArgs(
+            key: key,
+            propertyAttachment: propertyAttachment,
+          ),
         );
 
   static const String name = 'CreateAccountRoute';
+}
+
+class CreateAccountRouteArgs {
+  const CreateAccountRouteArgs({
+    this.key,
+    required this.propertyAttachment,
+  });
+
+  final Key? key;
+
+  final PropertyAttachment propertyAttachment;
+
+  @override
+  String toString() {
+    return 'CreateAccountRouteArgs{key: $key, propertyAttachment: $propertyAttachment}';
+  }
 }
 
 /// generated route for
