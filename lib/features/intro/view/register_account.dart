@@ -345,7 +345,9 @@ class _DialogPropertWidgetState extends State<DialogPropertWidget> {
               const SizedBox(width: 0.0, height: 160.0),
               CustomElevatedButton(
                 text: 'Select',
-                onPressed: () {},
+                onPressed: () {
+                  AutoRouter.of(context).replace(CreateAccountRoute());
+                },
               ),
             ],
           )

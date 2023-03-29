@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:pms_manager/features/chat/chat_view.dart';
 import 'package:pms_manager/features/home/view/home_page.dart';
 import 'package:pms_manager/features/home/view/home_view.dart';
+import 'package:pms_manager/features/intro/view/create_account.dart';
 import 'package:pms_manager/features/intro/view/login_page.dart';
 import 'package:pms_manager/features/intro/view/page_view.dart';
 import 'package:pms_manager/features/intro/view/register_account.dart';
 import 'package:pms_manager/features/notification/notification.dart';
+import 'package:pms_manager/features/phone_auth/view/forgot_password.dart';
+import 'package:pms_manager/features/phone_auth/view/reset_password.dart';
+import 'package:pms_manager/features/phone_auth/view/verify_number.dart';
 import 'package:pms_manager/features/search/search_view.dart';
 import 'package:pms_manager/features/setting/view/setting_view.dart';
 import 'package:pms_manager/main.dart';
@@ -19,6 +23,10 @@ part 'router.gr.dart';
     AutoRoute(page: PageViewIntro, name: 'PageViewRoute'),
     AutoRoute(page: LoginPage, name: 'LogInRoute'),
     AutoRoute(page: RegisterAccount, name: 'RegisterAccountRoute'),
+    AutoRoute(page: ForgotPassword, name: 'ForgotPasswordRoute',),
+    AutoRoute(page: VerifyNumber, name: 'VerifyNumberRoute'),
+    AutoRoute(page: ResetPassword, name: 'ResetPasswordRoute'),
+    AutoRoute(page: CreateAccount, name: 'CreateAccountRoute'),
     AutoRoute(page: HomeView, name: 'HomeRoute', children: [
       AutoRoute(
         page: ChatView,

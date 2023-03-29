@@ -5,6 +5,7 @@ import 'package:pms_manager/features/intro/widgets/my_textfield.dart';
 import 'package:pms_manager/features/phone_auth/view/add_number.dart';
 import 'package:pms_manager/features/phone_auth/view/forgot_password.dart';
 import 'package:pms_manager/router/router.dart';
+import 'package:pms_manager/utils/colors.dart';
 import 'register_account.dart';
 
 class LoginPage extends StatelessWidget {
@@ -19,7 +20,6 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
         child: LayoutBuilder(
@@ -72,19 +72,16 @@ class LoginPage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 InkWell(
-                                  onTap: (){
-                                    Navigator.pushReplacement(context, MaterialPageRoute(
-                                      builder: (context) {
-                                        return ForgotPassword();
-                                      },
-                                    ));
+                                  onTap: () {
+                                    // Temporary, needs validation
+                                    AutoRouter.of(context)
+                                        .replace(ForgotPasswordRoute());
                                   },
                                   child: Text(
                                     'Forgot Password?',
                                     style: TextStyle(color: Colors.grey[600]),
                                   ),
                                 ),
-
                               ],
                             ),
                           ),
@@ -107,9 +104,16 @@ class LoginPage extends StatelessWidget {
                               height: 50,
                             ),
                           ),
-
-                          const SizedBox(height: 20),
-
+                          const SizedBox(
+                            height: 43,
+                          ),
+                          InkWell(
+                            onTap: (){
+                              showAboutDialogFingerPrint(context);
+                            },
+                              child: Image.asset("assets/png/fingerPrint.png")
+                          ),
+                          const SizedBox(height: 60),
                           // not a member? register now
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -137,12 +141,87 @@ class LoginPage extends StatelessWidget {
                                 ),
                               ),
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ),
                   ),
                 )),
+      ),
+    );
+  }
+}
+showAboutDialogFingerPrint(context) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return LayoutBuilder(builder: (context, p1) {
+        return Center(
+          child: SizedBox(
+            height: p1.maxHeight / 3.0,
+            width: p1.maxWidth / 1.2,
+            child: Material(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                child: const CustomDialog()),
+          ),
+        );
+      });
+    },
+  );
+}
+
+class CustomDialog extends StatefulWidget {
+  const CustomDialog({super.key});
+
+  @override
+  State<CustomDialog> createState() => _CustomDialogState();
+}
+
+class _CustomDialogState extends State<CustomDialog> {
+  PropertyAttachment propertyAttachment = PropertyAttachment.property;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 20,),
+          const Center(
+              child: Text(
+                  'Verify your identetiy',
+              style: TextStyle(
+                color: textGrey,
+              ),
+              )),
+          const SizedBox(height: 14,),
+          Center(
+            child: SizedBox(
+              height: 45,
+              width: 45,
+              child: Image.asset('assets/png/fingerPrint.png'),
+            ),
+          ),
+          const SizedBox(height: 20,),
+          const Center(
+              child: Text(
+                'Touch the fingerprint sensor',
+                style: TextStyle(
+                  color: textGrey,
+                ),
+              )),
+          const SizedBox(height: 20,),
+          Center(
+            child: CustomElevatedButton(
+              width: 153,
+              text: 'Cancel',
+              onPressed: () {
+                AutoRouter.of(context).pop();
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

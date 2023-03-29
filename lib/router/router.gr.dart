@@ -43,6 +43,36 @@ class _$AppRouter extends RootStackRouter {
         child: const RegisterAccount(),
       );
     },
+    ForgotPasswordRoute.name: (routeData) {
+      final args = routeData.argsAs<ForgotPasswordRouteArgs>(
+          orElse: () => const ForgotPasswordRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: ForgotPassword(key: args.key),
+      );
+    },
+    VerifyNumberRoute.name: (routeData) {
+      final args = routeData.argsAs<VerifyNumberRouteArgs>(
+          orElse: () => const VerifyNumberRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: VerifyNumber(key: args.key),
+      );
+    },
+    ResetPasswordRoute.name: (routeData) {
+      final args = routeData.argsAs<ResetPasswordRouteArgs>(
+          orElse: () => const ResetPasswordRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: ResetPassword(key: args.key),
+      );
+    },
+    CreateAccountRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const CreateAccount(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -98,6 +128,22 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           RegisterAccountRoute.name,
           path: '/register-account',
+        ),
+        RouteConfig(
+          ForgotPasswordRoute.name,
+          path: '/forgot-password',
+        ),
+        RouteConfig(
+          VerifyNumberRoute.name,
+          path: '/verify-number',
+        ),
+        RouteConfig(
+          ResetPasswordRoute.name,
+          path: '/reset-password',
+        ),
+        RouteConfig(
+          CreateAccountRoute.name,
+          path: '/create-account',
         ),
         RouteConfig(
           HomeRoute.name,
@@ -191,6 +237,90 @@ class RegisterAccountRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'RegisterAccountRoute';
+}
+
+/// generated route for
+/// [ForgotPassword]
+class ForgotPasswordRoute extends PageRouteInfo<ForgotPasswordRouteArgs> {
+  ForgotPasswordRoute({Key? key})
+      : super(
+          ForgotPasswordRoute.name,
+          path: '/forgot-password',
+          args: ForgotPasswordRouteArgs(key: key),
+        );
+
+  static const String name = 'ForgotPasswordRoute';
+}
+
+class ForgotPasswordRouteArgs {
+  const ForgotPasswordRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ForgotPasswordRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [VerifyNumber]
+class VerifyNumberRoute extends PageRouteInfo<VerifyNumberRouteArgs> {
+  VerifyNumberRoute({Key? key})
+      : super(
+          VerifyNumberRoute.name,
+          path: '/verify-number',
+          args: VerifyNumberRouteArgs(key: key),
+        );
+
+  static const String name = 'VerifyNumberRoute';
+}
+
+class VerifyNumberRouteArgs {
+  const VerifyNumberRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'VerifyNumberRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [ResetPassword]
+class ResetPasswordRoute extends PageRouteInfo<ResetPasswordRouteArgs> {
+  ResetPasswordRoute({Key? key})
+      : super(
+          ResetPasswordRoute.name,
+          path: '/reset-password',
+          args: ResetPasswordRouteArgs(key: key),
+        );
+
+  static const String name = 'ResetPasswordRoute';
+}
+
+class ResetPasswordRouteArgs {
+  const ResetPasswordRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ResetPasswordRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [CreateAccount]
+class CreateAccountRoute extends PageRouteInfo<void> {
+  const CreateAccountRoute()
+      : super(
+          CreateAccountRoute.name,
+          path: '/create-account',
+        );
+
+  static const String name = 'CreateAccountRoute';
 }
 
 /// generated route for

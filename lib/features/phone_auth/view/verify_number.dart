@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pms_manager/features/intro/view/create_account.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
+import 'package:pms_manager/router/router.dart';
 
 
 class VerifyNumber extends StatelessWidget {
@@ -37,14 +39,19 @@ class VerifyNumber extends StatelessWidget {
 
                           const SizedBox(height: 15),
 
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: const Text(
-                              'Please, enter the verification code we sent to your Phone Number',
-                              style: TextStyle(
-                                // fontWeight: FontWeight.bold,
+                          const Padding(
+                            padding: EdgeInsets.only(left: 55, right: 55),
+                            child: Center(
+                              child: Flexible(
+                                child: Text(
+                                  textAlign: TextAlign.center,
+                                  'Please, enter the verification code we sent to your Phone Number',
+                                  style: TextStyle(
+                                    // fontWeight: FontWeight.bold,
+                                  ),
+                                  // style: TextStyle(color: Colors.grey[700]),
+                                ),
                               ),
-                              // style: TextStyle(color: Colors.grey[700]),
                             ),
                           ),
 
@@ -109,17 +116,31 @@ class VerifyNumber extends StatelessWidget {
                             ),
                           ),
 
-                          const SizedBox(height: 25),
+                          const SizedBox(height: 31),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Text(
+                                'Didn\'t receive the code? ',
+                              ),
+                              Text(
+                                'Resend Code',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          const SizedBox(height: 52),
 
                           Padding(
                             padding: const EdgeInsets.only(left: 25, right: 25),
                             child: CustomElevatedButton(
                               onPressed: () {
-                                Navigator.pushReplacement(context, MaterialPageRoute(
-                                  builder: (context) {
-                                    return CreateAccount();
-                                  },
-                                ));
+                                AutoRouter.of(context)
+                                    .push(ResetPasswordRoute());
                               },
                               text: 'Verify Phone',
                               height: 50,
