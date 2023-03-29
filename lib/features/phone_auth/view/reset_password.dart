@@ -1,13 +1,11 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/features/intro/widgets/my_textfield.dart';
 import 'package:pms_manager/features/phone_auth/view/verify_number.dart';
-import 'package:pms_manager/router/router.dart';
 
 
-class ForgotPassword extends StatelessWidget {
-  ForgotPassword({super.key});
+class ResetPassword extends StatelessWidget {
+  ResetPassword({super.key});
 
   // text editing controllers
   final phoneNumberController = TextEditingController();
@@ -44,7 +42,18 @@ class ForgotPassword extends StatelessWidget {
                             padding: const EdgeInsets.only(left: 25, right: 25),
                             child: MyTextField(
                               controller: phoneNumberController,
-                              hintText: 'Phone Number',
+                              hintText: 'New Password',
+                              obscureText: false,
+                            ),
+                          ),
+
+                          const SizedBox(height: 25),
+
+                          Padding(
+                            padding: const EdgeInsets.only(left: 25, right: 25),
+                            child: MyTextField(
+                              controller: phoneNumberController,
+                              hintText: 'Confirm New Password',
                               obscureText: false,
                             ),
                           ),
@@ -55,10 +64,13 @@ class ForgotPassword extends StatelessWidget {
                             padding: const EdgeInsets.only(left: 25, right: 25),
                             child: CustomElevatedButton(
                               onPressed: () {
-                                  AutoRouter.of(context)
-                                      .replace(VerifyNumberRoute());
+                                Navigator.pushReplacement(context, MaterialPageRoute(
+                                  builder: (context) {
+                                    return VerifyNumber();
+                                  },
+                                ));
                               },
-                              text: 'Send Code',
+                              text: 'Reset Password',
                               height: 50,
                             ),
                           ),
