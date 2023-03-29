@@ -8,3 +8,12 @@ TextStyle standardTextStyle() {
 TextStyle gooldTextStyle() {
   return const TextStyle(fontSize: 18, letterSpacing: 0.6, color: gold);
 }
+
+TextStyle titleTextStyle() {
+  return const TextStyle(
+    fontSize: 22,
+    letterSpacing: 0.6,
+    color: Colors.black,
+    fontWeight: FontWeight.bold,
+  );
+}
