@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pms_manager/features/intro/view/create_account.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/router/router.dart';
+import 'package:pms_manager/utils/colors.dart';
 
 
 class VerifyNumber extends StatelessWidget {
@@ -60,58 +60,8 @@ class VerifyNumber extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                SizedBox(
-                                  height: 50,
-                                  width: 50,
-                                  child: TextField(
-                                    style: Theme.of(context).textTheme.headline6,
-                                    keyboardType: TextInputType.number,
-                                    textAlign: TextAlign.center,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(1),
-                                      FilteringTextInputFormatter.digitsOnly
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 50,
-                                  width: 50,
-                                  child: TextField(
-                                    style: Theme.of(context).textTheme.headline6,
-                                    keyboardType: TextInputType.number,
-                                    textAlign: TextAlign.center,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(1),
-                                      FilteringTextInputFormatter.digitsOnly
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 50,
-                                  width: 50,
-                                  child: TextField(
-                                    style: Theme.of(context).textTheme.headline6,
-                                    keyboardType: TextInputType.number,
-                                    textAlign: TextAlign.center,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(1),
-                                      FilteringTextInputFormatter.digitsOnly
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 50,
-                                  width: 50,
-                                  child: TextField(
-                                    style: Theme.of(context).textTheme.headline6,
-                                    keyboardType: TextInputType.number,
-                                    textAlign: TextAlign.center,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(1),
-                                      FilteringTextInputFormatter.digitsOnly
-                                    ],
-                                  ),
-                                ),
+                                for(var i=0; i<6; i++)
+                                  CustomDigit(context),
                               ],
                             ),
                           ),
@@ -155,4 +105,31 @@ class VerifyNumber extends StatelessWidget {
       ),
     );
   }
+}
+
+ CustomDigit(context){
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      SizedBox(
+        height: 50,
+        width: 50,
+        child: TextField(
+          onChanged: (value){
+            if (value.length == 1){
+              FocusScope.of(context).nextFocus();
+            }
+          },
+          style: Theme.of(context).textTheme.headline6,
+          keyboardType: TextInputType.number,
+          textAlign: TextAlign.center,
+          cursorColor: gold,
+          inputFormatters: [
+            LengthLimitingTextInputFormatter(1),
+            FilteringTextInputFormatter.digitsOnly
+          ],
+        ),
+      ),
+    ],
+  );
 }
