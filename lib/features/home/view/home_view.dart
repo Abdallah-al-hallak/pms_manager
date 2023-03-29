@@ -16,6 +16,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
+    GlobalKey<ScaffoldState> globalKey = GlobalKey();
     final iconList = <IconData>[
       Icons.chat,
       Icons.notifications,
@@ -25,16 +26,36 @@ class _HomeViewState extends State<HomeView> {
     ];
 
     return AutoTabsScaffold(
+      homeIndex: 2,
+      backgroundColor: Colors.white,
+      scaffoldKey: globalKey,
+      drawer: Drawer(
+        width: MediaQuery.of(context).size.width / 2.1,
+        backgroundColor: Colors.white,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(10),
+          ),
+        ),
+        child: const Text('klb'),
+      ),
       appBarBuilder: (context, tabsRouter) {
         return AppBar(
+          leadingWidth: 100,
           backgroundColor: Colors.white,
           elevation: 0,
-          leading: IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.menu,
-                color: gold,
-              )),
+          leading: Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: IconButton(
+                onPressed: () {
+                  globalKey.currentState?.openDrawer();
+                },
+                icon: const Icon(
+                  Icons.menu,
+                  size: 35,
+                  color: gold,
+                )),
+          ),
         );
       },
       routes: const [
