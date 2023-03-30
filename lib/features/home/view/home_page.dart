@@ -48,13 +48,13 @@ class HomePage extends StatelessWidget {
                     CardDropDownWidget()
                   ],
                 ),
-                SizedBox(width: 0.0, height: 15.0),
+                const SizedBox(width: 0.0, height: 15.0),
                 CustomElevatedButton(text: 'search', onPressed: () {}),
                 SizedBox(
-                  height: 250,
+                  height: 240,
                   child: Expanded(
                     child: GridView.builder(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 6,
@@ -65,7 +65,19 @@ class HomePage extends StatelessWidget {
                       },
                     ),
                   ),
-                )
+                ),
+                const SizedBox(width: 0.0, height: 13.0),
+                Row(
+                  // title
+                  children: [
+                    Image.asset('assets/png/triangle.png'),
+                    const SizedBox(width: 15.0, height: 0.0),
+                    Text(
+                      'Other',
+                      style: titleTextStyle(),
+                    )
+                  ],
+                ),
               ],
             ),
           ),

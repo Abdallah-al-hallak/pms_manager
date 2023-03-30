@@ -7,7 +7,8 @@ import 'package:pms_manager/utils/colors.dart';
 import 'package:pms_manager/utils/widgets/custom_radio_butt.dart';
 import 'features/intro/view/page_view.dart';
 
-void main() {
+void main() async {
+  await Future.delayed(const Duration(seconds: 2));
   runApp(const MyApp());
 }
 

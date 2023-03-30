@@ -37,7 +37,7 @@ class _HomeViewState extends State<HomeView> {
             topRight: Radius.circular(10),
           ),
         ),
-        child: const Text('klb'),
+        child: Center(child: const Text('Drawer Stuff')),
       ),
       appBarBuilder: (context, tabsRouter) {
         return AppBar(

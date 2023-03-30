@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/features/intro/widgets/my_textfield.dart';
 import 'package:pms_manager/features/phone_auth/view/verify_number.dart';
+import 'package:pms_manager/router/router.dart';
 
 
 class ResetPassword extends StatelessWidget {
@@ -9,6 +11,7 @@ class ResetPassword extends StatelessWidget {
 
   // text editing controllers
   final phoneNumberController = TextEditingController();
+  final confirmPhoneNumberController = TextEditingController();
 
   // sign user in method
   void signUserIn() {}
@@ -43,7 +46,7 @@ class ResetPassword extends StatelessWidget {
                             child: MyTextField(
                               controller: phoneNumberController,
                               hintText: 'New Password',
-                              obscureText: false,
+                              obscureText: true,
                             ),
                           ),
 
@@ -52,9 +55,9 @@ class ResetPassword extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 25, right: 25),
                             child: MyTextField(
-                              controller: phoneNumberController,
+                              controller: confirmPhoneNumberController,
                               hintText: 'Confirm New Password',
-                              obscureText: false,
+                              obscureText: true,
                             ),
                           ),
 
@@ -64,11 +67,8 @@ class ResetPassword extends StatelessWidget {
                             padding: const EdgeInsets.only(left: 25, right: 25),
                             child: CustomElevatedButton(
                               onPressed: () {
-                                Navigator.pushReplacement(context, MaterialPageRoute(
-                                  builder: (context) {
-                                    return VerifyNumber();
-                                  },
-                                ));
+                                AutoRouter.of(context)
+                                    .replace(LogInRoute());
                               },
                               text: 'Reset Password',
                               height: 50,
