@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/features/intro/widgets/my_textfield.dart';
 import 'package:pms_manager/features/phone_auth/view/verify_number.dart';
+import 'package:pms_manager/router/router.dart';
 
 
 class AddNumber extends StatelessWidget {
@@ -53,11 +55,7 @@ class AddNumber extends StatelessWidget {
                             padding: const EdgeInsets.only(left: 25, right: 25),
                             child: CustomElevatedButton(
                               onPressed: () {
-                                Navigator.pushReplacement(context, MaterialPageRoute(
-                                  builder: (context) {
-                                    return VerifyNumber();
-                                  },
-                                ));
+                                AutoRouter.of(context).push(VerifyNumberRoute());
                               },
                               text: 'Send Code',
                               height: 50,

@@ -2,26 +2,23 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/features/intro/widgets/my_textfield.dart';
-import 'package:pms_manager/features/phone_auth/view/verify_number.dart';
 import 'package:pms_manager/router/router.dart';
 
 import '../../../router/router.dart';
 
-class ResetPassword extends StatelessWidget {
+class ResetPassword extends StatefulWidget {
   ResetPassword({super.key});
 
-  // text editing controllers
+  @override
+  _ResetPasswordState createState() => _ResetPasswordState();
+}
+
+class _ResetPasswordState extends State<ResetPassword> {
   final phoneNumberController = TextEditingController();
   final confirmPhoneNumberController = TextEditingController();
-
-  // sign user in method
-  void signUserIn() {}
-
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.grey[300],
       body: SingleChildScrollView(
         child: LayoutBuilder(
             builder: (context, p1) => SafeArea(
@@ -67,7 +64,7 @@ class ResetPassword extends StatelessWidget {
                             padding: const EdgeInsets.only(left: 25, right: 25),
                             child: CustomElevatedButton(
                               onPressed: () {
-                                AutoRouter.of(context).replace(LogInRoute());
+                                AutoRouter.of(context).push(LogInRoute());
                               },
                               text: 'Reset Password',
                               height: 50,

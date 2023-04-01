@@ -24,9 +24,9 @@ part 'router.gr.dart';
     AutoRoute(page: LoginPage, name: 'LogInRoute'),
     AutoRoute(page: RegisterAccount, name: 'RegisterAccountRoute'),
     AutoRoute(page: ForgotPassword, name: 'ForgotPasswordRoute',),
-    AutoRoute(page: VerifyNumber, name: 'VerifyNumberRoute'),
     AutoRoute(page: ResetPassword, name: 'ResetPasswordRoute'),
     AutoRoute(page: CreateAccount, name: 'CreateAccountRoute'),
+    AutoRoute(page: VerifyNumber, name: 'VerifyNumberRoute'),
     AutoRoute(page: HomeView, name: 'HomeRoute', children: [
       AutoRoute(
         page: ChatView,

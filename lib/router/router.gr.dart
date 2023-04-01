@@ -51,14 +51,6 @@ class _$AppRouter extends RootStackRouter {
         child: ForgotPassword(key: args.key),
       );
     },
-    VerifyNumberRoute.name: (routeData) {
-      final args = routeData.argsAs<VerifyNumberRouteArgs>(
-          orElse: () => const VerifyNumberRouteArgs());
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: VerifyNumber(key: args.key),
-      );
-    },
     ResetPasswordRoute.name: (routeData) {
       final args = routeData.argsAs<ResetPasswordRouteArgs>(
           orElse: () => const ResetPasswordRouteArgs());
@@ -75,6 +67,14 @@ class _$AppRouter extends RootStackRouter {
           key: args.key,
           propertyAttachment: args.propertyAttachment,
         ),
+      );
+    },
+    VerifyNumberRoute.name: (routeData) {
+      final args = routeData.argsAs<VerifyNumberRouteArgs>(
+          orElse: () => const VerifyNumberRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: VerifyNumber(key: args.key),
       );
     },
     HomeRoute.name: (routeData) {
@@ -138,16 +138,16 @@ class _$AppRouter extends RootStackRouter {
           path: '/forgot-password',
         ),
         RouteConfig(
-          VerifyNumberRoute.name,
-          path: '/verify-number',
-        ),
-        RouteConfig(
           ResetPasswordRoute.name,
           path: '/reset-password',
         ),
         RouteConfig(
           CreateAccountRoute.name,
           path: '/create-account',
+        ),
+        RouteConfig(
+          VerifyNumberRoute.name,
+          path: '/verify-number',
         ),
         RouteConfig(
           HomeRoute.name,
@@ -268,30 +268,6 @@ class ForgotPasswordRouteArgs {
 }
 
 /// generated route for
-/// [VerifyNumber]
-class VerifyNumberRoute extends PageRouteInfo<VerifyNumberRouteArgs> {
-  VerifyNumberRoute({Key? key})
-      : super(
-          VerifyNumberRoute.name,
-          path: '/verify-number',
-          args: VerifyNumberRouteArgs(key: key),
-        );
-
-  static const String name = 'VerifyNumberRoute';
-}
-
-class VerifyNumberRouteArgs {
-  const VerifyNumberRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'VerifyNumberRouteArgs{key: $key}';
-  }
-}
-
-/// generated route for
 /// [ResetPassword]
 class ResetPasswordRoute extends PageRouteInfo<ResetPasswordRouteArgs> {
   ResetPasswordRoute({Key? key})
@@ -346,6 +322,30 @@ class CreateAccountRouteArgs {
   @override
   String toString() {
     return 'CreateAccountRouteArgs{key: $key, propertyAttachment: $propertyAttachment}';
+  }
+}
+
+/// generated route for
+/// [VerifyNumber]
+class VerifyNumberRoute extends PageRouteInfo<VerifyNumberRouteArgs> {
+  VerifyNumberRoute({Key? key})
+      : super(
+          VerifyNumberRoute.name,
+          path: '/verify-number',
+          args: VerifyNumberRouteArgs(key: key),
+        );
+
+  static const String name = 'VerifyNumberRoute';
+}
+
+class VerifyNumberRouteArgs {
+  const VerifyNumberRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'VerifyNumberRouteArgs{key: $key}';
   }
 }
 
