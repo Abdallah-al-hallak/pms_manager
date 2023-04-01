@@ -5,6 +5,7 @@ import 'package:pms_manager/features/intro/widgets/my_textfield.dart';
 import 'package:pms_manager/features/phone_auth/view/verify_number.dart';
 import 'package:pms_manager/router/router.dart';
 
+import '../../../router/router.dart';
 
 class ResetPassword extends StatelessWidget {
   ResetPassword({super.key});
@@ -22,9 +23,8 @@ class ResetPassword extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       body: SingleChildScrollView(
-        child: LayoutBuilder (
-            builder: (context, p1)=>
-                SafeArea(
+        child: LayoutBuilder(
+            builder: (context, p1) => SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
@@ -46,7 +46,7 @@ class ResetPassword extends StatelessWidget {
                             child: MyTextField(
                               controller: phoneNumberController,
                               hintText: 'New Password',
-                              obscureText: true,
+                              obscureText: false,
                             ),
                           ),
 
@@ -55,9 +55,9 @@ class ResetPassword extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 25, right: 25),
                             child: MyTextField(
-                              controller: confirmPhoneNumberController,
+                              controller: phoneNumberController,
                               hintText: 'Confirm New Password',
-                              obscureText: true,
+                              obscureText: false,
                             ),
                           ),
 
@@ -67,8 +67,7 @@ class ResetPassword extends StatelessWidget {
                             padding: const EdgeInsets.only(left: 25, right: 25),
                             child: CustomElevatedButton(
                               onPressed: () {
-                                AutoRouter.of(context)
-                                    .replace(LogInRoute());
+                                AutoRouter.of(context).replace(LogInRoute());
                               },
                               text: 'Reset Password',
                               height: 50,
@@ -78,8 +77,7 @@ class ResetPassword extends StatelessWidget {
                       ),
                     ),
                   ),
-                )
-        ),
+                )),
       ),
     );
   }

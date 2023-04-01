@@ -1,8 +1,6 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:pms_manager/features/home/view/home_page.dart';
 import 'package:pms_manager/router/router.dart';
 import 'package:pms_manager/utils/colors.dart';
 
@@ -24,6 +22,13 @@ class _HomeViewState extends State<HomeView> {
       Icons.search,
       Icons.settings,
     ];
+    final textList = <String>[
+      'chat',
+      'notification',
+      'Home',
+      'search',
+      'settings',
+    ];
 
     return AutoTabsScaffold(
       homeIndex: 2,
@@ -37,7 +42,7 @@ class _HomeViewState extends State<HomeView> {
             topRight: Radius.circular(10),
           ),
         ),
-        child: Center(child: const Text('Drawer Stuff')),
+        child: const Center(child: Text('Drawer Stuff')),
       ),
       appBarBuilder: (context, tabsRouter) {
         return AppBar(
@@ -66,15 +71,34 @@ class _HomeViewState extends State<HomeView> {
         SearchViewRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
-        return AnimatedBottomNavigationBar(
-          height: 100,
+        return AnimatedBottomNavigationBar.builder(
+          itemCount: 5,
+          tabBuilder: (index, isActive) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  iconList[index],
+                  color: gold,
+                  size: isActive ? 40 : 30,
+                ),
+                if (isActive)
+                  Text(
+                    textList[index],
+                    style: const TextStyle(
+                        color: gold, fontWeight: FontWeight.bold, fontSize: 16),
+                  )
+              ],
+            );
+          },
+          height: 85,
           backgroundColor: lightDark,
           gapWidth: 1,
 
-          inactiveColor: Colors.white,
+          // inactiveColor: Colors.white,
 
-          activeColor: Colors.red,
-          icons: iconList,
+          // activeColor: Colors.red,
+          // icons: iconList,
           activeIndex: tabsRouter.activeIndex,
           leftCornerRadius: 32,
           rightCornerRadius: 30,

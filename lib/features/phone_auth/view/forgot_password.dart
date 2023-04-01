@@ -1,9 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
+import 'package:pms_manager/features/intro/widgets/my_textfield.dart';
+import 'package:pms_manager/features/phone_auth/view/verify_number.dart';
 import 'package:pms_manager/router/router.dart';
-import 'package:pms_manager/utils/colors.dart';
+
 
 class ForgotPassword extends StatelessWidget {
   ForgotPassword({super.key});
@@ -20,8 +21,9 @@ class ForgotPassword extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       body: SingleChildScrollView(
-        child: LayoutBuilder(
-            builder: (context, p1) => SafeArea(
+        child: LayoutBuilder (
+            builder: (context, p1)=>
+                SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
@@ -37,23 +39,13 @@ class ForgotPassword extends StatelessWidget {
                           ),
 
                           const SizedBox(height: 50),
+
                           Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: IntlPhoneField(
-                              cursorColor: gold,
-                              decoration: const InputDecoration(
-                                labelText: 'Phone Number',
-                                fillColor: gold,
-                                iconColor: gold,
-                                prefixIconColor: Colors.black,
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: gold),
-                                ),
-                              ),
-                              initialCountryCode: 'JORDAN',
-                              onChanged: (phone) {
-                                print(phone.completeNumber);
-                              },
+                            padding: const EdgeInsets.only(left: 25, right: 25),
+                            child: MyTextField(
+                              controller: phoneNumberController,
+                              hintText: 'Phone Number',
+                              obscureText: false,
                             ),
                           ),
 
@@ -63,8 +55,8 @@ class ForgotPassword extends StatelessWidget {
                             padding: const EdgeInsets.only(left: 25, right: 25),
                             child: CustomElevatedButton(
                               onPressed: () {
-                                AutoRouter.of(context)
-                                    .replace(VerifyNumberRoute());
+                                  AutoRouter.of(context)
+                                      .replace(VerifyNumberRoute());
                               },
                               text: 'Send Code',
                               height: 50,
@@ -74,7 +66,8 @@ class ForgotPassword extends StatelessWidget {
                       ),
                     ),
                   ),
-                )),
+                )
+        ),
       ),
     );
   }

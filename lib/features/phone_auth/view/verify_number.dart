@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/router/router.dart';
-import 'package:pms_manager/utils/colors.dart';
 
+import '../../../utils/colors.dart';
 
 class VerifyNumber extends StatelessWidget {
   VerifyNumber({super.key});
@@ -21,9 +21,8 @@ class VerifyNumber extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       body: SingleChildScrollView(
-        child: LayoutBuilder (
-            builder: (context, p1)=>
-                SafeArea(
+        child: LayoutBuilder(
+            builder: (context, p1) => SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
@@ -47,8 +46,8 @@ class VerifyNumber extends StatelessWidget {
                                   textAlign: TextAlign.center,
                                   'Please, enter the verification code we sent to your Phone Number',
                                   style: TextStyle(
-                                    // fontWeight: FontWeight.bold,
-                                  ),
+                                      // fontWeight: FontWeight.bold,
+                                      ),
                                   // style: TextStyle(color: Colors.grey[700]),
                                 ),
                               ),
@@ -60,7 +59,7 @@ class VerifyNumber extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                for(var i=0; i<6; i++)
+                                for (var i = 0; i < 6; i++)
                                   CustomDigit(context),
                               ],
                             ),
@@ -100,14 +99,13 @@ class VerifyNumber extends StatelessWidget {
                       ),
                     ),
                   ),
-                )
-        ),
+                )),
       ),
     );
   }
 }
 
- CustomDigit(context){
+CustomDigit(context) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -115,8 +113,8 @@ class VerifyNumber extends StatelessWidget {
         height: 50,
         width: 50,
         child: TextField(
-          onChanged: (value){
-            if (value.length == 1){
+          onChanged: (value) {
+            if (value.length == 1) {
               FocusScope.of(context).nextFocus();
             }
           },

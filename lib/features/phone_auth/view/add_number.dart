@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/features/intro/widgets/my_textfield.dart';
 import 'package:pms_manager/features/phone_auth/view/verify_number.dart';
@@ -39,19 +38,13 @@ class AddNumber extends StatelessWidget {
 
                           const SizedBox(height: 50),
 
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 25, right: 25),
-                                child: MyTextField(
-                                  keyBoardType: TextInputType.number,
-                                  inputFormatter: [FilteringTextInputFormatter.digitsOnly],
-                                  controller: phoneNumberController,
-                                  hintText: 'Phone Number',
-                                  obscureText: false,
-                                ),
-                              ),
-                            ],
+                          Padding(
+                            padding: const EdgeInsets.only(left: 25, right: 25),
+                            child: MyTextField(
+                              controller: phoneNumberController,
+                              hintText: 'Phone Number',
+                              obscureText: false,
+                            ),
                           ),
 
                           const SizedBox(height: 25),
