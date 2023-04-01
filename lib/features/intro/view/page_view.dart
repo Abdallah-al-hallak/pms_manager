@@ -77,11 +77,13 @@ class _PageViewIntroState extends State<PageViewIntro> {
                         Expanded(
                           child: Text(
                             list[index].title,
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                         ),
-                        Expanded(
+                        Center(
                           child: Text(
                             list[index].description,
+                            textAlign: TextAlign.center,
                           ),
                         ),
                         SizedBox(width: 0.0, height: p1.maxHeight / 3),
