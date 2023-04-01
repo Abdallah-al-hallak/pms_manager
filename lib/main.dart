@@ -2,10 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:pms_manager/features/intro/widgets/custom_text.dart';
 import 'package:pms_manager/router/router.dart';
-
 import 'package:pms_manager/utils/colors.dart';
-import 'package:pms_manager/utils/widgets/custom_radio_butt.dart';
-import 'features/intro/view/page_view.dart';
 
 void main() async {
   await Future.delayed(const Duration(seconds: 2));
