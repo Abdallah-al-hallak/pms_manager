@@ -18,7 +18,6 @@ class ForgotPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.grey[300],
       body: SingleChildScrollView(
         child: LayoutBuilder(
             builder: (context, p1) => SafeArea(
@@ -50,7 +49,7 @@ class ForgotPassword extends StatelessWidget {
                                   borderSide: BorderSide(color: gold),
                                 ),
                               ),
-                              initialCountryCode: 'JORDAN',
+                              initialCountryCode: 'JO',
                               onChanged: (phone) {
                                 print(phone.completeNumber);
                               },
@@ -64,7 +63,7 @@ class ForgotPassword extends StatelessWidget {
                             child: CustomElevatedButton(
                               onPressed: () {
                                 AutoRouter.of(context)
-                                    .replace(VerifyNumberRoute());
+                                    .push(VerifyNumberRoute());
                               },
                               text: 'Send Code',
                               height: 50,

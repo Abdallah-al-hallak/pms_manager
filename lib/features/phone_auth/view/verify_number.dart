@@ -1,48 +1,54 @@
+import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/router/router.dart';
 import 'package:pms_manager/utils/colors.dart';
 
 
-class VerifyNumber extends StatelessWidget {
+class VerifyNumber extends StatefulWidget {
   VerifyNumber({super.key});
+
+  @override
+  _VerifyNumberState createState() => _VerifyNumberState();
+}
 
   // text editing controllers
   final phoneNumberController = TextEditingController();
 
   // sign user in method
-  void signUserIn() {}
+  class _VerifyNumberState extends State<VerifyNumber>{
+    int startTimer = 30;
+    bool dispelledButton = false;
+    String buttonName = 'Verify Phone';
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        // backgroundColor: Colors.grey[300],
+        body: SingleChildScrollView(
+          child: LayoutBuilder (
+              builder: (context, p1)=>
+                  SafeArea(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(height: 25),
+                            // logo
+                            Image.asset(
+                              "assets/png/logo.png",
+                              fit: BoxFit.contain,
+                            ),
 
-  @override
-  Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    return Scaffold(
-      backgroundColor: Colors.grey[300],
-      body: SingleChildScrollView(
-        child: LayoutBuilder (
-            builder: (context, p1)=>
-                SafeArea(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(height: 25),
-                          // logo
-                          Image.asset(
-                            "assets/png/logo.png",
-                            fit: BoxFit.contain,
-                          ),
+                            const SizedBox(height: 15),
 
-                          const SizedBox(height: 15),
-
-                          const Padding(
-                            padding: EdgeInsets.only(left: 55, right: 55),
-                            child: Center(
-                              child: Flexible(
+                            const Padding(
+                              padding: EdgeInsets.only(left: 55, right: 55),
+                              child: Center(
                                 child: Text(
                                   textAlign: TextAlign.center,
                                   'Please, enter the verification code we sent to your Phone Number',
@@ -53,83 +59,145 @@ class VerifyNumber extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          ),
 
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            const SizedBox(height: 30),
+
+
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  otpField(context),
+                                ],
+                              ),
+                            ),
+
+                            const SizedBox(height: 31),
+
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                for(var i=0; i<6; i++)
-                                  CustomDigit(context),
+                                Text(
+                                  'Didn\'t receive the code? ',
+                                ),
+                                InkWell(
+                                  onTap: dispelledButton
+                                      ?null: () {
+                                    starterTimer();
+                                    setState(() {
+                                      dispelledButton = true;
+                                      startTimer = 30;
+                                    });
+                                  },
+                                  child: InkWell(
+                                    onTap: dispelledButton
+                                        ?null: () {
+                                      starterTimer();
+                                      setState(() {
+                                        dispelledButton = true;
+                                        startTimer = 30;
+                                      });
+                                    },
+                                    child: RichText(
+                                        text:  TextSpan(
+                                          children: [
+                                            TextSpan(
+                                                text:'Resend Code',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: dispelledButton ? Colors.grey : Colors.black,
+                                              ),
+                                            ),
+                                          ]
+                                    )),
+                                  ),
+                                ),
                               ],
                             ),
-                          ),
 
-                          const SizedBox(height: 31),
+                            const SizedBox(height: 30),
 
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Text(
-                                'Didn\'t receive the code? ',
+                            RichText(
+                                text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text:'00:$startTimer',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ]
+                                )),
+
+                            const SizedBox(height: 52),
+
+                            Padding(
+                              padding: const EdgeInsets.only(left: 25, right: 25),
+                              child: CustomElevatedButton(
+                                onPressed: () {
+                                  AutoRouter.of(context)
+                                      .push(ResetPasswordRoute());
+                                },
+                                text: 'Verify Phone',
+                                height: 50,
                               ),
-                              Text(
-                                'Resend Code',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-
-                          const SizedBox(height: 52),
-
-                          Padding(
-                            padding: const EdgeInsets.only(left: 25, right: 25),
-                            child: CustomElevatedButton(
-                              onPressed: () {
-                                AutoRouter.of(context)
-                                    .push(ResetPasswordRoute());
-                              },
-                              text: 'Verify Phone',
-                              height: 50,
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                )
+                  )
+          ),
         ),
-      ),
-    );
-  }
-}
+      );
+    }
 
- CustomDigit(context){
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      SizedBox(
-        height: 50,
-        width: 50,
-        child: TextField(
-          onChanged: (value){
-            if (value.length == 1){
-              FocusScope.of(context).nextFocus();
-            }
-          },
-          style: Theme.of(context).textTheme.headline6,
-          keyboardType: TextInputType.number,
-          textAlign: TextAlign.center,
-          cursorColor: gold,
-          inputFormatters: [
-            LengthLimitingTextInputFormatter(1),
-            FilteringTextInputFormatter.digitsOnly
-          ],
-        ),
-      ),
-    ],
-  );
-}
+    void starterTimer(){
+      const onSec = Duration(seconds: 1);
+      Timer _timer = Timer.periodic(onSec, (timer) {
+        if (startTimer == 0){
+          setState(() {
+            timer.cancel();
+            dispelledButton = false;
+          });
+        }
+        else{
+          setState(() {
+            startTimer--;
+          });
+        }
+      });
+    }
+    Widget otpField(context){
+      return OtpTextField(
+        numberOfFields: 6,
+        borderColor: textGrey,
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
+        showFieldAsBox: true,
+        cursorColor: gold,
+        focusedBorderColor: gold,
+        onCodeChanged: (String code) {
+          //handle validation or checks here
+        },
+        //runs when every textfield is filled
+        onSubmit: (String verificationCode){
+          showDialog(
+              context: context,
+              builder: (context){
+                return AlertDialog(
+                  title: const Text("Verification Code"),
+                  content: Text('Code entered is $verificationCode'),
+                );
+              }
+          );
+        }, // end onSubmit
+      );
+    }
+
+  }
+
+
+
+

@@ -74,7 +74,7 @@ class LoginPage extends StatelessWidget {
                                   onTap: () {
                                     // Temporary, needs validation
                                     AutoRouter.of(context)
-                                        .replace(ForgotPasswordRoute());
+                                        .push(ForgotPasswordRoute());
                                   },
                                   child: Text(
                                     'Forgot Password?',
@@ -129,7 +129,7 @@ class LoginPage extends StatelessWidget {
                                 onTap: () {
                                   // Temporary, needs validation
                                   AutoRouter.of(context)
-                                      .replace(const RegisterAccountRoute());
+                                      .push(const RegisterAccountRoute());
                                 },
                                 child: const Text(
                                   'Create Account',
