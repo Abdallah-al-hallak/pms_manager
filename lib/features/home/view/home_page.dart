@@ -6,9 +6,6 @@ import 'package:pms_manager/utils/styles.dart';
 
 import '../../../utils/colors.dart';
 
-import '../../../utils/colors.dart';
-import '../../intro/widgets/custom_buton.dart';
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -26,6 +23,7 @@ class HomePage extends StatelessWidget {
           ),
           body: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(width: 0.0, height: 13.0),
                 Row(
@@ -75,7 +73,7 @@ class HomePage extends StatelessWidget {
                               const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 6,
                           ),
-                          itemCount: 50,
+                          itemCount: 30,
                           itemBuilder: (BuildContext context, int index) {
                             return Column(
                               children: [
@@ -125,7 +123,6 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
                 const Padding(
-
                   padding: EdgeInsets.symmetric(horizontal: 28),
                   child: OtherListTileWidget(
                     title: 'SubManagers',
@@ -208,9 +205,10 @@ class CardTimeWidget extends StatefulWidget {
 class _CardTimeWidgetState extends State<CardTimeWidget> {
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return SizedBox(
       height: 64,
-      width: 170,
+      width: size.width / 2.46,
       child: Card(
         elevation: 3,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
@@ -244,9 +242,10 @@ class _CardDropDownWidgetState extends State<CardDropDownWidget> {
   String value = 'Property Type';
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return SizedBox(
       height: 64,
-      width: 170,
+      width: size.width / 2.46,
       child: Card(
         elevation: 3,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
@@ -290,9 +289,10 @@ class MoreWidget extends StatefulWidget {
 class _MoreWidgetState extends State<MoreWidget> {
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return SizedBox(
       height: 64,
-      width: 170,
+      width: size.width / 2.46,
       child: Card(
         elevation: 3,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
