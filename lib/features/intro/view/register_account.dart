@@ -145,6 +145,7 @@ class _RegisterAccountState extends State<RegisterAccount> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Checkbox(
+                      fillColor: MaterialStateProperty.all<Color>(gold),
                       side: const BorderSide(color: gold, width: 2),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(2),

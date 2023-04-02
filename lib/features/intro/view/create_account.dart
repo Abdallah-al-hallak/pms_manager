@@ -7,6 +7,7 @@ import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/router/router.dart';
 import 'package:pms_manager/utils/colors.dart';
 
+
 class CreateAccount extends StatefulWidget {
   const CreateAccount({super.key, required this.propertyAttachment});
   final PropertyAttachment propertyAttachment;

@@ -2,12 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:pms_manager/features/intro/widgets/custom_text.dart';
 import 'package:pms_manager/router/router.dart';
-
 import 'package:pms_manager/utils/colors.dart';
-import 'package:pms_manager/utils/widgets/custom_radio_butt.dart';
-import 'features/intro/view/page_view.dart';
 
-void main() {
+void main() async {
+  await Future.delayed(const Duration(seconds: 2));
   runApp(const MyApp());
 }
 
@@ -50,95 +48,186 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var language = Languages.english;
+  bool isExpanded1 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         body: LayoutBuilder(
-      builder: (p0, p1) => Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset('assets/png/lang.png'),
-            ExpansionTile(
-              iconColor: lightDark,
-              textColor: lightDark,
-              childrenPadding: const EdgeInsets.all(30),
-              tilePadding: const EdgeInsets.symmetric(
-                horizontal: 75,
-              ),
-              title: const Text('Select Your Language'),
-              children: [
-                SizedBox(
-                  height: p1.maxHeight / 4,
-                  width: p1.maxWidth / 1.5,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: gold,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                            onTap: () async {
-                              await Future.delayed(
-                                  const Duration(milliseconds: 500));
-                              AutoRouter.of(context)
-                                  .replace(const PageViewRoute());
-                            },
-                            child: const CustomText(
-                                size: 20,
-                                text: 'English',
-                                color: Colors.white)),
-                        SizedBox(width: 0.0, height: 30.0),
-                        // LanguageRadioRow(
-                        //   groupValue: language,
-                        //   value: Languages.english,
-                        //   onChanged: (value) async {
-                        //     //TODO Engilsh logic language
-                        //     setState(() {
-                        //       language = value!;
-                        //     });
-                        //     await Future.delayed(
-                        //         const Duration(milliseconds: 500));
-                        //     AutoRouter.of(context)
-                        //         .replace(const PageViewRoute());
-                        //   },
-                        //   text: 'English',
-                        // ),
-                        GestureDetector(
-                            onTap: () async {
-                              await Future.delayed(
-                                  const Duration(milliseconds: 500));
-                              AutoRouter.of(context)
-                                  .replace(const PageViewRoute());
-                            },
-                            child: const CustomText(
-                                size: 20, text: 'Arabic', color: Colors.white)),
-                        // LanguageRadioRow(
-                        //   groupValue: language,
-                        //   value: Languages.arabic,
-                        //   onChanged: (value) async {
-                        //     //TODO Arabic logic language
-                        //     setState(() {
-                        //       language = value!;
-                        //     });
-                        //     await Future.delayed(
-                        //         const Duration(milliseconds: 500));
-                        //     AutoRouter.of(context)
-                        //         .replace(const PageViewRoute());
-                        //   },
-                        //   text: 'Arabic',
-                        // ),
-                      ],
-                    ),
+          builder: (p0, p1) => Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Image.asset('assets/png/lang.png'),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  child: ExpansionPanelList.radio(
+                    elevation: 0,
+                    children: [
+                      ExpansionPanelRadio(
+                          canTapOnHeader: true,
+                          backgroundColor: Colors.white,
+                          value: 1,
+                          headerBuilder:
+                              (BuildContext context, bool isExpanded) {
+                            return ListTile(
+                              title: const Text('Select Your Language'),
+                            );
+                          },
+                          body: SizedBox(
+                            height: p1.maxHeight / 4,
+                            width: p1.maxWidth / 1.5,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: gold,
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  GestureDetector(
+                                      onTap: () async {
+                                        await Future.delayed(
+                                            const Duration(milliseconds: 500));
+                                        AutoRouter.of(context)
+                                            .replace(const PageViewRoute());
+                                      },
+                                      child: const CustomText(
+                                          size: 20,
+                                          text: 'English',
+                                          color: Colors.white)),
+                                  const SizedBox(width: 0.0, height: 30.0),
+                                  // LanguageRadioRow(
+                                  //   groupValue: language,
+                                  //   value: Languages.english,
+                                  //   onChanged: (value) async {
+                                  //     //TODO Engilsh logic language
+                                  //     setState(() {
+                                  //       language = value!;
+                                  //     });
+                                  //     await Future.delayed(
+                                  //         const Duration(milliseconds: 500));
+                                  //     AutoRouter.of(context)
+                                  //         .replace(const PageViewRoute());
+                                  //   },
+                                  //   text: 'English',
+                                  // ),
+                                  GestureDetector(
+                                      onTap: () async {
+                                        await Future.delayed(
+                                            const Duration(milliseconds: 500));
+                                        AutoRouter.of(context)
+                                            .replace(const PageViewRoute());
+                                      },
+                                      child: const CustomText(
+                                          size: 20,
+                                          text: 'Arabic',
+                                          color: Colors.white)),
+                                  // LanguageRadioRow(
+                                  //   groupValue: language,
+                                  //   value: Languages.arabic,
+                                  //   onChanged: (value) async {
+                                  //     //TODO Arabic logic language
+                                  //     setState(() {
+                                  //       language = value!;
+                                  //     });
+                                  //     await Future.delayed(
+                                  //         const Duration(milliseconds: 500));
+                                  //     AutoRouter.of(context)
+                                  //         .replace(const PageViewRoute());
+                                  //   },
+                                  //   text: 'Arabic',
+                                  // ),
+                                ],
+                              ),
+                            ),
+                          )),
+                    ],
                   ),
-                )
+                ),
+                // ExpansionTile(
+                //   backgroundColor: Colors.transparent,
+                //   iconColor: lightDark,
+                //   textColor: lightDark,
+                //   childrenPadding: const EdgeInsets.all(30),
+                //   tilePadding: const EdgeInsets.symmetric(
+                //     horizontal: 75,
+                //   ),
+                //   title: const Text('Select Your Language'),
+                //   children: [
+                //     SizedBox(
+                //       height: p1.maxHeight / 4,
+                //       width: p1.maxWidth / 1.5,
+                //       child: Container(
+                //         decoration: BoxDecoration(
+                //           borderRadius: BorderRadius.circular(12),
+                //           color: gold,
+                //         ),
+                //         child: Column(
+                //           mainAxisAlignment: MainAxisAlignment.center,
+                //           children: [
+                //             GestureDetector(
+                //                 onTap: () async {
+                //                   await Future.delayed(
+                //                       const Duration(milliseconds: 500));
+                //                   AutoRouter.of(context)
+                //                       .replace(const PageViewRoute());
+                //                 },
+                //                 child: const CustomText(
+                //                     size: 20,
+                //                     text: 'English',
+                //                     color: Colors.white)),
+                //             const SizedBox(width: 0.0, height: 30.0),
+                //             // LanguageRadioRow(
+                //             //   groupValue: language,
+                //             //   value: Languages.english,
+                //             //   onChanged: (value) async {
+                //             //     //TODO Engilsh logic language
+                //             //     setState(() {
+                //             //       language = value!;
+                //             //     });
+                //             //     await Future.delayed(
+                //             //         const Duration(milliseconds: 500));
+                //             //     AutoRouter.of(context)
+                //             //         .replace(const PageViewRoute());
+                //             //   },
+                //             //   text: 'English',
+                //             // ),
+                //             GestureDetector(
+                //                 onTap: () async {
+                //                   await Future.delayed(
+                //                       const Duration(milliseconds: 500));
+                //                   AutoRouter.of(context)
+                //                       .replace(const PageViewRoute());
+                //                 },
+                //                 child: const CustomText(
+                //                     size: 20,
+                //                     text: 'Arabic',
+                //                     color: Colors.white)),
+                //             // LanguageRadioRow(
+                //             //   groupValue: language,
+                //             //   value: Languages.arabic,
+                //             //   onChanged: (value) async {
+                //             //     //TODO Arabic logic language
+                //             //     setState(() {
+                //             //       language = value!;
+                //             //     });
+                //             //     await Future.delayed(
+                //             //         const Duration(milliseconds: 500));
+                //             //     AutoRouter.of(context)
+                //             //         .replace(const PageViewRoute());
+                //             //   },
+                //             //   text: 'Arabic',
+                //             // ),
+                //           ],
+                //         ),
+                //       ),
+                //     )
+                //   ],
+                // ),
               ],
             ),
-          ],
-        ),
-      ),
-    ));
+          ),
+        ));
   }
 }

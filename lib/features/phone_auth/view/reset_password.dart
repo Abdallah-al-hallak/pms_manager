@@ -4,6 +4,7 @@ import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/features/intro/widgets/my_textfield.dart';
 import 'package:pms_manager/router/router.dart';
 
+import '../../../router/router.dart';
 
 class ResetPassword extends StatefulWidget {
   ResetPassword({super.key});
@@ -12,16 +13,15 @@ class ResetPassword extends StatefulWidget {
   _ResetPasswordState createState() => _ResetPasswordState();
 }
 
-class _ResetPasswordState extends State<ResetPassword>{
+class _ResetPasswordState extends State<ResetPassword> {
   final phoneNumberController = TextEditingController();
   final confirmPhoneNumberController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: LayoutBuilder (
-            builder: (context, p1)=>
-                SafeArea(
+        child: LayoutBuilder(
+            builder: (context, p1) => SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
@@ -43,7 +43,7 @@ class _ResetPasswordState extends State<ResetPassword>{
                             child: MyTextField(
                               controller: phoneNumberController,
                               hintText: 'New Password',
-                              obscureText: true,
+                              obscureText: false,
                             ),
                           ),
 
@@ -52,9 +52,9 @@ class _ResetPasswordState extends State<ResetPassword>{
                           Padding(
                             padding: const EdgeInsets.only(left: 25, right: 25),
                             child: MyTextField(
-                              controller: confirmPhoneNumberController,
+                              controller: phoneNumberController,
                               hintText: 'Confirm New Password',
-                              obscureText: true,
+                              obscureText: false,
                             ),
                           ),
 
@@ -64,8 +64,7 @@ class _ResetPasswordState extends State<ResetPassword>{
                             padding: const EdgeInsets.only(left: 25, right: 25),
                             child: CustomElevatedButton(
                               onPressed: () {
-                                AutoRouter.of(context)
-                                    .push(LogInRoute());
+                                AutoRouter.of(context).push(LogInRoute());
                               },
                               text: 'Reset Password',
                               height: 50,
@@ -75,10 +74,8 @@ class _ResetPasswordState extends State<ResetPassword>{
                       ),
                     ),
                   ),
-                )
-        ),
+                )),
       ),
     );
   }
 }
-

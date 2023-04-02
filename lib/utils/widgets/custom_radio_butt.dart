@@ -22,12 +22,12 @@ class LanguageRadioRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RadioListTile<dynamic>(
-      contentPadding: EdgeInsets.all(0),
+      contentPadding: const EdgeInsets.all(0),
       activeColor: color ?? Colors.white,
       value: value,
       groupValue: groupValue,
       secondary: SizedBox(
-        width: 260,
+        width: 230,
         child: Text(
           text,
           textAlign: TextAlign.start,
