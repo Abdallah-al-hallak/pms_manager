@@ -122,7 +122,7 @@ class _VerifyNumberState extends State<VerifyNumber> {
                               text: TextSpan(children: [
                             TextSpan(
                               text: '00:$startTimer',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,
                               ),
@@ -136,7 +136,7 @@ class _VerifyNumberState extends State<VerifyNumber> {
                             child: CustomElevatedButton(
                               onPressed: () {
                                 AutoRouter.of(context)
-                                    .push(ResetPasswordRoute());
+                                    .push(const RegisterAccountRoute());
                               },
                               text: 'Verify Phone',
                               height: 50,
