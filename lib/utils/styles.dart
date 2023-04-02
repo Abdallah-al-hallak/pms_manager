@@ -11,7 +11,7 @@ TextStyle gooldTextStyle() {
 
 TextStyle titleTextStyle() {
   return const TextStyle(
-    fontSize: 22,
+    fontSize: 21,
     letterSpacing: 0.6,
     color: Colors.black,
     fontWeight: FontWeight.bold,

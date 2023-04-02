@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/features/intro/widgets/my_textfield.dart';
 import 'package:pms_manager/features/phone_auth/view/add_number.dart';
-import 'package:pms_manager/features/phone_auth/view/forgot_password.dart';
+
 import 'package:pms_manager/router/router.dart';
 import 'package:pms_manager/utils/colors.dart';
 import 'register_account.dart';
@@ -93,12 +93,14 @@ class LoginPage extends StatelessWidget {
                             padding: const EdgeInsets.only(left: 25, right: 25),
                             child: CustomElevatedButton(
                               onPressed: () {
-                                Navigator.pushReplacement(context,
-                                    MaterialPageRoute(
-                                  builder: (context) {
-                                    return AddNumber();
-                                  },
-                                ));
+                                // Navigator.pushReplacement(context,
+                                //     MaterialPageRoute(
+                                //   builder: (context) {
+                                //     return AddNumber();
+                                //   },
+                                // ));
+                                AutoRouter.of(context)
+                                    .replace(const HomeRoute());
                               },
                               text: 'Sign In',
                               height: 50,
@@ -108,11 +110,10 @@ class LoginPage extends StatelessWidget {
                             height: 43,
                           ),
                           InkWell(
-                            onTap: (){
-                              showAboutDialogFingerPrint(context);
-                            },
-                              child: Image.asset("assets/png/fingerPrint.png")
-                          ),
+                              onTap: () {
+                                showAboutDialogFingerPrint(context);
+                              },
+                              child: Image.asset("assets/png/fingerPrint.png")),
                           const SizedBox(height: 60),
                           // not a member? register now
                           Row(
@@ -130,7 +131,7 @@ class LoginPage extends StatelessWidget {
                                 onTap: () {
                                   // Temporary, needs validation
                                   AutoRouter.of(context)
-                                      .push(const RegisterAccountRoute());
+                                      .push(VerifyNumberRoute());
                                 },
                                 child: const Text(
                                   'Create Account',
@@ -151,6 +152,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
+
 showAboutDialogFingerPrint(context) {
   return showDialog(
     context: context,
@@ -187,15 +189,19 @@ class _CustomDialogState extends State<CustomDialog> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
           const Center(
               child: Text(
-                  'Verify your identetiy',
-              style: TextStyle(
-                color: textGrey,
-              ),
-              )),
-          const SizedBox(height: 14,),
+            'Verify your identetiy',
+            style: TextStyle(
+              color: textGrey,
+            ),
+          )),
+          const SizedBox(
+            height: 14,
+          ),
           Center(
             child: SizedBox(
               height: 45,
@@ -203,15 +209,19 @@ class _CustomDialogState extends State<CustomDialog> {
               child: Image.asset('assets/png/fingerPrint.png'),
             ),
           ),
-          const SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
           const Center(
               child: Text(
-                'Touch the fingerprint sensor',
-                style: TextStyle(
-                  color: textGrey,
-                ),
-              )),
-          const SizedBox(height: 20,),
+            'Touch the fingerprint sensor',
+            style: TextStyle(
+              color: textGrey,
+            ),
+          )),
+          const SizedBox(
+            height: 20,
+          ),
           Center(
             child: CustomElevatedButton(
               width: 153,

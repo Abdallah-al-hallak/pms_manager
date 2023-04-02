@@ -2,8 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
-import 'package:pms_manager/features/intro/widgets/my_textfield.dart';
-import 'package:pms_manager/features/phone_auth/view/verify_number.dart';
 import 'package:pms_manager/router/router.dart';
 
 import '../../../utils/colors.dart';
@@ -19,7 +17,6 @@ class ForgotPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
         child: LayoutBuilder(
