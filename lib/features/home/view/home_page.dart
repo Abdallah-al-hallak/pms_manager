@@ -1,13 +1,39 @@
 import 'dart:math';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/utils/styles.dart';
 
 import '../../../utils/colors.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  var date1 = DateTime.now().toUtc();
+  var date2 = DateTime.now().toUtc();
+  change(DateTime time) {
+    setState(() {
+      date1 = time;
+    });
+  }
+
+  change2(DateTime time) {
+    setState(() {
+      date2 = time;
+    });
+  }
+
+  yMD(DateTime time) {
+    String formatted = DateFormat('yMd').format(time);
+    return formatted;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,19 +70,32 @@ class HomePage extends StatelessWidget {
                       Row(
                         // Date
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          CardTimeWidget(text: 'From'),
-                          SizedBox(width: 5.0, height: 0.0),
-                          CardTimeWidget(text: 'To'),
+                        children: [
+                          GestureDetector(
+                              onTap: () {
+                                selectDat(context, DateTime.now(), change);
+                              },
+                              child:
+                                  CardTimeWidget(text: 'From ${yMD(date1)}')),
+                          const SizedBox(width: 5.0, height: 0.0),
+                          GestureDetector(
+                              onTap: () {
+                                selectDat(context, DateTime.now(), change2);
+                              },
+                              child: CardTimeWidget(text: 'To ${yMD(date2)}')),
                         ],
                       ),
                       Row(
                         // Date
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          CardDropDownWidget(),
-                          SizedBox(width: 5.0, height: 0.0),
-                          MoreWidget(),
+                        children: [
+                          const CardDropDownWidget(),
+                          const SizedBox(width: 5.0, height: 0.0),
+                          GestureDetector(
+                              onTap: () {
+                                showFilterDialog(context);
+                              },
+                              child: const MoreWidget()),
                         ],
                       ),
                       const SizedBox(width: 0.0, height: 15.0),
@@ -145,6 +184,158 @@ class HomePage extends StatelessWidget {
             ),
           ));
     });
+  }
+}
+
+selectDat(
+    BuildContext context, selectedDate, Function(DateTime time) change) async {
+  DateTime? selected = await showDatePicker(
+    context: context,
+    initialDatePickerMode: DatePickerMode.day,
+    fieldLabelText: '''Enter date  mm/dd/yyyy hh:ss''',
+    initialEntryMode: DatePickerEntryMode.calendar,
+    initialDate: DateTime.now().toUtc(),
+    firstDate: DateTime(2015),
+    lastDate: DateTime(20150),
+  );
+  if (selected != null && selected != selectedDate) {
+    var dateTime = DateTime(
+      selected.year,
+      selected.month,
+      selected.day,
+    );
+
+    change(dateTime.toUtc());
+  }
+}
+
+showFilterDialog(context) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            child: Material(
+              color: Colors.transparent,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const FilterFieldsTemplate(
+                    widget: FilterTextFields(hint: 'Property Name'),
+                  ),
+                  const SizedBox(
+                    width: 0.0,
+                    height: 10.0,
+                  ),
+                  FilterFieldsTemplate(
+                      widget: GeneralDropDown(
+                    list: const ['OwnerName', 'Abd', 'Ruaa', 'Hussam'],
+                    value: 'OwnerName',
+                  )),
+                  const SizedBox(
+                    width: 0.0,
+                    height: 10.0,
+                  ),
+                  const FilterFieldsTemplate(
+                    widget: FilterTextFields(hint: 'Property Status'),
+                  ),
+                  const SizedBox(
+                    width: 0.0,
+                    height: 10.0,
+                  ),
+                  const FilterFieldsTemplate(
+                    widget: FilterTextFields(hint: 'Floor'),
+                  ),
+                  const SizedBox(
+                    width: 0.0,
+                    height: 10.0,
+                  ),
+                  const FilterFieldsTemplate(
+                    widget: FilterTextFields(hint: 'Type'),
+                  ),
+                  const SizedBox(
+                    width: 0.0,
+                    height: 10.0,
+                  ),
+                  const FilterFieldsTemplate(
+                    widget: FilterTextFields(hint: 'Property Address'),
+                  ),
+                  const SizedBox(
+                    width: 0.0,
+                    height: 10.0,
+                  ),
+                  FilterFieldsTemplate(
+                      widget: GeneralDropDown(
+                    list: const ['TenantName', 'Abd', 'Ruaa', 'Hussam'],
+                    value: 'TenantName',
+                  )),
+                  const SizedBox(
+                    width: 0.0,
+                    height: 10.0,
+                  ),
+                  const FilterFieldsTemplate(
+                    widget: FilterTextFields(hint: 'BedRooms'),
+                  ),
+                  const SizedBox(
+                    width: 0.0,
+                    height: 10.0,
+                  ),
+                  const FilterFieldsTemplate(
+                    widget: FilterTextFields(hint: 'Bathrooms'),
+                  ),
+                  const SizedBox(
+                    width: 0.0,
+                    height: 10.0,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: CustomElevatedButton(
+                      text: 'ok',
+                      onPressed: () {
+                        AutoRouter.of(context).pop();
+                      },
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+    },
+  );
+}
+
+class FilterFieldsTemplate extends StatelessWidget {
+  const FilterFieldsTemplate({super.key, required this.widget});
+  final Widget widget;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: widget,
+    );
+  }
+}
+
+class FilterTextFields extends StatelessWidget {
+  const FilterTextFields({super.key, required this.hint});
+  final String hint;
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      decoration: InputDecoration(
+        hintText: hint,
+        border: InputBorder.none,
+      ),
+    );
   }
 }
 
@@ -250,32 +441,53 @@ class _CardDropDownWidgetState extends State<CardDropDownWidget> {
         elevation: 3,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
         child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: DropdownButton(
+            padding: const EdgeInsets.all(12.0),
+            child: GeneralDropDown(
+              width: size.width / 3.5,
+              list: const ['Property Type', 'Two', 'Free', 'Four'],
               value: value,
-              alignment: Alignment.bottomCenter,
-              icon: Transform.rotate(
-                  angle: -pi / 2,
-                  child: const Icon(
-                    Icons.arrow_back_ios_new_rounded,
-                    size: 15,
-                    color: gold,
-                  )),
-              items: <String>['Property Type', 'Two', 'Free', 'Four']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-              onChanged: (object) {
-                setState(() {
-                  value = object ?? '';
-                });
-              }),
-        ),
+            )),
       ),
     );
+  }
+}
+
+class GeneralDropDown extends StatefulWidget {
+  GeneralDropDown(
+      {super.key, required this.value, required this.list, this.width});
+  String value;
+  List<String> list;
+  final double? width;
+  @override
+  State<GeneralDropDown> createState() => _GeneralDropDownState();
+}
+
+class _GeneralDropDownState extends State<GeneralDropDown> {
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    return DropdownButton(
+        value: widget.value,
+        alignment: Alignment.bottomCenter,
+        icon: Transform.rotate(
+            angle: -pi / 2,
+            child: const Icon(
+              Icons.arrow_back_ios_new_rounded,
+              size: 15,
+              color: gold,
+            )),
+        items: widget.list.map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: SizedBox(
+                width: widget.width ?? size.width / 1.2, child: Text(value)),
+          );
+        }).toList(),
+        onChanged: (object) {
+          setState(() {
+            widget.value = object ?? '';
+          });
+        });
   }
 }
 
