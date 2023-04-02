@@ -20,6 +20,16 @@ class VerifyNumber extends StatefulWidget {
 
   // sign user in method
   class _VerifyNumberState extends State<VerifyNumber>{
+    @override
+  void initState() {
+    super.initState();
+    starterTimer();
+    setState(() {
+      dispelledButton = true;
+      startTimer = 30;
+    });
+
+  }
     int startTimer = 30;
     bool dispelledButton = false;
     String buttonName = 'Verify Phone';
@@ -140,7 +150,7 @@ class VerifyNumber extends StatefulWidget {
                                   AutoRouter.of(context)
                                       .push(ResetPasswordRoute());
                                 },
-                                text: 'Verify Phone',
+                                text: buttonName,
                                 height: 50,
                               ),
                             ),

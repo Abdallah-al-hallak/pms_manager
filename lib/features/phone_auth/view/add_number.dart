@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/features/intro/widgets/my_textfield.dart';
-import 'package:pms_manager/features/phone_auth/view/verify_number.dart';
 import 'package:pms_manager/router/router.dart';
 
 
@@ -13,12 +12,9 @@ class AddNumber extends StatelessWidget {
   // text editing controllers
   final phoneNumberController = TextEditingController();
 
-  // sign user in method
-  void signUserIn() {}
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.grey[300],
       body: SingleChildScrollView(
