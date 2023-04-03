@@ -93,12 +93,7 @@ class LoginPage extends StatelessWidget {
                             padding: const EdgeInsets.only(left: 25, right: 25),
                             child: CustomElevatedButton(
                               onPressed: () {
-                                Navigator.pushReplacement(context,
-                                    MaterialPageRoute(
-                                  builder: (context) {
-                                    return AddNumber();
-                                  },
-                                ));
+                                AutoRouter.of(context).push(AddUnitRoute());
                               },
                               text: 'Sign In',
                               height: 50,

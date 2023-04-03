@@ -77,6 +77,14 @@ class _$AppRouter extends RootStackRouter {
         child: VerifyNumber(key: args.key),
       );
     },
+    AddUnitRoute.name: (routeData) {
+      final args = routeData.argsAs<AddUnitRouteArgs>(
+          orElse: () => const AddUnitRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: AddUnit(key: args.key),
+      );
+    },
     HomeRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -148,6 +156,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           VerifyNumberRoute.name,
           path: '/verify-number',
+        ),
+        RouteConfig(
+          AddUnitRoute.name,
+          path: '/add-unit',
         ),
         RouteConfig(
           HomeRoute.name,
@@ -346,6 +358,30 @@ class VerifyNumberRouteArgs {
   @override
   String toString() {
     return 'VerifyNumberRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [AddUnit]
+class AddUnitRoute extends PageRouteInfo<AddUnitRouteArgs> {
+  AddUnitRoute({Key? key})
+      : super(
+          AddUnitRoute.name,
+          path: '/add-unit',
+          args: AddUnitRouteArgs(key: key),
+        );
+
+  static const String name = 'AddUnitRoute';
+}
+
+class AddUnitRouteArgs {
+  const AddUnitRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'AddUnitRouteArgs{key: $key}';
   }
 }
 

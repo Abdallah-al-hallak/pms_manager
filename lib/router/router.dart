@@ -11,6 +11,7 @@ import 'package:pms_manager/features/notification/notification.dart';
 import 'package:pms_manager/features/phone_auth/view/forgot_password.dart';
 import 'package:pms_manager/features/phone_auth/view/reset_password.dart';
 import 'package:pms_manager/features/phone_auth/view/verify_number.dart';
+import 'package:pms_manager/features/property_types/add_unit.dart';
 import 'package:pms_manager/features/search/search_view.dart';
 import 'package:pms_manager/features/setting/view/setting_view.dart';
 import 'package:pms_manager/main.dart';
@@ -27,6 +28,7 @@ part 'router.gr.dart';
     AutoRoute(page: ResetPassword, name: 'ResetPasswordRoute'),
     AutoRoute(page: CreateAccount, name: 'CreateAccountRoute'),
     AutoRoute(page: VerifyNumber, name: 'VerifyNumberRoute'),
+    AutoRoute(page: AddUnit, name: 'AddUnitRoute'),
     AutoRoute(page: HomeView, name: 'HomeRoute', children: [
       AutoRoute(
         page: ChatView,
