@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:pms_manager/router/router.dart';
 import 'package:pms_manager/utils/colors.dart';
+import 'package:pms_manager/utils/styles.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -42,7 +43,75 @@ class _HomeViewState extends State<HomeView> {
             topRight: Radius.circular(10),
           ),
         ),
-        child: const Center(child: Text('Drawer Stuff')),
+        child: Center(
+            child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IconButton(
+                onPressed: () {
+                  globalKey.currentState?.closeDrawer();
+                },
+                icon: const Icon(Icons.close),
+                color: gold,
+              ),
+              const SizedBox(
+                width: 0.0,
+                height: 20.0,
+              ),
+              Text(
+                'Menu',
+                style: titleTextStyle(),
+              ),
+              const Divider(),
+              const SizedBox(
+                width: 0.0,
+                height: 20.0,
+              ),
+              const Text(
+                'Profile',
+                style: TextStyle(fontSize: 15),
+              ),
+              const Divider(),
+              const SizedBox(
+                width: 0.0,
+                height: 20.0,
+              ),
+              const Text(
+                'SubManagers',
+                style: TextStyle(fontSize: 15),
+              ),
+              const Divider(),
+              const SizedBox(
+                width: 0.0,
+                height: 20.0,
+              ),
+              const Text(
+                'Properties',
+                style: TextStyle(fontSize: 15),
+              ),
+              const Divider(),
+              const SizedBox(
+                width: 0.0,
+                height: 20.0,
+              ),
+              const Text(
+                'owners',
+                style: TextStyle(fontSize: 15),
+              ),
+              const Divider(),
+              const SizedBox(
+                width: 0.0,
+                height: 20.0,
+              ),
+              const Text(
+                'Tenants',
+                style: TextStyle(fontSize: 15),
+              ),
+            ],
+          ),
+        )),
       ),
       appBarBuilder: (context, tabsRouter) {
         return AppBar(

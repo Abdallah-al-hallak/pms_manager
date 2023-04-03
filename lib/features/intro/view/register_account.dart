@@ -263,9 +263,8 @@ showDialogForPropertyDocs(context) {
     builder: (context) {
       return LayoutBuilder(builder: (context, p1) {
         return Center(
-
           child: SizedBox(
-            height: p1.maxHeight / 2.2,
+            height: p1.maxHeight / 2,
             width: p1.maxWidth / 1.2,
             child: Material(
                 shape: RoundedRectangleBorder(

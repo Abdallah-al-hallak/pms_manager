@@ -94,6 +94,14 @@ class LoginPage extends StatelessWidget {
                             child: CustomElevatedButton(
                               onPressed: () {
                                 AutoRouter.of(context).push(AddUnitRoute());
+                                // Navigator.pushReplacement(context,
+                                //     MaterialPageRoute(
+                                //   builder: (context) {
+                                //     return AddNumber();
+                                //   },
+                                // ));
+                                AutoRouter.of(context)
+                                    .replace(const HomeRoute());
                               },
                               text: 'Sign In',
                               height: 50,
@@ -103,11 +111,10 @@ class LoginPage extends StatelessWidget {
                             height: 43,
                           ),
                           InkWell(
-                            onTap: (){
-                              showAboutDialogFingerPrint(context);
-                            },
-                              child: Image.asset("assets/png/fingerPrint.png")
-                          ),
+                              onTap: () {
+                                showAboutDialogFingerPrint(context);
+                              },
+                              child: Image.asset("assets/png/fingerPrint.png")),
                           const SizedBox(height: 60),
                           // not a member? register now
                           Row(
@@ -125,7 +132,7 @@ class LoginPage extends StatelessWidget {
                                 onTap: () {
                                   // Temporary, needs validation
                                   AutoRouter.of(context)
-                                      .push(const RegisterAccountRoute());
+                                      .push(VerifyNumberRoute());
                                 },
                                 child: const Text(
                                   'Create Account',
@@ -146,6 +153,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
+
 showAboutDialogFingerPrint(context) {
   return showDialog(
     context: context,
@@ -182,15 +190,19 @@ class _CustomDialogState extends State<CustomDialog> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
           const Center(
               child: Text(
-                  'Verify your identetiy',
-              style: TextStyle(
-                color: textGrey,
-              ),
-              )),
-          const SizedBox(height: 14,),
+            'Verify your identetiy',
+            style: TextStyle(
+              color: textGrey,
+            ),
+          )),
+          const SizedBox(
+            height: 14,
+          ),
           Center(
             child: SizedBox(
               height: 45,
@@ -198,15 +210,19 @@ class _CustomDialogState extends State<CustomDialog> {
               child: Image.asset('assets/png/fingerPrint.png'),
             ),
           ),
-          const SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
           const Center(
               child: Text(
-                'Touch the fingerprint sensor',
-                style: TextStyle(
-                  color: textGrey,
-                ),
-              )),
-          const SizedBox(height: 20,),
+            'Touch the fingerprint sensor',
+            style: TextStyle(
+              color: textGrey,
+            ),
+          )),
+          const SizedBox(
+            height: 20,
+          ),
           Center(
             child: CustomElevatedButton(
               width: 153,
