@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
+import 'package:pms_manager/router/router.dart';
 import 'package:pms_manager/utils/styles.dart';
 
 import '../../../utils/colors.dart';
@@ -132,7 +133,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                       const SizedBox(width: 0.0, height: 15.0),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          AutoRouter.of(context)
+                              .push(const PropertiesPageRoute());
+                        },
                         child: Row(
                           // properies
                           mainAxisAlignment: MainAxisAlignment.end,
