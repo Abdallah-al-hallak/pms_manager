@@ -133,7 +133,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                       const SizedBox(width: 0.0, height: 15.0),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          AutoRouter.of(context)
+                              .push(const PropertiesPageRoute());
+                        },
                         child: Row(
                           // properies
                           mainAxisAlignment: MainAxisAlignment.end,

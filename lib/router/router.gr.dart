@@ -115,10 +115,12 @@ class _$AppRouter extends RootStackRouter {
         child: const NotificationView(),
       );
     },
-    HomePageRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
+    HomePageRoutee.name: (routeData) {
+      return CustomPage<dynamic>(
         routeData: routeData,
-        child: const HomePage(),
+        child: const EmptyRouterPage(),
+        opaque: true,
+        barrierDismissible: false,
       );
     },
     SearchViewRoute.name: (routeData) {
@@ -131,6 +133,24 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: const SettingView(),
+      );
+    },
+    HomePageRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const HomePage(),
+      );
+    },
+    PropertiesPageRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const PropertiesPage(),
+      );
+    },
+    PropertyDetailsRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const PropertyDetails(),
       );
     },
   };
@@ -192,9 +212,26 @@ class _$AppRouter extends RootStackRouter {
               parent: HomeRoute.name,
             ),
             RouteConfig(
-              HomePageRoute.name,
-              path: 'home-page',
+              HomePageRoutee.name,
+              path: 'empty-router-page',
               parent: HomeRoute.name,
+              children: [
+                RouteConfig(
+                  HomePageRoute.name,
+                  path: '',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  PropertiesPageRoute.name,
+                  path: 'properties-page',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  PropertyDetailsRoute.name,
+                  path: 'property-details',
+                  parent: HomePageRoutee.name,
+                ),
+              ],
             ),
             RouteConfig(
               SearchViewRoute.name,
@@ -476,15 +513,16 @@ class NotificationViewRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [HomePage]
-class HomePageRoute extends PageRouteInfo<void> {
-  const HomePageRoute()
+/// [EmptyRouterPage]
+class HomePageRoutee extends PageRouteInfo<void> {
+  const HomePageRoutee({List<PageRouteInfo>? children})
       : super(
-          HomePageRoute.name,
-          path: 'home-page',
+          HomePageRoutee.name,
+          path: 'empty-router-page',
+          initialChildren: children,
         );
 
-  static const String name = 'HomePageRoute';
+  static const String name = 'HomePageRoutee';
 }
 
 /// generated route for
@@ -509,4 +547,40 @@ class SettingViewRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SettingViewRoute';
+}
+
+/// generated route for
+/// [HomePage]
+class HomePageRoute extends PageRouteInfo<void> {
+  const HomePageRoute()
+      : super(
+          HomePageRoute.name,
+          path: '',
+        );
+
+  static const String name = 'HomePageRoute';
+}
+
+/// generated route for
+/// [PropertiesPage]
+class PropertiesPageRoute extends PageRouteInfo<void> {
+  const PropertiesPageRoute()
+      : super(
+          PropertiesPageRoute.name,
+          path: 'properties-page',
+        );
+
+  static const String name = 'PropertiesPageRoute';
+}
+
+/// generated route for
+/// [PropertyDetails]
+class PropertyDetailsRoute extends PageRouteInfo<void> {
+  const PropertyDetailsRoute()
+      : super(
+          PropertyDetailsRoute.name,
+          path: 'property-details',
+        );
+
+  static const String name = 'PropertyDetailsRoute';
 }

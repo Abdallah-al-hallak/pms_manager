@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:auto_route/empty_router_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:pms_manager/features/chat/chat_view.dart';
 import 'package:pms_manager/features/home/view/home_page.dart';
@@ -16,16 +17,21 @@ import 'package:pms_manager/features/property_types/add_unit.dart';
 import 'package:pms_manager/features/search/search_view.dart';
 import 'package:pms_manager/features/setting/view/setting_view.dart';
 import 'package:pms_manager/main.dart';
+
+import '../features/home/screens/properties_page.dart';
+import '../features/home/screens/property_details.dart';
 part 'router.gr.dart';
 
 @MaterialAutoRouter(
-  replaceInRouteName: 'View,Route',
   routes: <AutoRoute>[
     AutoRoute(page: MyHomePage, initial: true, name: 'MyHomeRoute'),
     AutoRoute(page: PageViewIntro, name: 'PageViewRoute'),
     AutoRoute(page: LoginPage, name: 'LogInRoute'),
     AutoRoute(page: RegisterAccount, name: 'RegisterAccountRoute'),
-    AutoRoute(page: ForgotPassword, name: 'ForgotPasswordRoute',),
+    AutoRoute(
+      page: ForgotPassword,
+      name: 'ForgotPasswordRoute',
+    ),
     AutoRoute(page: ResetPassword, name: 'ResetPasswordRoute'),
     AutoRoute(page: CreateAccount, name: 'CreateAccountRoute'),
     AutoRoute(page: VerifyNumber, name: 'VerifyNumberRoute'),
@@ -40,9 +46,23 @@ part 'router.gr.dart';
         page: NotificationView,
         name: 'NotificationViewRoute',
       ),
-      AutoRoute(
-        page: HomePage,
-        name: 'HomePageRoute',
+      CustomRoute(
+        page: EmptyRouterPage,
+        name: 'HomePageRoutee',
+        children: [
+          AutoRoute(
+            path: '',
+            page: HomePage,
+          ),
+          AutoRoute(
+            page: PropertiesPage,
+            name: 'PropertiesPageRoute',
+          ),
+          AutoRoute(
+            page: PropertyDetails,
+            name: 'PropertyDetailsRoute',
+          ),
+        ],
       ),
       AutoRoute(
         page: SearchView,
