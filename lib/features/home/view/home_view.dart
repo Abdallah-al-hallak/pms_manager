@@ -32,7 +32,6 @@ class _HomeViewState extends State<HomeView> {
     ];
 
     return AutoTabsScaffold(
-      homeIndex: 2,
       backgroundColor: Colors.white,
       scaffoldKey: globalKey,
       drawer: Drawer(
@@ -135,7 +134,7 @@ class _HomeViewState extends State<HomeView> {
       routes: const [
         ChatViewRoute(),
         SettingViewRoute(),
-        HomePageRoute(),
+        HomePageRoutee(),
         NotificationViewRoute(),
         SearchViewRoute(),
       ],
