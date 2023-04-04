@@ -93,7 +93,7 @@ class LoginPage extends StatelessWidget {
                             padding: const EdgeInsets.only(left: 25, right: 25),
                             child: CustomElevatedButton(
                               onPressed: () {
-                                AutoRouter.of(context).push(AddUnitRoute());
+                                // AutoRouter.of(context).push(AddUnitRoute());
                                 // Navigator.pushReplacement(context,
                                 //     MaterialPageRoute(
                                 //   builder: (context) {

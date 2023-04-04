@@ -82,7 +82,19 @@ class _$AppRouter extends RootStackRouter {
           orElse: () => const AddUnitRouteArgs());
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: AddUnit(key: args.key),
+        child: AddUnit(
+          key: args.key,
+          propertyType: args.propertyType,
+          unitType: args.unitType,
+          buildingType: args.buildingType,
+          compoundType: args.compoundType,
+        ),
+      );
+    },
+    UnitDetailsRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const UnitDetails(),
       );
     },
     HomeRoute.name: (routeData) {
@@ -160,6 +172,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           AddUnitRoute.name,
           path: '/add-unit',
+        ),
+        RouteConfig(
+          UnitDetailsRoute.name,
+          path: '/unit-details',
         ),
         RouteConfig(
           HomeRoute.name,
@@ -364,25 +380,62 @@ class VerifyNumberRouteArgs {
 /// generated route for
 /// [AddUnit]
 class AddUnitRoute extends PageRouteInfo<AddUnitRouteArgs> {
-  AddUnitRoute({Key? key})
-      : super(
+  AddUnitRoute({
+    Key? key,
+    PropertyType? propertyType,
+    UnitType? unitType,
+    BuildingType? buildingType,
+    CompoundType? compoundType,
+  }) : super(
           AddUnitRoute.name,
           path: '/add-unit',
-          args: AddUnitRouteArgs(key: key),
+          args: AddUnitRouteArgs(
+            key: key,
+            propertyType: propertyType,
+            unitType: unitType,
+            buildingType: buildingType,
+            compoundType: compoundType,
+          ),
         );
 
   static const String name = 'AddUnitRoute';
 }
 
 class AddUnitRouteArgs {
-  const AddUnitRouteArgs({this.key});
+  const AddUnitRouteArgs({
+    this.key,
+    this.propertyType,
+    this.unitType,
+    this.buildingType,
+    this.compoundType,
+  });
 
   final Key? key;
 
+  final PropertyType? propertyType;
+
+  final UnitType? unitType;
+
+  final BuildingType? buildingType;
+
+  final CompoundType? compoundType;
+
   @override
   String toString() {
-    return 'AddUnitRouteArgs{key: $key}';
+    return 'AddUnitRouteArgs{key: $key, propertyType: $propertyType, unitType: $unitType, buildingType: $buildingType, compoundType: $compoundType}';
   }
+}
+
+/// generated route for
+/// [UnitDetails]
+class UnitDetailsRoute extends PageRouteInfo<void> {
+  const UnitDetailsRoute()
+      : super(
+          UnitDetailsRoute.name,
+          path: '/unit-details',
+        );
+
+  static const String name = 'UnitDetailsRoute';
 }
 
 /// generated route for
