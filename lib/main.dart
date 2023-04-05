@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pms_manager/features/intro/widgets/custom_text.dart';
 import 'package:pms_manager/router/router.dart';
 import 'package:pms_manager/utils/colors.dart';
@@ -22,16 +23,18 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerDelegate: _appRouter.delegate(),
-      routeInformationParser:
-          _appRouter.defaultRouteParser(includePrefixMatches: false),
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return ProviderScope(
+      child: MaterialApp.router(
+        routerDelegate: _appRouter.delegate(),
+        routeInformationParser:
+            _appRouter.defaultRouteParser(includePrefixMatches: false),
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        // home: const MyHomePage(),
       ),
-      // home: const MyHomePage(),
     );
   }
 }
