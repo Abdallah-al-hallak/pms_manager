@@ -122,15 +122,25 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     PropertiesPageRoute.name: (routeData) {
+      final args = routeData.argsAs<PropertiesPageRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const PropertiesPage(),
+        child: PropertiesPage(
+          key: args.key,
+          propertyType: args.propertyType,
+          unitType: args.unitType,
+        ),
       );
     },
     PropertyDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<PropertyDetailsRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const PropertyDetails(),
+        child: PropertyDetails(
+          key: args.key,
+          propertyType: args.propertyType,
+          unitType: args.unitType,
+        ),
       );
     },
   };
@@ -474,24 +484,78 @@ class HomePageRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [PropertiesPage]
-class PropertiesPageRoute extends PageRouteInfo<void> {
-  const PropertiesPageRoute()
-      : super(
+class PropertiesPageRoute extends PageRouteInfo<PropertiesPageRouteArgs> {
+  PropertiesPageRoute({
+    Key? key,
+    required PropertyType propertyType,
+    required UnitType unitType,
+  }) : super(
           PropertiesPageRoute.name,
           path: 'properties-page',
+          args: PropertiesPageRouteArgs(
+            key: key,
+            propertyType: propertyType,
+            unitType: unitType,
+          ),
         );
 
   static const String name = 'PropertiesPageRoute';
 }
 
+class PropertiesPageRouteArgs {
+  const PropertiesPageRouteArgs({
+    this.key,
+    required this.propertyType,
+    required this.unitType,
+  });
+
+  final Key? key;
+
+  final PropertyType propertyType;
+
+  final UnitType unitType;
+
+  @override
+  String toString() {
+    return 'PropertiesPageRouteArgs{key: $key, propertyType: $propertyType, unitType: $unitType}';
+  }
+}
+
 /// generated route for
 /// [PropertyDetails]
-class PropertyDetailsRoute extends PageRouteInfo<void> {
-  const PropertyDetailsRoute()
-      : super(
+class PropertyDetailsRoute extends PageRouteInfo<PropertyDetailsRouteArgs> {
+  PropertyDetailsRoute({
+    Key? key,
+    required PropertyType propertyType,
+    required UnitType unitType,
+  }) : super(
           PropertyDetailsRoute.name,
           path: 'property-details',
+          args: PropertyDetailsRouteArgs(
+            key: key,
+            propertyType: propertyType,
+            unitType: unitType,
+          ),
         );
 
   static const String name = 'PropertyDetailsRoute';
+}
+
+class PropertyDetailsRouteArgs {
+  const PropertyDetailsRouteArgs({
+    this.key,
+    required this.propertyType,
+    required this.unitType,
+  });
+
+  final Key? key;
+
+  final PropertyType propertyType;
+
+  final UnitType unitType;
+
+  @override
+  String toString() {
+    return 'PropertyDetailsRouteArgs{key: $key, propertyType: $propertyType, unitType: $unitType}';
+  }
 }

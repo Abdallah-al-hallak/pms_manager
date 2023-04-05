@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/router/router.dart';
@@ -10,14 +11,22 @@ import 'package:pms_manager/utils/styles.dart';
 import '../../../utils/colors.dart';
 import '../../../utils/widgets/custom_radio_butt.dart';
 
-class HomePage extends StatefulWidget {
+final propertyTypeProvier = StateProvider<PropertyType>((ref) {
+  return PropertyType.building;
+});
+
+final unitTypeProvier = StateProvider<UnitType>((ref) {
+  return UnitType.duplex;
+});
+
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  ConsumerState<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends ConsumerState<HomePage> {
   var date1 = DateTime.now().toUtc();
   var date2 = DateTime.now().toUtc();
   change(DateTime time) {
@@ -134,8 +143,10 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(width: 0.0, height: 15.0),
                       GestureDetector(
                         onTap: () {
-                          AutoRouter.of(context)
-                              .push(const PropertiesPageRoute());
+                          AutoRouter.of(context).push(PropertiesPageRoute(
+                            propertyType: ref.watch(propertyTypeProvier),
+                            unitType: ref.watch(unitTypeProvier),
+                          ));
                         },
                         child: Row(
                           // properies
@@ -338,15 +349,16 @@ showDialogForPropertytype(context) {
   );
 }
 
-class PropertyTypeDialogWidget extends StatefulWidget {
+class PropertyTypeDialogWidget extends ConsumerStatefulWidget {
   const PropertyTypeDialogWidget({super.key});
 
   @override
-  State<PropertyTypeDialogWidget> createState() =>
+  ConsumerState<PropertyTypeDialogWidget> createState() =>
       _PropertyTypeDialogWidgetState();
 }
 
-class _PropertyTypeDialogWidgetState extends State<PropertyTypeDialogWidget> {
+class _PropertyTypeDialogWidgetState
+    extends ConsumerState<PropertyTypeDialogWidget> {
   PropertyType propertyType = PropertyType.unit;
   UnitType unitType = UnitType.duplex;
   BuildingType buildingType = BuildingType.rentTheEntireBuilding;
