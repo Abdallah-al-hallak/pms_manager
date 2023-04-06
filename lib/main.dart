@@ -126,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         await Future.delayed(
                                             const Duration(milliseconds: 500));
                                         AutoRouter.of(context)
-                                            .replace(const PageViewRoute());
+                                            .push(const BaseLeseDetailsRoute());
                                       },
                                       child: const CustomText(
                                           size: 20,

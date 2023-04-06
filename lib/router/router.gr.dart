@@ -37,6 +37,12 @@ class _$AppRouter extends RootStackRouter {
         child: LoginPage(key: args.key),
       );
     },
+    BaseLeseDetailsRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const BaseLeseDetails(),
+      );
+    },
     RegisterAccountRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -160,6 +166,10 @@ class _$AppRouter extends RootStackRouter {
           path: '/login-page',
         ),
         RouteConfig(
+          BaseLeseDetailsRoute.name,
+          path: '/base-lese-details',
+        ),
+        RouteConfig(
           RegisterAccountRoute.name,
           path: '/register-account',
         ),
@@ -276,6 +286,18 @@ class LogInRouteArgs {
   String toString() {
     return 'LogInRouteArgs{key: $key}';
   }
+}
+
+/// generated route for
+/// [BaseLeseDetails]
+class BaseLeseDetailsRoute extends PageRouteInfo<void> {
+  const BaseLeseDetailsRoute()
+      : super(
+          BaseLeseDetailsRoute.name,
+          path: '/base-lese-details',
+        );
+
+  static const String name = 'BaseLeseDetailsRoute';
 }
 
 /// generated route for
