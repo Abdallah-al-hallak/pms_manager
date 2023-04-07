@@ -744,11 +744,13 @@ class FilterFieldsTemplate extends StatelessWidget {
 }
 
 class FilterTextFields extends StatelessWidget {
-  const FilterTextFields({super.key, required this.hint});
+  const FilterTextFields({super.key, required this.hint, this.trype});
   final String hint;
+  final TextInputType? trype;
   @override
   Widget build(BuildContext context) {
     return TextField(
+      keyboardType: trype,
       decoration: InputDecoration(
         hintText: hint,
         border: InputBorder.none,
