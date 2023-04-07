@@ -114,21 +114,10 @@ class _HomeViewState extends State<HomeView> {
       ),
       appBarBuilder: (context, tabsRouter) {
         return AppBar(
+          iconTheme: const IconThemeData(color: gold),
           leadingWidth: 100,
           backgroundColor: Colors.white,
           elevation: 0,
-          leading: Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: IconButton(
-                onPressed: () {
-                  globalKey.currentState?.openDrawer();
-                },
-                icon: const Icon(
-                  Icons.menu,
-                  size: 35,
-                  color: gold,
-                )),
-          ),
         );
       },
       routes: const [
