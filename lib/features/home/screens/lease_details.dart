@@ -6,6 +6,8 @@ import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/utils/colors.dart';
 import 'package:pms_manager/utils/styles.dart';
 
+import '../../../utils/helper/theme_helper.dart';
+
 final leaseSidebarWidgetsProvider = StateProvider<LeaseSidebarWidgets>((ref) {
   return LeaseSidebarWidgets.contract;
 });
@@ -24,14 +26,16 @@ class _BaseLeseDetailsState extends ConsumerState<BaseLeseDetails> {
     var leaseSidebarWidgets = ref.watch(leaseSidebarWidgetsProvider);
     return Scaffold(
       body: SafeArea(
-        child: Row(
-          children: [
-            Expanded(
-                flex: 4,
-                child: LeaseSidebarWidgets
-                    .values[leaseSidebarWidgets.index].displayWidget),
-            const Expanded(child: BarWidget()),
-          ],
+        child: SingleChildScrollView(
+          child: Row(
+            children: [
+              Expanded(
+                  flex: 4,
+                  child: LeaseSidebarWidgets
+                      .values[leaseSidebarWidgets.index].displayWidget),
+              const Expanded(child: BarWidget()),
+            ],
+          ),
         ),
       ),
     );
@@ -336,6 +340,25 @@ class TenantWidget extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Column(
+            children: [
+              Container(
+                decoration: ThemeHelper().inputBoxDecorationShadow(),
+                child: TextField(
+                  obscureText: true,
+                  decoration: ThemeHelper().textInputDecoration(
+                    'Owner Name',
+                    'Enter Owner Name',
+                    const Icon(
+                      Icons.qr_code_scanner_sharp,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(width: 0.0, height: 40.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [

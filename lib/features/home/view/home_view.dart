@@ -14,6 +14,11 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> globalKey = GlobalKey();
     final iconList = <IconData>[
@@ -32,6 +37,29 @@ class _HomeViewState extends State<HomeView> {
     ];
 
     return AutoTabsScaffold(
+      appBarBuilder: (context, tabsRouter) {
+        tabsRouter.addListener(() {
+          print('sgn');
+          setState(() {});
+        });
+        return AppBar(
+          leading: tabsRouter.currentPath == '/home-view/empty-router-page/'
+              ? GestureDetector(
+                  onTap: () {
+                    print(tabsRouter.current.name);
+                    print(tabsRouter.currentChild?.name);
+                    print(tabsRouter.currentChild?.parent);
+                    print(tabsRouter.current.path);
+                    print(tabsRouter.currentPath);
+                  },
+                  child: Text('klb'))
+              : null,
+          iconTheme: const IconThemeData(color: gold),
+          leadingWidth: 100,
+          backgroundColor: Colors.white,
+          elevation: 0,
+        );
+      },
       backgroundColor: Colors.white,
       scaffoldKey: globalKey,
       drawer: Drawer(
@@ -112,14 +140,6 @@ class _HomeViewState extends State<HomeView> {
           ),
         )),
       ),
-      appBarBuilder: (context, tabsRouter) {
-        return AppBar(
-          iconTheme: const IconThemeData(color: gold),
-          leadingWidth: 100,
-          backgroundColor: Colors.white,
-          elevation: 0,
-        );
-      },
       routes: const [
         ChatViewRoute(),
         SettingViewRoute(),
