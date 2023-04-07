@@ -48,7 +48,8 @@ enum LeaseSidebarWidgets {
   parking,
   expenses,
   reminders,
-  attachments
+  attachments,
+  rating,
 }
 
 extension BodyWidgetExtension on LeaseSidebarWidgets {
@@ -66,6 +67,8 @@ extension BodyWidgetExtension on LeaseSidebarWidgets {
         return const Text('reminders');
       case LeaseSidebarWidgets.attachments:
         return const Text('attachments');
+      case LeaseSidebarWidgets.rating:
+        return const Text('rating');
     }
   }
 }
@@ -649,6 +652,25 @@ class _BarWidgetState extends ConsumerState<BarWidget> {
             'Attahment',
             style: TextStyle(
               color: lease == LeaseSidebarWidgets.attachments
+                  ? Colors.white
+                  : lightDark,
+            ),
+          ),
+          GestureDetector(
+              onTap: () {
+                ref.read(leaseSidebarWidgetsProvider.notifier).state =
+                    LeaseSidebarWidgets.rating;
+              },
+              child: Image.asset(
+                'assets/png/atach.png',
+                color: lease == LeaseSidebarWidgets.rating
+                    ? Colors.white
+                    : lightDark,
+              )),
+          Text(
+            'raing',
+            style: TextStyle(
+              color: lease == LeaseSidebarWidgets.rating
                   ? Colors.white
                   : lightDark,
             ),
