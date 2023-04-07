@@ -25,7 +25,7 @@ class _PropertiesPageState extends State<PropertiesPage> {
     UnitType.duplex,
     UnitType.duplex,
     UnitType.duplex,
-    UnitType.reguler
+    UnitType.regular,
   ];
   @override
   Widget build(BuildContext context) {
