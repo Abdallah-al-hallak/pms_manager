@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:auto_route/empty_router_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:pms_manager/features/chat/chat_view.dart';
+import 'package:pms_manager/features/home/screens/lease_details.dart';
 import 'package:pms_manager/features/home/view/home_page.dart';
 import 'package:pms_manager/features/home/view/home_view.dart';
 import 'package:pms_manager/features/intro/view/create_account.dart';
@@ -31,15 +32,16 @@ part 'router.gr.dart';
     AutoRoute(page: MyHomePage, initial: true, name: 'MyHomeRoute'),
     AutoRoute(page: PageViewIntro, name: 'PageViewRoute'),
     AutoRoute(page: LoginPage, name: 'LogInRoute'),
+
     AutoRoute(page: RegisterAccount, name: 'RegisterAccountRoute'),
     AutoRoute(page: ForgotPassword, name: 'ForgotPasswordRoute'),
     AutoRoute(page: ResetPassword, name: 'ResetPasswordRoute'),
     AutoRoute(page: CreateAccount, name: 'CreateAccountRoute'),
     AutoRoute(page: VerifyNumber, name: 'VerifyNumberRoute'),
-    AutoRoute(page: AddUnit, name: 'AddUnitRoute'),
-    AutoRoute(page: UnitDetails, name: 'UnitDetailsRoute'),
+
+    // AutoRoute(page: UnitDetails, name: 'UnitDetailsRoute'),
     AutoRoute(page: RemindersPage, name: 'RemindersPageRoute'),
-    AutoRoute(page: InnerDetails, name: 'InnerDetailsRoute'),
+    // AutoRoute(page: InnerDetails, name: 'InnerDetailsRoute'),
     AutoRoute(page: FirstFloorPage, name: 'FirstFloorPageRoute'),
     AutoRoute(page: AddAttachmentsPage, name: 'AddAttachmentsPageRoute'),
     AutoRoute(page: RatingPage, name: 'RatingPageRoute'),
@@ -52,7 +54,7 @@ part 'router.gr.dart';
         page: NotificationView,
         name: 'NotificationViewRoute',
       ),
-      CustomRoute(
+      AutoRoute(
         page: EmptyRouterPage,
         name: 'HomePageRoutee',
         children: [
@@ -68,6 +70,12 @@ part 'router.gr.dart';
             page: PropertyDetails,
             name: 'PropertyDetailsRoute',
           ),
+          AutoRoute(page: UnitDetails, name: 'UnitDetailsRoute'),
+
+          AutoRoute(page: InnerDetails, name: 'InnerDetailsRoute'),
+          // New
+          AutoRoute(page: AddUnit, name: 'AddUnitRoute'),
+          AutoRoute(page: BaseLeseDetails, name: 'BaseLeseDetailsRoute'),
         ],
       ),
       AutoRoute(

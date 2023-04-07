@@ -25,6 +25,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ProviderScope(
       child: MaterialApp.router(
+        useInheritedMediaQuery: true,
         routerDelegate: _appRouter.delegate(),
         routeInformationParser:
             _appRouter.defaultRouteParser(includePrefixMatches: false),
@@ -126,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         await Future.delayed(
                                             const Duration(milliseconds: 500));
                                         AutoRouter.of(context)
-                                            .replace(const PageViewRoute());
+                                            .push(const PageViewRoute());
                                       },
                                       child: const CustomText(
                                           size: 20,

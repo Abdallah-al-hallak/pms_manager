@@ -157,12 +157,11 @@ class _GridBState extends State<GridB> {
   final List<Map<String, dynamic>> gridMap = [
     {
       "images": "assets/png/item1.png",
-      "route": const RemindersPageRoute(),
+      "route": const BaseLeseDetailsRoute(),
     },
     {
       "images": "assets/png/item2.png",
       "route": const RemindersPageRoute(),
-
     },
     {
       "images": "assets/png/item3.png",
@@ -228,8 +227,10 @@ class _GridBState extends State<GridB> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               InkWell(
-                onTap: (){
-                  AutoRouter.of(context).push(gridMap.elementAt(index)['route'],);
+                onTap: () {
+                  AutoRouter.of(context).push(
+                    gridMap.elementAt(index)['route'],
+                  );
                 },
                 child: ClipRRect(
                   child: Image.asset(

@@ -77,36 +77,10 @@ class _$AppRouter extends RootStackRouter {
         child: VerifyNumber(key: args.key),
       );
     },
-    AddUnitRoute.name: (routeData) {
-      final args = routeData.argsAs<AddUnitRouteArgs>(
-          orElse: () => const AddUnitRouteArgs());
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: AddUnit(
-          key: args.key,
-          propertyType: args.propertyType,
-          unitType: args.unitType,
-          buildingType: args.buildingType,
-          compoundType: args.compoundType,
-        ),
-      );
-    },
-    UnitDetailsRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const UnitDetails(),
-      );
-    },
     RemindersPageRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: const RemindersPage(),
-      );
-    },
-    InnerDetailsRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const InnerDetails(),
       );
     },
     FirstFloorPageRoute.name: (routeData) {
@@ -146,11 +120,9 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     HomePageRoutee.name: (routeData) {
-      return CustomPage<dynamic>(
+      return MaterialPageX<dynamic>(
         routeData: routeData,
         child: const EmptyRouterPage(),
-        opaque: true,
-        barrierDismissible: false,
       );
     },
     SearchViewRoute.name: (routeData) {
@@ -193,6 +165,38 @@ class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    UnitDetailsRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const UnitDetails(),
+      );
+    },
+    InnerDetailsRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const InnerDetails(),
+      );
+    },
+    AddUnitRoute.name: (routeData) {
+      final args = routeData.argsAs<AddUnitRouteArgs>(
+          orElse: () => const AddUnitRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: AddUnit(
+          key: args.key,
+          propertyType: args.propertyType,
+          unitType: args.unitType,
+          buildingType: args.buildingType,
+          compoundType: args.compoundType,
+        ),
+      );
+    },
+    BaseLeseDetailsRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const BaseLeseDetails(),
+      );
+    },
   };
 
   @override
@@ -230,20 +234,8 @@ class _$AppRouter extends RootStackRouter {
           path: '/verify-number',
         ),
         RouteConfig(
-          AddUnitRoute.name,
-          path: '/add-unit',
-        ),
-        RouteConfig(
-          UnitDetailsRoute.name,
-          path: '/unit-details',
-        ),
-        RouteConfig(
           RemindersPageRoute.name,
           path: '/reminders-page',
-        ),
-        RouteConfig(
-          InnerDetailsRoute.name,
-          path: '/inner-details',
         ),
         RouteConfig(
           FirstFloorPageRoute.name,
@@ -289,6 +281,26 @@ class _$AppRouter extends RootStackRouter {
                 RouteConfig(
                   PropertyDetailsRoute.name,
                   path: 'property-details',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  UnitDetailsRoute.name,
+                  path: 'unit-details',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  InnerDetailsRoute.name,
+                  path: 'inner-details',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  AddUnitRoute.name,
+                  path: 'add-unit',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  BaseLeseDetailsRoute.name,
+                  path: 'base-lese-details',
                   parent: HomePageRoutee.name,
                 ),
               ],
@@ -475,67 +487,6 @@ class VerifyNumberRouteArgs {
 }
 
 /// generated route for
-/// [AddUnit]
-class AddUnitRoute extends PageRouteInfo<AddUnitRouteArgs> {
-  AddUnitRoute({
-    Key? key,
-    PropertyType? propertyType,
-    UnitType? unitType,
-    BuildingType? buildingType,
-    CompoundType? compoundType,
-  }) : super(
-          AddUnitRoute.name,
-          path: '/add-unit',
-          args: AddUnitRouteArgs(
-            key: key,
-            propertyType: propertyType,
-            unitType: unitType,
-            buildingType: buildingType,
-            compoundType: compoundType,
-          ),
-        );
-
-  static const String name = 'AddUnitRoute';
-}
-
-class AddUnitRouteArgs {
-  const AddUnitRouteArgs({
-    this.key,
-    this.propertyType,
-    this.unitType,
-    this.buildingType,
-    this.compoundType,
-  });
-
-  final Key? key;
-
-  final PropertyType? propertyType;
-
-  final UnitType? unitType;
-
-  final BuildingType? buildingType;
-
-  final CompoundType? compoundType;
-
-  @override
-  String toString() {
-    return 'AddUnitRouteArgs{key: $key, propertyType: $propertyType, unitType: $unitType, buildingType: $buildingType, compoundType: $compoundType}';
-  }
-}
-
-/// generated route for
-/// [UnitDetails]
-class UnitDetailsRoute extends PageRouteInfo<void> {
-  const UnitDetailsRoute()
-      : super(
-          UnitDetailsRoute.name,
-          path: '/unit-details',
-        );
-
-  static const String name = 'UnitDetailsRoute';
-}
-
-/// generated route for
 /// [RemindersPage]
 class RemindersPageRoute extends PageRouteInfo<void> {
   const RemindersPageRoute()
@@ -545,18 +496,6 @@ class RemindersPageRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'RemindersPageRoute';
-}
-
-/// generated route for
-/// [InnerDetails]
-class InnerDetailsRoute extends PageRouteInfo<void> {
-  const InnerDetailsRoute()
-      : super(
-          InnerDetailsRoute.name,
-          path: '/inner-details',
-        );
-
-  static const String name = 'InnerDetailsRoute';
 }
 
 /// generated route for
@@ -757,4 +696,89 @@ class PropertyDetailsRouteArgs {
   String toString() {
     return 'PropertyDetailsRouteArgs{key: $key, propertyType: $propertyType, unitType: $unitType}';
   }
+}
+
+/// generated route for
+/// [UnitDetails]
+class UnitDetailsRoute extends PageRouteInfo<void> {
+  const UnitDetailsRoute()
+      : super(
+          UnitDetailsRoute.name,
+          path: 'unit-details',
+        );
+
+  static const String name = 'UnitDetailsRoute';
+}
+
+/// generated route for
+/// [InnerDetails]
+class InnerDetailsRoute extends PageRouteInfo<void> {
+  const InnerDetailsRoute()
+      : super(
+          InnerDetailsRoute.name,
+          path: 'inner-details',
+        );
+
+  static const String name = 'InnerDetailsRoute';
+}
+
+/// generated route for
+/// [AddUnit]
+class AddUnitRoute extends PageRouteInfo<AddUnitRouteArgs> {
+  AddUnitRoute({
+    Key? key,
+    PropertyType? propertyType,
+    UnitType? unitType,
+    BuildingType? buildingType,
+    CompoundType? compoundType,
+  }) : super(
+          AddUnitRoute.name,
+          path: 'add-unit',
+          args: AddUnitRouteArgs(
+            key: key,
+            propertyType: propertyType,
+            unitType: unitType,
+            buildingType: buildingType,
+            compoundType: compoundType,
+          ),
+        );
+
+  static const String name = 'AddUnitRoute';
+}
+
+class AddUnitRouteArgs {
+  const AddUnitRouteArgs({
+    this.key,
+    this.propertyType,
+    this.unitType,
+    this.buildingType,
+    this.compoundType,
+  });
+
+  final Key? key;
+
+  final PropertyType? propertyType;
+
+  final UnitType? unitType;
+
+  final BuildingType? buildingType;
+
+  final CompoundType? compoundType;
+
+  @override
+  String toString() {
+    return 'AddUnitRouteArgs{key: $key, propertyType: $propertyType, unitType: $unitType, buildingType: $buildingType, compoundType: $compoundType}';
+  }
+}
+
+/// generated route for
+/// [BaseLeseDetails]
+class BaseLeseDetailsRoute extends PageRouteInfo<void> {
+  const BaseLeseDetailsRoute()
+      : super(
+          BaseLeseDetailsRoute.name,
+          path: 'base-lese-details',
+        );
+
+  static const String name = 'BaseLeseDetailsRoute';
 }
