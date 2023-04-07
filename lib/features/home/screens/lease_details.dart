@@ -3,8 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:pms_manager/features/home/view/home_page.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
-import 'package:pms_manager/features/property_details/side_menu/add_attachments.dart';
-import 'package:pms_manager/features/property_details/side_menu/reminders.dart';
 import 'package:pms_manager/utils/colors.dart';
 import 'package:pms_manager/utils/styles.dart';
 
@@ -50,7 +48,8 @@ enum LeaseSidebarWidgets {
   parking,
   expenses,
   reminders,
-  attachments
+  attachments,
+  rating,
 }
 
 extension BodyWidgetExtension on LeaseSidebarWidgets {
@@ -63,11 +62,13 @@ extension BodyWidgetExtension on LeaseSidebarWidgets {
       case LeaseSidebarWidgets.parking:
         return const ParkingWidget();
       case LeaseSidebarWidgets.expenses:
-        return const Text('expenses');
+        return const ExpenseWidget();
       case LeaseSidebarWidgets.reminders:
         return const RemindersPage();
       case LeaseSidebarWidgets.attachments:
         return const AddAttachmentsPage();
+      case LeaseSidebarWidgets.rating:
+        return const Text('rating');
     }
   }
 }
@@ -210,6 +211,114 @@ class _ContractWidgetState extends ConsumerState<ContractWidget> {
             const SizedBox(width: 0.0, height: 20.0),
             CustomElevatedButton(text: 'Add contract', onPressed: () {}),
             const SizedBox(width: 0.0, height: 10.0),
+            CustomElevatedButton(text: 'Next', onPressed: () {}),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ExpenseWidget extends ConsumerStatefulWidget {
+  const ExpenseWidget({super.key});
+
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => _ExpenseWidgetState();
+}
+
+class _ExpenseWidgetState extends ConsumerState<ExpenseWidget> {
+  var date1 = DateTime.now().toUtc();
+  var date2 = DateTime.now().toUtc();
+  change(DateTime time) {
+    setState(() {
+      date1 = time;
+    });
+  }
+
+  change2(DateTime time) {
+    setState(() {
+      date2 = time;
+    });
+  }
+
+  yMD(DateTime time) {
+    String formatted = DateFormat('yMd').format(time);
+    return formatted;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          children: [
+            GestureDetector(
+              onTap: () {
+                selectDat(context, DateTime.now(), change);
+              },
+              child: LeaseFieldsTemplate(
+                widget: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Start Date',
+                      style: gooldTextStyle(),
+                    ),
+                    const SizedBox(width: 0.0, height: 5.0),
+                    Text('${yMD(date1)}')
+                  ],
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                selectDat(context, DateTime.now(), change);
+              },
+              child: LeaseFieldsTemplate(
+                widget: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'End Date',
+                      style: gooldTextStyle(),
+                    ),
+                    const SizedBox(width: 0.0, height: 5.0),
+                    Text('${yMD(date2)}')
+                  ],
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Rent Amount',
+                  style: gooldTextStyle(),
+                ),
+                const SizedBox(width: 30.0, height: 0.0),
+                SizedBox(
+                  height: 50,
+                  width: size.width / 3.5,
+                  child: Card(
+                    child: Center(
+                        child: Text(
+                      '8,000 AED',
+                      style: gooldTextStyle(),
+                    )),
+                  ),
+                ),
+              ],
+            ),
+            LeaseFieldsTemplate(
+                height: size.width / 2,
+                widget: const FilterTextFields(
+                  hint: 'Notes',
+                )),
+            const SizedBox(width: 0.0, height: 20.0),
             CustomElevatedButton(text: 'Next', onPressed: () {}),
           ],
         ),
@@ -543,6 +652,25 @@ class _BarWidgetState extends ConsumerState<BarWidget> {
             'Attahment',
             style: TextStyle(
               color: lease == LeaseSidebarWidgets.attachments
+                  ? Colors.white
+                  : lightDark,
+            ),
+          ),
+          GestureDetector(
+              onTap: () {
+                ref.read(leaseSidebarWidgetsProvider.notifier).state =
+                    LeaseSidebarWidgets.rating;
+              },
+              child: Image.asset(
+                'assets/png/atach.png',
+                color: lease == LeaseSidebarWidgets.rating
+                    ? Colors.white
+                    : lightDark,
+              )),
+          Text(
+            'raing',
+            style: TextStyle(
+              color: lease == LeaseSidebarWidgets.rating
                   ? Colors.white
                   : lightDark,
             ),
