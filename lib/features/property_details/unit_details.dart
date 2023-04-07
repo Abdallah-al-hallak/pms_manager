@@ -34,24 +34,8 @@ class _UnitDetailsState extends State<UnitDetails> {
             builder: (context, p1) => SafeArea(
                     child: Column(
                   children: [
-                    const SizedBox(
-                      height: 35,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.filter_alt,
-                          color: gold,
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        Image.asset('assets/png/SearchBar.png'),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 23,
+                    SizedBox(
+                      height: 20,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

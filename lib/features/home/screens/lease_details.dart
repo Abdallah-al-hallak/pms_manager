@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:pms_manager/features/home/view/home_page.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
+import 'package:pms_manager/features/property_details/side_menu/add_attachments.dart';
+import 'package:pms_manager/features/property_details/side_menu/reminders.dart';
 import 'package:pms_manager/utils/colors.dart';
 import 'package:pms_manager/utils/styles.dart';
 
@@ -63,9 +65,9 @@ extension BodyWidgetExtension on LeaseSidebarWidgets {
       case LeaseSidebarWidgets.expenses:
         return const Text('expenses');
       case LeaseSidebarWidgets.reminders:
-        return const Text('reminders');
+        return const RemindersPage();
       case LeaseSidebarWidgets.attachments:
-        return const Text('attachments');
+        return const AddAttachmentsPage();
     }
   }
 }

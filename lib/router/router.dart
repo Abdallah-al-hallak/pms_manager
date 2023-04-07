@@ -40,11 +40,8 @@ part 'router.gr.dart';
     AutoRoute(page: VerifyNumber, name: 'VerifyNumberRoute'),
 
     // AutoRoute(page: UnitDetails, name: 'UnitDetailsRoute'),
-    AutoRoute(page: RemindersPage, name: 'RemindersPageRoute'),
     // AutoRoute(page: InnerDetails, name: 'InnerDetailsRoute'),
     AutoRoute(page: FirstFloorPage, name: 'FirstFloorPageRoute'),
-    AutoRoute(page: AddAttachmentsPage, name: 'AddAttachmentsPageRoute'),
-    AutoRoute(page: RatingPage, name: 'RatingPageRoute'),
     AutoRoute(page: HomeView, name: 'HomeRoute', children: [
       AutoRoute(
         page: ChatView,
@@ -76,6 +73,9 @@ part 'router.gr.dart';
           // New
           AutoRoute(page: AddUnit, name: 'AddUnitRoute'),
           AutoRoute(page: BaseLeseDetails, name: 'BaseLeseDetailsRoute'),
+          AutoRoute(page: RemindersPage, name: 'RemindersPageRoute'),
+          AutoRoute(page: RatingPage, name: 'RatingPageRoute'),
+          AutoRoute(page: AddAttachmentsPage, name: 'AddAttachmentsPageRoute'),
         ],
       ),
       AutoRoute(

@@ -711,6 +711,7 @@ class _PropertyTypeDialogWidgetState
                             buildingType: buildingType,
                             compoundType: compoundType,
                           ));
+                          AutoRouter.of(context).pop();
                         },
                       ),
                     ],

@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
-import 'package:pms_manager/features/property_details/side_menu/add_attachments.dart';
 import 'package:pms_manager/router/router.dart';
 import 'package:pms_manager/utils/colors.dart';
 
@@ -19,8 +18,7 @@ class _RemindersPageState extends State<RemindersPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
+    return SingleChildScrollView(
         child: LayoutBuilder(
             builder: (context, p1) => SafeArea(
                 child: Column(
@@ -28,19 +26,19 @@ class _RemindersPageState extends State<RemindersPage> {
                     const SizedBox(
                       height: 35,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.filter_alt,
-                          color: gold,
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        Image.asset('assets/png/SearchBar.png'),
-                      ],
-                    ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     const Icon(
+                    //       Icons.filter_alt,
+                    //       color: gold,
+                    //     ),
+                    //     const SizedBox(
+                    //       width: 15,
+                    //     ),
+                    //     Image.asset('assets/png/SearchBar.png'),
+                    //   ],
+                    // ),
                     const SizedBox(
                       height: 23,
                     ),
@@ -195,7 +193,6 @@ class _RemindersPageState extends State<RemindersPage> {
                     )
                   ],
                 ))),
-      ),
-    );
+      );
   }
 }

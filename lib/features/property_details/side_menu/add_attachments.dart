@@ -41,28 +41,12 @@ class _AddAttachmentsPageState extends State<AddAttachmentsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
+    return SingleChildScrollView(
         child: LayoutBuilder(
             builder: (context, p1) => SafeArea(
                 child: Column(
                   children: [
-                    const SizedBox(
-                      height: 35,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.filter_alt,
-                          color: gold,
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        Image.asset('assets/png/SearchBar.png'),
-                      ],
-                    ),
+
                     const SizedBox(height: 120,),
                     SizedBox(
                       height: 130,
@@ -153,8 +137,7 @@ class _AddAttachmentsPageState extends State<AddAttachmentsPage> {
                     )
                   ],
                 ))),
-      ),
-    );
+      );
   }
   void myAlert() {
     showDialog(
