@@ -13,10 +13,14 @@ import 'package:pms_manager/features/notification/notification.dart';
 import 'package:pms_manager/features/phone_auth/view/forgot_password.dart';
 import 'package:pms_manager/features/phone_auth/view/reset_password.dart';
 import 'package:pms_manager/features/phone_auth/view/verify_number.dart';
+import 'package:pms_manager/features/property_details/first_floor.dart';
+import 'package:pms_manager/features/property_details/inner_details.dart';
+import 'package:pms_manager/features/property_details/side_menu/reminders.dart';
+import 'package:pms_manager/features/property_details/unit_details.dart';
+import 'package:pms_manager/features/property_types/add_unit.dart';
 import 'package:pms_manager/features/search/search_view.dart';
 import 'package:pms_manager/features/setting/view/setting_view.dart';
 import 'package:pms_manager/main.dart';
-
 import '../features/home/screens/properties_page.dart';
 import '../features/home/screens/property_details.dart';
 part 'router.gr.dart';
@@ -28,13 +32,15 @@ part 'router.gr.dart';
     AutoRoute(page: LoginPage, name: 'LogInRoute'),
     AutoRoute(page: BaseLeseDetails, name: 'BaseLeseDetailsRoute'),
     AutoRoute(page: RegisterAccount, name: 'RegisterAccountRoute'),
-    AutoRoute(
-      page: ForgotPassword,
-      name: 'ForgotPasswordRoute',
-    ),
+    AutoRoute(page: ForgotPassword, name: 'ForgotPasswordRoute'),
     AutoRoute(page: ResetPassword, name: 'ResetPasswordRoute'),
     AutoRoute(page: CreateAccount, name: 'CreateAccountRoute'),
     AutoRoute(page: VerifyNumber, name: 'VerifyNumberRoute'),
+    AutoRoute(page: AddUnit, name: 'AddUnitRoute'),
+    AutoRoute(page: UnitDetails, name: 'UnitDetailsRoute'),
+    AutoRoute(page: RemindersPage, name: 'RemindersPageRoute'),
+    AutoRoute(page: InnerDetails, name: 'InnerDetailsRoute'),
+    AutoRoute(page: FirstFloorPage, name: 'FirstFloorPageRoute'),
     AutoRoute(page: HomeView, name: 'HomeRoute', children: [
       AutoRoute(
         page: ChatView,
