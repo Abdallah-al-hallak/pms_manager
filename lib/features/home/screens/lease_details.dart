@@ -159,7 +159,7 @@ class _ContractWidgetState extends ConsumerState<ContractWidget> {
                       'End Date',
                       style: gooldTextStyle(),
                     ),
-                    SizedBox(width: 0.0, height: 5.0),
+                    const SizedBox(width: 0.0, height: 5.0),
                     Text('${yMD(date2)}')
                   ],
                 ),
@@ -449,7 +449,14 @@ class _BarWidgetState extends ConsumerState<BarWidget> {
               scale: 0.8,
             ),
           ),
-          const Text('Contract'),
+          Text(
+            'Contract',
+            style: TextStyle(
+              color: lease == LeaseSidebarWidgets.contract
+                  ? Colors.white
+                  : lightDark,
+            ),
+          ),
           GestureDetector(
             onTap: () {
               ref.read(leaseSidebarWidgetsProvider.notifier).state =
@@ -473,7 +480,14 @@ class _BarWidgetState extends ConsumerState<BarWidget> {
                     ? Colors.white
                     : lightDark,
               )),
-          const Text('Parkinng'),
+          Text(
+            'Parkinng',
+            style: TextStyle(
+              color: lease == LeaseSidebarWidgets.parking
+                  ? Colors.white
+                  : lightDark,
+            ),
+          ),
           GestureDetector(
               onTap: () {
                 ref.read(leaseSidebarWidgetsProvider.notifier).state =
@@ -485,7 +499,14 @@ class _BarWidgetState extends ConsumerState<BarWidget> {
                     ? Colors.white
                     : lightDark,
               )),
-          const Text('Expenses'),
+          Text(
+            'Expenses',
+            style: TextStyle(
+              color: lease == LeaseSidebarWidgets.expenses
+                  ? Colors.white
+                  : lightDark,
+            ),
+          ),
           GestureDetector(
               onTap: () {
                 ref.read(leaseSidebarWidgetsProvider.notifier).state =
@@ -497,7 +518,14 @@ class _BarWidgetState extends ConsumerState<BarWidget> {
                     ? Colors.white
                     : lightDark,
               )),
-          const Text('Reminders'),
+          Text(
+            'Reminders',
+            style: TextStyle(
+              color: lease == LeaseSidebarWidgets.reminders
+                  ? Colors.white
+                  : lightDark,
+            ),
+          ),
           GestureDetector(
               onTap: () {
                 ref.read(leaseSidebarWidgetsProvider.notifier).state =
@@ -509,7 +537,14 @@ class _BarWidgetState extends ConsumerState<BarWidget> {
                     ? Colors.white
                     : lightDark,
               )),
-          const Text('Attahment'),
+          Text(
+            'Attahment',
+            style: TextStyle(
+              color: lease == LeaseSidebarWidgets.attachments
+                  ? Colors.white
+                  : lightDark,
+            ),
+          ),
         ],
       ),
     );

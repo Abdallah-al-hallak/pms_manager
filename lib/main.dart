@@ -25,6 +25,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ProviderScope(
       child: MaterialApp.router(
+        useInheritedMediaQuery: true,
         routerDelegate: _appRouter.delegate(),
         routeInformationParser:
             _appRouter.defaultRouteParser(includePrefixMatches: false),
