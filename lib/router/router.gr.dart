@@ -109,6 +109,12 @@ class _$AppRouter extends RootStackRouter {
         child: const InnerDetails(),
       );
     },
+    FirstFloorPageRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const FirstFloorPage(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -226,6 +232,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           InnerDetailsRoute.name,
           path: '/inner-details',
+        ),
+        RouteConfig(
+          FirstFloorPageRoute.name,
+          path: '/first-floor-page',
         ),
         RouteConfig(
           HomeRoute.name,
@@ -527,6 +537,18 @@ class InnerDetailsRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'InnerDetailsRoute';
+}
+
+/// generated route for
+/// [FirstFloorPage]
+class FirstFloorPageRoute extends PageRouteInfo<void> {
+  const FirstFloorPageRoute()
+      : super(
+          FirstFloorPageRoute.name,
+          path: '/first-floor-page',
+        );
+
+  static const String name = 'FirstFloorPageRoute';
 }
 
 /// generated route for

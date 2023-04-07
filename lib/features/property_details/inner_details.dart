@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
+import 'package:pms_manager/router/router.dart';
 import 'package:pms_manager/utils/colors.dart';
 
 class InnerDetails extends StatefulWidget {
@@ -39,8 +41,8 @@ class _InnerDetailsState extends State<InnerDetails> {
                     const SizedBox(
                       height: 23,
                     ),
-                    Center(
-                      child: const Text(
+                    const Center(
+                      child: Text(
                         'Inner Details',
                         style: TextStyle(
                           fontSize: 22,
@@ -48,7 +50,7 @@ class _InnerDetailsState extends State<InnerDetails> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 30,),
+                    const SizedBox(height: 30,),
                     Column(
                       children: [
                         Card(
@@ -59,13 +61,13 @@ class _InnerDetailsState extends State<InnerDetails> {
                               padding: const EdgeInsets.all(15.0),
                               child: Row(
                                 children: [
-                                  SizedBox(height: 80,),
+                                  const SizedBox(height: 80,),
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('First Floor', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),),
-                                      SizedBox(height: 20,),
-                                      Text('Lorem ipsum dolor sit amet,\nconsectetur adipiscing aaelit, sed do\neiusmod tempor incididunt ut labore et ',
+                                      const Text('First Floor', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),),
+                                      const SizedBox(height: 20,),
+                                      const Text('Lorem ipsum dolor sit amet,\nconsectetur adipiscing aaelit, sed do\neiusmod tempor incididunt ut labore et ',
                                           style: TextStyle(fontSize: 14)
                                       ),
                                     ],
@@ -74,7 +76,7 @@ class _InnerDetailsState extends State<InnerDetails> {
                                     padding: const EdgeInsets.only(left: 60),
                                     child: Column(
                                       children: [
-                                       Icon(Icons.arrow_forward_ios_outlined,
+                                       const Icon(Icons.arrow_forward_ios_outlined,
                                        color: gold,
                                        )
                                       ],
@@ -85,7 +87,7 @@ class _InnerDetailsState extends State<InnerDetails> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 12,),
+                        const SizedBox(height: 12,),
                         Card(
                           child: SizedBox(
                             width: 365.75,
@@ -94,13 +96,13 @@ class _InnerDetailsState extends State<InnerDetails> {
                               padding: const EdgeInsets.all(15.0),
                               child: Row(
                                 children: [
-                                  SizedBox(height: 80,),
+                                  const SizedBox(height: 80,),
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('Second Floor', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),),
-                                      SizedBox(height: 20,),
-                                      Text('Lorem ipsum dolor sit amet,\nconsectetur adipiscing aaelit, sed do\neiusmod tempor incididunt ut labore et ',
+                                      const Text('Second Floor', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),),
+                                      const SizedBox(height: 20,),
+                                      const Text('Lorem ipsum dolor sit amet,\nconsectetur adipiscing aaelit, sed do\neiusmod tempor incididunt ut labore et ',
                                           style: TextStyle(fontSize: 14)
                                       ),
                                     ],
@@ -109,7 +111,7 @@ class _InnerDetailsState extends State<InnerDetails> {
                                     padding: const EdgeInsets.only(left: 60),
                                     child: Column(
                                       children: [
-                                        Icon(Icons.arrow_forward_ios_outlined,
+                                        const Icon(Icons.arrow_forward_ios_outlined,
                                           color: gold,
                                         )
                                       ],
@@ -120,7 +122,7 @@ class _InnerDetailsState extends State<InnerDetails> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 12,),
+                        const SizedBox(height: 12,),
                         Card(
                           child: SizedBox(
                             width: 365.75,
@@ -129,13 +131,13 @@ class _InnerDetailsState extends State<InnerDetails> {
                               padding: const EdgeInsets.all(15.0),
                               child: Row(
                                 children: [
-                                  SizedBox(height: 80,),
+                                  const SizedBox(height: 80,),
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('Third Floor', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),),
-                                      SizedBox(height: 20,),
-                                      Text('Lorem ipsum dolor sit amet,\nconsectetur adipiscing aaelit, sed do\neiusmod tempor incididunt ut labore et ',
+                                      const Text('Third Floor', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),),
+                                      const SizedBox(height: 20,),
+                                      const Text('Lorem ipsum dolor sit amet,\nconsectetur adipiscing aaelit, sed do\neiusmod tempor incididunt ut labore et ',
                                           style: TextStyle(fontSize: 14)
                                       ),
                                     ],
@@ -144,7 +146,7 @@ class _InnerDetailsState extends State<InnerDetails> {
                                     padding: const EdgeInsets.only(left: 60),
                                     child: Column(
                                       children: [
-                                        Icon(Icons.arrow_forward_ios_outlined,
+                                        const Icon(Icons.arrow_forward_ios_outlined,
                                           color: gold,
                                         )
                                       ],
@@ -155,13 +157,13 @@ class _InnerDetailsState extends State<InnerDetails> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 40,),
+                        const SizedBox(height: 40,),
                         CustomElevatedButton(
                             width: 295.84,
                             height: 51.45,
                             text: 'Next',
                             onPressed: (){
-
+                              AutoRouter.of(context).push(FirstFloorPageRoute());
                             }),
                       ],
                     )
