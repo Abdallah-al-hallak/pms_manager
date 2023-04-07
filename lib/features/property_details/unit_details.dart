@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:pms_manager/router/router.dart';
 import 'package:pms_manager/utils/colors.dart';
 
 class UnitDetails extends StatefulWidget {
@@ -153,19 +155,59 @@ class GridB extends StatefulWidget {
 
 class _GridBState extends State<GridB> {
   final List<Map<String, dynamic>> gridMap = [
-    {"images": "assets/png/item1.png"},
-    {"images": "assets/png/item2.png"},
-    {"images": "assets/png/item3.png"},
-    {"images": "assets/png/item4.png"},
-    {"images": "assets/png/item5.png"},
-    {"images": "assets/png/item6.png"},
-    {"images": "assets/png/item7.png"},
-    {"images": "assets/png/item8.png"},
-    {"images": "assets/png/item9.png"},
-    {"images": "assets/png/item10.png"},
-    {"images": "assets/png/item11.png"},
-    {"images": "assets/png/item12.png"},
-    {"images": "assets/png/item13.png"},
+    {
+      "images": "assets/png/item1.png",
+      "route": const RemindersPageRoute(),
+    },
+    {
+      "images": "assets/png/item2.png",
+      "route": const RemindersPageRoute(),
+
+    },
+    {
+      "images": "assets/png/item3.png",
+      "route": const InnerDetailsRoute(),
+    },
+    {
+      "images": "assets/png/item4.png",
+      "route": const RemindersPageRoute(),
+    },
+    {
+      "images": "assets/png/item5.png",
+      "route": const RemindersPageRoute(),
+    },
+    {
+      "images": "assets/png/item6.png",
+      "route": const RemindersPageRoute(),
+    },
+    {
+      "images": "assets/png/item7.png",
+      "route": const RemindersPageRoute(),
+    },
+    {
+      "images": "assets/png/item8.png",
+      "route": const RemindersPageRoute(),
+    },
+    {
+      "images": "assets/png/item9.png",
+      "route": const RemindersPageRoute(),
+    },
+    {
+      "images": "assets/png/item10.png",
+      "route": const RemindersPageRoute(),
+    },
+    {
+      "images": "assets/png/item11.png",
+      "route": const RemindersPageRoute(),
+    },
+    {
+      "images": "assets/png/item12.png",
+      "route": const RemindersPageRoute(),
+    },
+    {
+      "images": "assets/png/item13.png",
+      "route": const RemindersPageRoute(),
+    },
   ];
 
   @override
@@ -179,18 +221,23 @@ class _GridBState extends State<GridB> {
         mainAxisSpacing: 12.0,
         mainAxisExtent: 115,
       ),
-      itemCount: 9,
+      itemCount: gridMap.length,
       itemBuilder: (_, index) {
         return Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipRRect(
-                child: Image.asset(
-                  "${gridMap.elementAt(index)['images']}",
-                  height: 114,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
+              InkWell(
+                onTap: (){
+                  AutoRouter.of(context).push(gridMap.elementAt(index)['route'],);
+                },
+                child: ClipRRect(
+                  child: Image.asset(
+                    "${gridMap.elementAt(index)['images']}",
+                    height: 114,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ],

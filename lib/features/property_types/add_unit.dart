@@ -83,6 +83,7 @@ class _AddUnitState extends State<AddUnit> {
                         ),
                       ],
                     ),
+                    if(isUnit)
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
@@ -94,9 +95,22 @@ class _AddUnitState extends State<AddUnit> {
                         ),
                       ],
                     ),
-                      if(isUnit && isRegular)
+                    if(isBuilding)
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Text('Add Building',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22,
+                            ),
+                          ),
+                        ],
+                      ),
+                      if(isUnit || isBuilding)
                       Column(
                       children: [
+                        if(isUnit && isRegular)
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const [
@@ -107,6 +121,28 @@ class _AddUnitState extends State<AddUnit> {
                             ),
                           ],
                         ),
+                        if(isUnit && isDuplex)
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Text('(Duplex)',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ],
+                          ),
+                        if(isBuilding)
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Text('(Building)',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ],
+                          ),
                         const SizedBox(
                           height: 30,
                         ),
@@ -114,26 +150,71 @@ class _AddUnitState extends State<AddUnit> {
                             key: _formKey,
                             child: Column(
                               children: [
+                                if(isUnit)
                                 Container(
                                   decoration: ThemeHelper().inputBoxDecorationShadow(),
                                   child: TextField(
                                     decoration: ThemeHelper().textInputDecoration('Add Unit', 'Enter unit name'),
                                   ),
                                 ),
-                                const SizedBox(height: 30.0),
-                                Container(
-                                  decoration: ThemeHelper().inputBoxDecorationShadow(),
-                                  child: TextField(
-                                    obscureText: true,
-                                    decoration: ThemeHelper().textInputDecoration('Owner Name', 'Enter Owner Name', const Icon(
-                                      Icons.qr_code_scanner_sharp,
-                                      color: Colors.black,
-                                    ),),
-                                  ),
+                                if(isBuilding)
+                                  Column(
+                                    children: [
+                                      const SizedBox(height: 30.0),
+                                      Container(
+                                      decoration: ThemeHelper().inputBoxDecorationShadow(),
+                                      child: TextField(
+                                        obscureText: true,
+                                        decoration: ThemeHelper().textInputDecoration('Building Name',),
+                                      ),
                                 ),
+                                    ],
+                                  ),
+                                if(isBuilding)
+                                  Column(
+                                    children: [
+                                      const SizedBox(height: 30.0),
+                                      Container(
+                                      decoration: ThemeHelper().inputBoxDecorationShadow(),
+                                      child: TextField(
+                                        decoration: ThemeHelper().textInputDecoration('Category', '',
+                                          const RotatedBox(
+                                            quarterTurns: 1,
+                                            child: IconButton(
+                                              icon: Icon(
+                                                Icons.arrow_forward_ios_outlined,
+                                                color: gold,
+                                                size: 18,
+                                              ),
+                                              onPressed: null,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                ),
+                                    ],
+                                  ),
+                                Column(
+                                  children: [
+                                    const SizedBox(height: 30.0),
+                                    Container(
+                                      decoration: ThemeHelper().inputBoxDecorationShadow(),
+                                      child: TextField(
+                                        obscureText: true,
+                                        decoration: ThemeHelper().textInputDecoration('Owner Name', 'Enter Owner Name', const Icon(
+                                          Icons.qr_code_scanner_sharp,
+                                          color: Colors.black,
+                                        ),),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                if(isUnit)
                                 const SizedBox(height: 30.0),
+                                if(isUnit)
                                 Row(
                                   children: [
+                                    const SizedBox(height: 30.0),
                                     Flexible(
                                       child:Container(
                                         decoration: ThemeHelper().inputBoxDecorationShadow(),
@@ -177,25 +258,96 @@ class _AddUnitState extends State<AddUnit> {
                                     )
                                   ],
                                 ),
-                                const SizedBox(height: 30.0),
-                                Container(
-                                  decoration: ThemeHelper().inputBoxDecorationShadow(),
-                                  child: TextField(
-                                    obscureText: true,
-                                    decoration: ThemeHelper().textInputDecoration('Address', 'Enter the Address'),
-                                  ),
-                                ),
-                                const SizedBox(height: 30.0),
-                                Container(
-                                  decoration: ThemeHelper().inputBoxDecorationShadow(),
-                                  child: TextField(
-                                    obscureText: true,
-                                    decoration: ThemeHelper().textInputDecoration('Location URL', 'Enter the location URL'),
-                                  ),
-                                ),
-                                const SizedBox(height: 30.0),
-                                Row(
+                                Column(
                                   children: [
+                                    SizedBox(height: 30.0,),
+                                    Container(
+                                      decoration: ThemeHelper().inputBoxDecorationShadow(),
+                                      child: TextField(
+                                        obscureText: true,
+                                        decoration: ThemeHelper().textInputDecoration('Address', 'Enter the Address'),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                if(isBuilding)
+                                  Column(
+                                    children: [
+                                      SizedBox(height: 30.0,),
+                                      Container(
+                                        decoration: ThemeHelper().inputBoxDecorationShadow(),
+                                        child: TextField(
+                                          obscureText: true,
+                                          decoration: ThemeHelper().textInputDecoration('Number of Floors ', 'Enter the Number of Floors '),
+                                        ),
+                                      ),
+                                      SizedBox(height: 30.0,),
+                                      Container(
+                                        decoration: ThemeHelper().inputBoxDecorationShadow(),
+                                        child: TextField(
+                                          obscureText: true,
+                                          decoration: ThemeHelper().textInputDecoration('Number of Units / Floor', 'Enter the Number of Units / Floor'),
+                                        ),
+                                      ),
+                                      SizedBox(height: 30.0,),
+                                      Container(
+                                        decoration: ThemeHelper().inputBoxDecorationShadow(),
+                                        child: TextField(
+                                          obscureText: true,
+                                          decoration: ThemeHelper().textInputDecoration('Building Size', 'Enter the Building Size'),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                if(isUnit)
+                                Column(
+                                  children: [
+                                    const SizedBox(height: 30.0),
+                                    Container(
+                                      decoration: ThemeHelper().inputBoxDecorationShadow(),
+                                      child: TextField(
+                                        obscureText: true,
+                                        decoration: ThemeHelper().textInputDecoration('Location URL', 'Enter the location URL'),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                if(isUnit)
+                                  Column(
+                                    children: [
+                                      const SizedBox(height: 30.0),
+                                      Container(
+                                      decoration: ThemeHelper().inputBoxDecorationShadow(),
+                                      child: TextField(
+                                        obscureText: true,
+                                        decoration: ThemeHelper().textInputDecoration('Unit Size', 'Enter the unit Size'),
+                                      ),
+                                ),
+                                    ],
+                                  ),
+                                if(isUnit && isDuplex)
+                                  Column(
+                                    children: [
+                                      const SizedBox(height: 20.0),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 12.0),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            Text('Floor 1',
+                                              style: TextStyle(color: gold),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                if(isUnit)
+                                const SizedBox(height: 30.0),
+                                if(isUnit)
+                                  Row(
+                                  children: [
+                                    const SizedBox(height: 20.0),
                                     Flexible(
                                       child:Container(
                                         decoration: ThemeHelper().inputBoxDecorationShadow(),
@@ -239,21 +391,36 @@ class _AddUnitState extends State<AddUnit> {
                                     )
                                   ],
                                 ),
-                                const SizedBox(height: 30.0),
-                                Container(
-                                  decoration: ThemeHelper().inputBoxDecorationShadow(),
-                                  child: TextField(
-                                    obscureText: true,
-                                    decoration: ThemeHelper().textInputDecoration('Unit Size', 'Enter the unit Size'),
-                                  ),
-                                ),
-
-                                if(!isRegular)
+                                if(isUnit && isDuplex)
                                 Column(
                                   children: [
-                                    Text('Floor 2',
-                                    style: TextStyle(color: gold),
+                                    const SizedBox(height: 30.0),
+                                    Container(
+                                      decoration: ThemeHelper().inputBoxDecorationShadow(),
+                                      child: TextField(
+                                        obscureText: true,
+                                        decoration: ThemeHelper().textInputDecoration('Floor Size', ''),
+                                      ),
                                     ),
+                                  ],
+                                ),
+
+                                if(isUnit && isDuplex)
+                                Column(
+                                  children: [
+                                    const SizedBox(height: 20.0),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 12.0),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Text('Floor 2',
+                                          style: TextStyle(color: gold),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(height: 20.0),
                                     Row(
                                       children: [
                                         Flexible(
@@ -297,6 +464,19 @@ class _AddUnitState extends State<AddUnit> {
                                             ),
                                           ),
                                         )
+                                      ],
+                                    ),
+                                    if(isUnit && isDuplex)
+                                    Column(
+                                      children: [
+                                        SizedBox(height: 30,),
+                                        Container(
+                                          decoration: ThemeHelper().inputBoxDecorationShadow(),
+                                          child: TextField(
+                                            obscureText: true,
+                                            decoration: ThemeHelper().textInputDecoration('Floor Size', ''),
+                                          ),
+                                        ),
                                       ],
                                     ),
 

@@ -97,6 +97,18 @@ class _$AppRouter extends RootStackRouter {
         child: const UnitDetails(),
       );
     },
+    RemindersPageRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const RemindersPage(),
+      );
+    },
+    InnerDetailsRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const InnerDetails(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -196,6 +208,14 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           UnitDetailsRoute.name,
           path: '/unit-details',
+        ),
+        RouteConfig(
+          RemindersPageRoute.name,
+          path: '/reminders-page',
+        ),
+        RouteConfig(
+          InnerDetailsRoute.name,
+          path: '/inner-details',
         ),
         RouteConfig(
           HomeRoute.name,
@@ -473,6 +493,30 @@ class UnitDetailsRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'UnitDetailsRoute';
+}
+
+/// generated route for
+/// [RemindersPage]
+class RemindersPageRoute extends PageRouteInfo<void> {
+  const RemindersPageRoute()
+      : super(
+          RemindersPageRoute.name,
+          path: '/reminders-page',
+        );
+
+  static const String name = 'RemindersPageRoute';
+}
+
+/// generated route for
+/// [InnerDetails]
+class InnerDetailsRoute extends PageRouteInfo<void> {
+  const InnerDetailsRoute()
+      : super(
+          InnerDetailsRoute.name,
+          path: '/inner-details',
+        );
+
+  static const String name = 'InnerDetailsRoute';
 }
 
 /// generated route for
