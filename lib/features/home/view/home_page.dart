@@ -430,7 +430,6 @@ class _PropertyTypeDialogWidgetState
                         groupValue: propertyType,
                         value: PropertyType.unit,
                         onChanged: (value) {
-
                           //TODO define routes to go to office
                           setState(() {
                             propertyType = value!;
@@ -707,7 +706,7 @@ class _PropertyTypeDialogWidgetState
                         onPressed: () {
                           //TODO Select (Take the enums inside the page)
                           AutoRouter.of(context).push(AddUnitRoute(
-                              unitType: unitType,
+                            unitType: unitType,
                             propertyType: propertyType,
                             buildingType: buildingType,
                             compoundType: compoundType,

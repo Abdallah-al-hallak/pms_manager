@@ -1,6 +1,7 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pms_manager/router/router.dart';
 import 'package:pms_manager/utils/colors.dart';
 import 'package:pms_manager/utils/styles.dart';
@@ -38,21 +39,20 @@ class _HomeViewState extends State<HomeView> {
 
     return AutoTabsScaffold(
       appBarBuilder: (context, tabsRouter) {
-        tabsRouter.addListener(() {
-          print('sgn');
-          setState(() {});
-        });
         return AppBar(
-          leading: tabsRouter.currentPath == '/home-view/empty-router-page/'
-              ? GestureDetector(
-                  onTap: () {
-                    print(tabsRouter.current.name);
-                    print(tabsRouter.currentChild?.name);
-                    print(tabsRouter.currentChild?.parent);
-                    print(tabsRouter.current.path);
-                    print(tabsRouter.currentPath);
-                  },
-                  child: Text('klb'))
+          centerTitle: true,
+          title: tabsRouter.currentPath != '/home-view/empty-router-page'
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Icon(
+                      Icons.filter_alt,
+                      color: gold,
+                    ),
+                    SizedBox(width: 10.0, height: 0.0),
+                    SearchFieldScreens()
+                  ],
+                )
               : null,
           iconTheme: const IconThemeData(color: gold),
           leadingWidth: 100,
@@ -63,7 +63,7 @@ class _HomeViewState extends State<HomeView> {
       backgroundColor: Colors.white,
       scaffoldKey: globalKey,
       drawer: Drawer(
-        width: MediaQuery.of(context).size.width / 2.1,
+        width: 200,
         backgroundColor: Colors.white,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -201,6 +201,30 @@ class _HomeViewState extends State<HomeView> {
           // ],
         );
       },
+    );
+  }
+}
+
+class SearchFieldScreens extends ConsumerWidget {
+  const SearchFieldScreens({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    print('build');
+    // var size = MediaQuery.of(context).size;
+    return Container(
+      alignment: Alignment.center,
+      height: 30,
+      width: 200,
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      decoration:
+          BoxDecoration(color: gold, borderRadius: BorderRadius.circular(14)),
+      child: const TextField(
+        decoration: InputDecoration(
+            hintText: 'search',
+            hintStyle: TextStyle(color: Colors.white),
+            border: InputBorder.none),
+      ),
     );
   }
 }
