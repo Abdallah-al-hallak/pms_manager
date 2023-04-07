@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:pms_manager/utils/colors.dart';
 
-class ThemeHelper{
-
-  InputDecoration textInputDecoration([String lableText="", String hintText = "", suffixIcon]){
+class ThemeHelper {
+  InputDecoration textInputDecoration(
+      [String lableText = "", String hintText = "", suffixIcon]) {
     return InputDecoration(
-      labelStyle: TextStyle(color: textGrey),
-      hintStyle: TextStyle(color: gold),
+      labelStyle: const TextStyle(color: textGrey),
+      hintStyle: const TextStyle(color: gold),
       labelText: lableText,
       hintText: hintText,
       fillColor: Colors.white,
       suffixIcon: suffixIcon,
       filled: true,
       contentPadding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-      focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(11.0), borderSide: BorderSide(color: Colors.white)),
-      enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(11.0), borderSide: BorderSide(color: Colors.white)),
-      errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(11.0), borderSide: BorderSide(color: Colors.red, width: 2.0)),
-      focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(11.0), borderSide: BorderSide(color: Colors.red, width: 2.0)),
+      focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(11.0),
+          borderSide: BorderSide(color: Colors.white)),
+      enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(11.0),
+          borderSide: BorderSide(color: Colors.white)),
+      errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(11.0),
+          borderSide: BorderSide(color: Colors.red, width: 2.0)),
+      focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(11.0),
+          borderSide: BorderSide(color: Colors.red, width: 2.0)),
     );
   }
 
@@ -49,5 +57,4 @@ class ThemeHelper{
       ],
     );
   }
-
 }
