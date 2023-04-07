@@ -3,6 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:pms_manager/features/home/view/home_page.dart';
 import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
+import 'package:pms_manager/features/property_details/side_menu/add_attachments.dart';
+import 'package:pms_manager/features/property_details/side_menu/rating.dart';
+import 'package:pms_manager/features/property_details/side_menu/reminders.dart';
 import 'package:pms_manager/utils/colors.dart';
 import 'package:pms_manager/utils/styles.dart';
 
@@ -68,7 +71,7 @@ extension BodyWidgetExtension on LeaseSidebarWidgets {
       case LeaseSidebarWidgets.attachments:
         return const AddAttachmentsPage();
       case LeaseSidebarWidgets.rating:
-        return const Text('rating');
+        return const RatingPage();
     }
   }
 }
@@ -662,13 +665,13 @@ class _BarWidgetState extends ConsumerState<BarWidget> {
                     LeaseSidebarWidgets.rating;
               },
               child: Image.asset(
-                'assets/png/atach.png',
+                'assets/png/rating.png',
                 color: lease == LeaseSidebarWidgets.rating
                     ? Colors.white
                     : lightDark,
               )),
           Text(
-            'raing',
+            '',
             style: TextStyle(
               color: lease == LeaseSidebarWidgets.rating
                   ? Colors.white
