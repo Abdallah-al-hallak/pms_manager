@@ -328,7 +328,7 @@ showFilterDialog(context) {
 
 enum PropertyType { unit, building, compound }
 
-enum UnitType { reguler, duplex }
+enum UnitType { regular, duplex }
 
 enum BuildingType { rentTheEntireBuilding, rentByUnit }
 
@@ -430,6 +430,7 @@ class _PropertyTypeDialogWidgetState
                         groupValue: propertyType,
                         value: PropertyType.unit,
                         onChanged: (value) {
+
                           //TODO define routes to go to office
                           setState(() {
                             propertyType = value!;
@@ -458,14 +459,14 @@ class _PropertyTypeDialogWidgetState
                                   textColor: lightDark,
                                   color: gold,
                                   groupValue: unitType,
-                                  value: UnitType.reguler,
+                                  value: UnitType.regular,
                                   onChanged: (value) {
                                     //TODO define routes to go to office
                                     setState(() {
                                       unitType = value!;
                                     });
                                   },
-                                  text: 'Reguler',
+                                  text: 'Regular',
                                 ),
                               ),
                               Transform.scale(
@@ -555,7 +556,7 @@ class _PropertyTypeDialogWidgetState
                                           textColor: lightDark,
                                           color: gold,
                                           groupValue: unitType,
-                                          value: UnitType.reguler,
+                                          value: UnitType.regular,
                                           onChanged: (value) {
                                             //TODO define routes to go to office
                                             setState(() {
@@ -671,7 +672,7 @@ class _PropertyTypeDialogWidgetState
                                   textColor: lightDark,
                                   color: gold,
                                   groupValue: unitType,
-                                  value: UnitType.reguler,
+                                  value: UnitType.regular,
                                   onChanged: (value) {
                                     //TODO define routes to go to office
                                     setState(() {
@@ -705,6 +706,12 @@ class _PropertyTypeDialogWidgetState
                         text: 'Select',
                         onPressed: () {
                           //TODO Select (Take the enums inside the page)
+                          AutoRouter.of(context).push(AddUnitRoute(
+                              unitType: unitType,
+                            propertyType: propertyType,
+                            buildingType: buildingType,
+                            compoundType: compoundType,
+                          ));
                         },
                       ),
                     ],

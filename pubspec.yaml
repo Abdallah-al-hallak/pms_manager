@@ -27,7 +27,9 @@ dependencies:
   flutter_riverpod: ^2.3.2
   flutter_otp_text_field: ^1.1.1
   intl: ^0.18.0
-  
+
+  carousel_slider: ^4.2.1
+
 
 dev_dependencies:
   flutter_test:
