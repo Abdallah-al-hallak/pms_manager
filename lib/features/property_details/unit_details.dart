@@ -173,11 +173,11 @@ class _GridBState extends State<GridB> {
     },
     {
       "images": "assets/png/item5.png",
-      "route": const RemindersPageRoute(),
+      "route": const OwnerDetailsRoute(),
     },
     {
       "images": "assets/png/item6.png",
-      "route": const RemindersPageRoute(),
+      "route": const TenantDetailsRoute(),
     },
     {
       "images": "assets/png/item7.png",
@@ -185,7 +185,7 @@ class _GridBState extends State<GridB> {
     },
     {
       "images": "assets/png/item8.png",
-      "route": const RemindersPageRoute(),
+      "route": const ViolationsViewroute(),
     },
     {
       "images": "assets/png/item9.png",

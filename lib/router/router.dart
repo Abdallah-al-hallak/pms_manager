@@ -3,6 +3,10 @@ import 'package:auto_route/empty_router_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:pms_manager/features/chat/chat_view.dart';
 import 'package:pms_manager/features/home/screens/lease_details.dart';
+import 'package:pms_manager/features/home/screens/owner_details.dart';
+import 'package:pms_manager/features/home/screens/tenant_details.dart';
+import 'package:pms_manager/features/home/screens/violations/add_violations.dart';
+import 'package:pms_manager/features/home/screens/violations/violations.dart';
 import 'package:pms_manager/features/home/view/home_page.dart';
 import 'package:pms_manager/features/home/view/home_view.dart';
 import 'package:pms_manager/features/intro/view/create_account.dart';
@@ -71,7 +75,13 @@ part 'router.gr.dart';
           AutoRoute(page: InnerDetails, name: 'InnerDetailsRoute'),
           // New
           AutoRoute(page: AddUnit, name: 'AddUnitRoute'),
+          AutoRoute(page: OwnerDetails, name: 'OwnerDetailsRoute'),
+          AutoRoute(page: TenantDetails, name: 'TenantDetailsRoute'),
           AutoRoute(page: BaseLeseDetails, name: 'BaseLeseDetailsRoute'),
+          //Violations
+          AutoRoute(page: ViolationsView, name: 'ViolationsViewroute'),
+          AutoRoute(page: AddViolationView, name: 'AddViolationViewRoute'),
+          //
         ],
       ),
       AutoRoute(
