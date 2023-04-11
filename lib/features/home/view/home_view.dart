@@ -1,7 +1,9 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pms_manager/router/router.dart';
 import 'package:pms_manager/utils/colors.dart';
 import 'package:pms_manager/utils/styles.dart';
@@ -36,7 +38,7 @@ class _HomeViewState extends State<HomeView> {
       'search',
       'settings',
     ];
-
+    int _selectedIndex = 2;
     return AutoTabsScaffold(
       appBarBuilder: (context, tabsRouter) {
         return AppBar(
@@ -98,7 +100,7 @@ class _HomeViewState extends State<HomeView> {
               ),
               const Text(
                 'Profile',
-                style: TextStyle(fontSize: 15),
+                style: TextStyle(fontSize: 16, fontFamily: 'Helvetica'),
               ),
               const Divider(),
               const SizedBox(
@@ -107,17 +109,60 @@ class _HomeViewState extends State<HomeView> {
               ),
               const Text(
                 'SubManagers',
-                style: TextStyle(fontSize: 15),
+                style: TextStyle(fontSize: 16, fontFamily: 'Helvetica'),
               ),
               const Divider(),
               const SizedBox(
                 width: 0.0,
                 height: 20.0,
               ),
-              const Text(
-                'Properties',
-                style: TextStyle(fontSize: 15),
-              ),
+              ExpandablePanel(
+                  theme: const ExpandableThemeData(
+                      alignment: Alignment.topRight,
+                      iconPlacement: ExpandablePanelIconPlacement.right,
+                      iconColor: gold,
+                      headerAlignment: ExpandablePanelHeaderAlignment.bottom,
+                      animationDuration: const Duration(milliseconds: 500)),
+                  builder: (context, collapsed, expanded) {
+                    return Expandable(
+                      collapsed: collapsed,
+                      expanded: expanded,
+                      theme: const ExpandableThemeData(crossFadePoint: 0),
+                    );
+                  },
+                  header: const SizedBox(
+                    height: 30,
+                    child: Text(
+                      'Properties',
+                      style: TextStyle(
+                          fontSize: 16, color: gold, fontFamily: 'Helvetica'),
+                    ),
+                  ),
+                  collapsed: const Text(
+                    'zdh',
+                    style: TextStyle(
+                      fontSize: 0,
+                    ),
+                  ),
+                  expanded: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text(
+                        'Units',
+                        style: TextStyle(fontFamily: 'Helvetica'),
+                      ),
+                      SizedBox(width: 0.0, height: 5.0),
+                      Text(
+                        'Cpmpounds',
+                        style: TextStyle(fontFamily: 'Helvetica'),
+                      ),
+                      SizedBox(width: 0.0, height: 5.0),
+                      Text(
+                        'Buildings',
+                        style: TextStyle(fontFamily: 'Helvetica'),
+                      ),
+                    ],
+                  )),
               const Divider(),
               const SizedBox(
                 width: 0.0,
@@ -125,7 +170,7 @@ class _HomeViewState extends State<HomeView> {
               ),
               const Text(
                 'owners',
-                style: TextStyle(fontSize: 15),
+                style: TextStyle(fontSize: 16, fontFamily: 'Helvetica'),
               ),
               const Divider(),
               const SizedBox(
@@ -134,7 +179,7 @@ class _HomeViewState extends State<HomeView> {
               ),
               const Text(
                 'Tenants',
-                style: TextStyle(fontSize: 15),
+                style: TextStyle(fontSize: 16, fontFamily: 'Helvetica'),
               ),
             ],
           ),
@@ -147,6 +192,7 @@ class _HomeViewState extends State<HomeView> {
         NotificationViewRoute(),
         SearchViewRoute(),
       ],
+      homeIndex: 2,
       bottomNavigationBuilder: (_, tabsRouter) {
         return AnimatedBottomNavigationBar.builder(
           itemCount: 5,
@@ -177,6 +223,7 @@ class _HomeViewState extends State<HomeView> {
           // activeColor: Colors.red,
           // icons: iconList,
           activeIndex: tabsRouter.activeIndex,
+
           leftCornerRadius: 32,
           rightCornerRadius: 30,
           gapLocation: GapLocation.none,

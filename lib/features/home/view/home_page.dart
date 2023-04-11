@@ -101,18 +101,29 @@ class _HomePageState extends ConsumerState<HomePage> {
                       Row(
                         // Date
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const CardDropDownWidget(),
-                          const SizedBox(width: 5.0, height: 0.0),
-                          GestureDetector(
-                              onTap: () {
-                                showFilterDialog(context);
-                              },
-                              child: const MoreWidget()),
+                        children: const [
+                          CardDropDownWidget(
+                            list: ['Property Type', 'Two', 'Free', 'Four'],
+                            value: 'Property Type',
+                          ),
+                          SizedBox(width: 5.0, height: 0.0),
+                          CardDropDownWidget(
+                            list: ['Property Name', 'Two', 'Free', 'Four'],
+                            value: 'Property Name',
+                          ),
+                          // GestureDetector(
+                          //     onTap: () {
+                          //       showFilterDialog(context);
+                          //     },
+                          //     child: const MoreWidget()),
                         ],
                       ),
                       const SizedBox(width: 0.0, height: 15.0),
-                      CustomElevatedButton(text: 'search', onPressed: () {}),
+                      CustomElevatedButton(
+                          text: 'search',
+                          onPressed: () {
+                            showFilterDialog(context);
+                          }),
                       const SizedBox(width: 0.0, height: 15.0),
                       Container(
                         height: 100,
@@ -842,8 +853,10 @@ class _CardTimeWidgetState extends State<CardTimeWidget> {
 }
 
 class CardDropDownWidget extends StatefulWidget {
-  const CardDropDownWidget({super.key});
-
+  const CardDropDownWidget(
+      {super.key, required this.list, required this.value});
+  final List<String> list;
+  final String value;
   @override
   State<CardDropDownWidget> createState() => _CardDropDownWidgetState();
 }
@@ -863,8 +876,8 @@ class _CardDropDownWidgetState extends State<CardDropDownWidget> {
             padding: const EdgeInsets.all(12.0),
             child: GeneralDropDown(
               width: size.width / 3.5,
-              list: const ['Property Type', 'Two', 'Free', 'Four'],
-              value: value,
+              list: widget.list,
+              value: widget.value,
             )),
       ),
     );
