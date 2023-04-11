@@ -333,7 +333,7 @@ class _AddUnitState extends State<AddUnit> {
                                         padding: const EdgeInsets.only(left: 12.0),
                                         child: Row(
                                           mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
+                                          children: const [
                                             Text('Floor 1',
                                               style: TextStyle(color: gold),
                                             ),
@@ -404,7 +404,6 @@ class _AddUnitState extends State<AddUnit> {
                                     ),
                                   ],
                                 ),
-
                                 if(isUnit && isDuplex)
                                 Column(
                                   children: [
@@ -413,7 +412,7 @@ class _AddUnitState extends State<AddUnit> {
                                       padding: const EdgeInsets.only(left: 12.0),
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
-                                        children: [
+                                        children: const [
                                           Text('Floor 2',
                                           style: TextStyle(color: gold),
                                           ),

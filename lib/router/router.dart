@@ -15,6 +15,8 @@ import 'package:pms_manager/features/phone_auth/view/reset_password.dart';
 import 'package:pms_manager/features/phone_auth/view/verify_number.dart';
 import 'package:pms_manager/features/property_details/first_floor.dart';
 import 'package:pms_manager/features/property_details/inner_details.dart';
+import 'package:pms_manager/features/property_details/side_menu/add_attachments.dart';
+import 'package:pms_manager/features/property_details/side_menu/rating.dart';
 import 'package:pms_manager/features/property_details/side_menu/reminders.dart';
 import 'package:pms_manager/features/property_details/unit_details.dart';
 import 'package:pms_manager/features/property_types/add_unit.dart';
@@ -38,7 +40,6 @@ part 'router.gr.dart';
     AutoRoute(page: VerifyNumber, name: 'VerifyNumberRoute'),
 
     // AutoRoute(page: UnitDetails, name: 'UnitDetailsRoute'),
-    AutoRoute(page: RemindersPage, name: 'RemindersPageRoute'),
     // AutoRoute(page: InnerDetails, name: 'InnerDetailsRoute'),
     AutoRoute(page: FirstFloorPage, name: 'FirstFloorPageRoute'),
     AutoRoute(page: HomeView, name: 'HomeRoute', children: [
@@ -72,6 +73,9 @@ part 'router.gr.dart';
           // New
           AutoRoute(page: AddUnit, name: 'AddUnitRoute'),
           AutoRoute(page: BaseLeseDetails, name: 'BaseLeseDetailsRoute'),
+          AutoRoute(page: RemindersPage, name: 'RemindersPageRoute'),
+          AutoRoute(page: RatingPage, name: 'RatingPageRoute'),
+          AutoRoute(page: AddAttachmentsPage, name: 'AddAttachmentsPageRoute'),
         ],
       ),
       AutoRoute(

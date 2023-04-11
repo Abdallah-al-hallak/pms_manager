@@ -34,24 +34,8 @@ class _UnitDetailsState extends State<UnitDetails> {
             builder: (context, p1) => SafeArea(
                     child: Column(
                   children: [
-                    const SizedBox(
-                      height: 35,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.filter_alt,
-                          color: gold,
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        Image.asset('assets/png/SearchBar.png'),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 23,
+                    SizedBox(
+                      height: 20,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -161,7 +145,7 @@ class _GridBState extends State<GridB> {
     },
     {
       "images": "assets/png/item2.png",
-      "route": const RemindersPageRoute(),
+      "route": '',
     },
     {
       "images": "assets/png/item3.png",
@@ -169,43 +153,43 @@ class _GridBState extends State<GridB> {
     },
     {
       "images": "assets/png/item4.png",
-      "route": const RemindersPageRoute(),
+      "route": '',
     },
     {
       "images": "assets/png/item5.png",
-      "route": const RemindersPageRoute(),
+      "route": '',
     },
     {
       "images": "assets/png/item6.png",
-      "route": const RemindersPageRoute(),
+      "route": '',
     },
     {
       "images": "assets/png/item7.png",
-      "route": const RemindersPageRoute(),
+      "route": '',
     },
     {
       "images": "assets/png/item8.png",
-      "route": const RemindersPageRoute(),
+      "route": '',
     },
     {
       "images": "assets/png/item9.png",
-      "route": const RemindersPageRoute(),
+      "route": '',
     },
     {
       "images": "assets/png/item10.png",
-      "route": const RemindersPageRoute(),
+      "route": '',
     },
     {
       "images": "assets/png/item11.png",
-      "route": const RemindersPageRoute(),
+      "route": '',
     },
     {
       "images": "assets/png/item12.png",
-      "route": const RemindersPageRoute(),
+      "route": '',
     },
     {
       "images": "assets/png/item13.png",
-      "route": const RemindersPageRoute(),
+      "route": '',
     },
   ];
 
