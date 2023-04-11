@@ -404,7 +404,6 @@ class _AddUnitState extends State<AddUnit> {
                                     ),
                                   ],
                                 ),
-
                                 if(isUnit && isDuplex)
                                 Column(
                                   children: [

@@ -55,7 +55,7 @@ class _HomeViewState extends State<HomeView> {
                 )
               : null,
           iconTheme: const IconThemeData(color: gold),
-          leadingWidth: 100,
+          // leadingWidth: 100,
           backgroundColor: Colors.white,
           elevation: 0,
         );
@@ -213,16 +213,20 @@ class SearchFieldScreens extends ConsumerWidget {
     print('build');
     // var size = MediaQuery.of(context).size;
     return Container(
-      alignment: Alignment.center,
-      height: 30,
-      width: 200,
+      // alignment: Alignment.center,
+      height: 32,
+      width: 270,
       padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration:
           BoxDecoration(color: gold, borderRadius: BorderRadius.circular(14)),
       child: const TextField(
         decoration: InputDecoration(
-            hintText: 'search',
-            hintStyle: TextStyle(color: Colors.white),
+            hintText: '  search ...',
+            suffixIcon: Icon(Icons.search,
+            color: Colors.white,
+              size: 17,
+            ),
+            hintStyle: TextStyle(color: Colors.white, fontSize: 14),
             border: InputBorder.none),
       ),
     );
