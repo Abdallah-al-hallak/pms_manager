@@ -451,7 +451,7 @@ class _PropertyTypeDialogWidgetState
                       // For Unit SubCategory
                       if (propertyType == PropertyType.unit)
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          // padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -514,7 +514,7 @@ class _PropertyTypeDialogWidgetState
                       // building Sub Category
                       if (propertyType == PropertyType.building)
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          // padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -613,7 +613,7 @@ class _PropertyTypeDialogWidgetState
                       //Copmound Sub Category
                       if (propertyType == PropertyType.compound)
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          // padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -630,7 +630,7 @@ class _PropertyTypeDialogWidgetState
                                       compoundType = value!;
                                     });
                                   },
-                                  text: 'rent The Entire Compound ?',
+                                  text: 'Rent The Entire Compound?',
                                 ),
                               ),
                               Transform.scale(
@@ -722,6 +722,7 @@ class _PropertyTypeDialogWidgetState
                             buildingType: buildingType,
                             compoundType: compoundType,
                           ));
+                          AutoRouter.of(context).pop();
                         },
                       ),
                     ],

@@ -89,6 +89,18 @@ class _$AppRouter extends RootStackRouter {
         child: const FirstFloorPage(),
       );
     },
+    AddAttachmentsPageRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const AddAttachmentsPage(),
+      );
+    },
+    RatingPageRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const RatingPage(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -252,6 +264,14 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           FirstFloorPageRoute.name,
           path: '/first-floor-page',
+        ),
+        RouteConfig(
+          AddAttachmentsPageRoute.name,
+          path: '/add-attachments-page',
+        ),
+        RouteConfig(
+          RatingPageRoute.name,
+          path: '/rating-page',
         ),
         RouteConfig(
           HomeRoute.name,
@@ -532,6 +552,30 @@ class FirstFloorPageRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'FirstFloorPageRoute';
+}
+
+/// generated route for
+/// [AddAttachmentsPage]
+class AddAttachmentsPageRoute extends PageRouteInfo<void> {
+  const AddAttachmentsPageRoute()
+      : super(
+          AddAttachmentsPageRoute.name,
+          path: '/add-attachments-page',
+        );
+
+  static const String name = 'AddAttachmentsPageRoute';
+}
+
+/// generated route for
+/// [RatingPage]
+class RatingPageRoute extends PageRouteInfo<void> {
+  const RatingPageRoute()
+      : super(
+          RatingPageRoute.name,
+          path: '/rating-page',
+        );
+
+  static const String name = 'RatingPageRoute';
 }
 
 /// generated route for

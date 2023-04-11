@@ -327,6 +327,7 @@ class _DialogPropertWidgetState extends State<DialogPropertWidget> {
                 },
                 text: 'Are you a real estate Office',
               ),
+              SizedBox(height: 20,),
               LanguageRadioRow(
                 color: gold,
                 textColor: lightDark,
