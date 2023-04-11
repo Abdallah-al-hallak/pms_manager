@@ -191,10 +191,34 @@ class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    OwnerDetailsRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const OwnerDetails(),
+      );
+    },
+    TenantDetailsRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const TenantDetails(),
+      );
+    },
     BaseLeseDetailsRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: const BaseLeseDetails(),
+      );
+    },
+    ViolationsViewroute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const ViolationsView(),
+      );
+    },
+    AddViolationViewRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const AddViolationView(),
       );
     },
   };
@@ -299,8 +323,28 @@ class _$AppRouter extends RootStackRouter {
                   parent: HomePageRoutee.name,
                 ),
                 RouteConfig(
+                  OwnerDetailsRoute.name,
+                  path: 'owner-details',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  TenantDetailsRoute.name,
+                  path: 'tenant-details',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
                   BaseLeseDetailsRoute.name,
                   path: 'base-lese-details',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  ViolationsViewroute.name,
+                  path: 'violations-view',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  AddViolationViewRoute.name,
+                  path: 'add-violation-view',
                   parent: HomePageRoutee.name,
                 ),
               ],
@@ -772,6 +816,30 @@ class AddUnitRouteArgs {
 }
 
 /// generated route for
+/// [OwnerDetails]
+class OwnerDetailsRoute extends PageRouteInfo<void> {
+  const OwnerDetailsRoute()
+      : super(
+          OwnerDetailsRoute.name,
+          path: 'owner-details',
+        );
+
+  static const String name = 'OwnerDetailsRoute';
+}
+
+/// generated route for
+/// [TenantDetails]
+class TenantDetailsRoute extends PageRouteInfo<void> {
+  const TenantDetailsRoute()
+      : super(
+          TenantDetailsRoute.name,
+          path: 'tenant-details',
+        );
+
+  static const String name = 'TenantDetailsRoute';
+}
+
+/// generated route for
 /// [BaseLeseDetails]
 class BaseLeseDetailsRoute extends PageRouteInfo<void> {
   const BaseLeseDetailsRoute()
@@ -781,4 +849,28 @@ class BaseLeseDetailsRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'BaseLeseDetailsRoute';
+}
+
+/// generated route for
+/// [ViolationsView]
+class ViolationsViewroute extends PageRouteInfo<void> {
+  const ViolationsViewroute()
+      : super(
+          ViolationsViewroute.name,
+          path: 'violations-view',
+        );
+
+  static const String name = 'ViolationsViewroute';
+}
+
+/// generated route for
+/// [AddViolationView]
+class AddViolationViewRoute extends PageRouteInfo<void> {
+  const AddViolationViewRoute()
+      : super(
+          AddViolationViewRoute.name,
+          path: 'add-violation-view',
+        );
+
+  static const String name = 'AddViolationViewRoute';
 }
