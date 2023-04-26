@@ -157,11 +157,13 @@ class _GridBState extends State<GridB> {
     },
     {
       "images": "assets/png/item5.png",
-      "route": const OwnerDetailsRoute(),
+      // "route": const OwnerDetailsRoute(),
+      "route": const OwnersRoute(),
     },
     {
       "images": "assets/png/item6.png",
-      "route": const TenantDetailsRoute(),
+      // "route": const TenantDetailsRoute(),
+      "route": const TenantsRoute()
     },
     {
       "images": "assets/png/item7.png",

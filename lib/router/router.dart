@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pms_manager/features/chat/chat_view.dart';
 import 'package:pms_manager/features/home/screens/lease_details.dart';
 import 'package:pms_manager/features/home/screens/owner_details.dart';
+import 'package:pms_manager/features/home/screens/owners.dart';
 import 'package:pms_manager/features/home/screens/tenant_details.dart';
 import 'package:pms_manager/features/home/screens/violations/add_violations.dart';
 import 'package:pms_manager/features/home/screens/violations/violations.dart';
@@ -29,6 +30,7 @@ import 'package:pms_manager/features/setting/view/setting_view.dart';
 import 'package:pms_manager/main.dart';
 import '../features/home/screens/properties_page.dart';
 import '../features/home/screens/property_details.dart';
+import '../features/home/screens/tenants.dart';
 part 'router.gr.dart';
 
 @MaterialAutoRouter(
@@ -85,6 +87,8 @@ part 'router.gr.dart';
           //
           AutoRoute(page: RemindersPage, name: 'RemindersPageRoute'),
           AutoRoute(page: RatingPage, name: 'RatingPageRoute'),
+          AutoRoute(page: OwnersView, name: 'OwnersRoute'),
+          AutoRoute(page: TenantsView, name: 'TenantsRoute'),
           AutoRoute(page: AddAttachmentsPage, name: 'AddAttachmentsPageRoute'),
         ],
       ),
