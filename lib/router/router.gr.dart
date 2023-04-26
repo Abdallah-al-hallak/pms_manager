@@ -77,28 +77,10 @@ class _$AppRouter extends RootStackRouter {
         child: VerifyNumber(key: args.key),
       );
     },
-    RemindersPageRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const RemindersPage(),
-      );
-    },
     FirstFloorPageRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: const FirstFloorPage(),
-      );
-    },
-    AddAttachmentsPageRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const AddAttachmentsPage(),
-      );
-    },
-    RatingPageRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const RatingPage(),
       );
     },
     HomeRoute.name: (routeData) {
@@ -221,6 +203,36 @@ class _$AppRouter extends RootStackRouter {
         child: const AddViolationView(),
       );
     },
+    RemindersPageRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const RemindersPage(),
+      );
+    },
+    RatingPageRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const RatingPage(),
+      );
+    },
+    OwnersRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const OwnersView(),
+      );
+    },
+    TenantsRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const TenantsView(),
+      );
+    },
+    AddAttachmentsPageRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const AddAttachmentsPage(),
+      );
+    },
   };
 
   @override
@@ -258,20 +270,8 @@ class _$AppRouter extends RootStackRouter {
           path: '/verify-number',
         ),
         RouteConfig(
-          RemindersPageRoute.name,
-          path: '/reminders-page',
-        ),
-        RouteConfig(
           FirstFloorPageRoute.name,
           path: '/first-floor-page',
-        ),
-        RouteConfig(
-          AddAttachmentsPageRoute.name,
-          path: '/add-attachments-page',
-        ),
-        RouteConfig(
-          RatingPageRoute.name,
-          path: '/rating-page',
         ),
         RouteConfig(
           HomeRoute.name,
@@ -345,6 +345,31 @@ class _$AppRouter extends RootStackRouter {
                 RouteConfig(
                   AddViolationViewRoute.name,
                   path: 'add-violation-view',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  RemindersPageRoute.name,
+                  path: 'reminders-page',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  RatingPageRoute.name,
+                  path: 'rating-page',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  OwnersRoute.name,
+                  path: 'owners-view',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  TenantsRoute.name,
+                  path: 'tenants-view',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  AddAttachmentsPageRoute.name,
+                  path: 'add-attachments-page',
                   parent: HomePageRoutee.name,
                 ),
               ],
@@ -531,18 +556,6 @@ class VerifyNumberRouteArgs {
 }
 
 /// generated route for
-/// [RemindersPage]
-class RemindersPageRoute extends PageRouteInfo<void> {
-  const RemindersPageRoute()
-      : super(
-          RemindersPageRoute.name,
-          path: '/reminders-page',
-        );
-
-  static const String name = 'RemindersPageRoute';
-}
-
-/// generated route for
 /// [FirstFloorPage]
 class FirstFloorPageRoute extends PageRouteInfo<void> {
   const FirstFloorPageRoute()
@@ -552,30 +565,6 @@ class FirstFloorPageRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'FirstFloorPageRoute';
-}
-
-/// generated route for
-/// [AddAttachmentsPage]
-class AddAttachmentsPageRoute extends PageRouteInfo<void> {
-  const AddAttachmentsPageRoute()
-      : super(
-          AddAttachmentsPageRoute.name,
-          path: '/add-attachments-page',
-        );
-
-  static const String name = 'AddAttachmentsPageRoute';
-}
-
-/// generated route for
-/// [RatingPage]
-class RatingPageRoute extends PageRouteInfo<void> {
-  const RatingPageRoute()
-      : super(
-          RatingPageRoute.name,
-          path: '/rating-page',
-        );
-
-  static const String name = 'RatingPageRoute';
 }
 
 /// generated route for
@@ -873,4 +862,64 @@ class AddViolationViewRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AddViolationViewRoute';
+}
+
+/// generated route for
+/// [RemindersPage]
+class RemindersPageRoute extends PageRouteInfo<void> {
+  const RemindersPageRoute()
+      : super(
+          RemindersPageRoute.name,
+          path: 'reminders-page',
+        );
+
+  static const String name = 'RemindersPageRoute';
+}
+
+/// generated route for
+/// [RatingPage]
+class RatingPageRoute extends PageRouteInfo<void> {
+  const RatingPageRoute()
+      : super(
+          RatingPageRoute.name,
+          path: 'rating-page',
+        );
+
+  static const String name = 'RatingPageRoute';
+}
+
+/// generated route for
+/// [OwnersView]
+class OwnersRoute extends PageRouteInfo<void> {
+  const OwnersRoute()
+      : super(
+          OwnersRoute.name,
+          path: 'owners-view',
+        );
+
+  static const String name = 'OwnersRoute';
+}
+
+/// generated route for
+/// [TenantsView]
+class TenantsRoute extends PageRouteInfo<void> {
+  const TenantsRoute()
+      : super(
+          TenantsRoute.name,
+          path: 'tenants-view',
+        );
+
+  static const String name = 'TenantsRoute';
+}
+
+/// generated route for
+/// [AddAttachmentsPage]
+class AddAttachmentsPageRoute extends PageRouteInfo<void> {
+  const AddAttachmentsPageRoute()
+      : super(
+          AddAttachmentsPageRoute.name,
+          path: 'add-attachments-page',
+        );
+
+  static const String name = 'AddAttachmentsPageRoute';
 }
