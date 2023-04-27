@@ -10,11 +10,13 @@ class CustomElevatedButton extends StatelessWidget {
     required this.onPressed,
     this.height,
     this.width,
+    this.icon,
   });
   final String text;
   final VoidCallback onPressed;
   final double? width;
   final double? height;
+  final IconData? icon;
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, p1) {
@@ -29,9 +31,16 @@ class CustomElevatedButton extends StatelessWidget {
               height ?? p1.maxWidth / 7,
             )),
         onPressed: onPressed,
-        child: CustomText(
-          text: text,
-          color: Colors.white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (icon != null) Icon(icon),
+            if (icon != null) const SizedBox(width: 10.0, height: 0.0),
+            CustomText(
+              text: text,
+              color: Colors.white,
+            ),
+          ],
         ),
       );
     });
