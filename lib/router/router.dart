@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:auto_route/empty_router_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:pms_manager/features/chat/chat_view.dart';
+import 'package:pms_manager/features/home/screens/add_parking_spot.dart';
+import 'package:pms_manager/features/home/screens/common_areas.dart';
 import 'package:pms_manager/features/home/screens/lease_details.dart';
 import 'package:pms_manager/features/home/screens/owner_details.dart';
 import 'package:pms_manager/features/home/screens/owners.dart';
@@ -90,6 +92,8 @@ part 'router.gr.dart';
           AutoRoute(page: OwnersView, name: 'OwnersRoute'),
           AutoRoute(page: TenantsView, name: 'TenantsRoute'),
           AutoRoute(page: AddAttachmentsPage, name: 'AddAttachmentsPageRoute'),
+          AutoRoute(page: AddParkingSpot, name: 'AddParkingSpotRoute'),
+          AutoRoute(page: CommonAreas, name: 'CommonAreasPageRoute'),
         ],
       ),
       AutoRoute(

@@ -149,6 +149,7 @@ class _InnerDetailsState extends State<InnerDetails> {
                             onPressed: (){
                               AutoRouter.of(context).push(FirstFloorPageRoute());
                             }),
+                        const SizedBox(height: 30,),
                       ],
                     )
                   ],

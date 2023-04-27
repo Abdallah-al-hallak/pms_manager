@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -6,6 +7,7 @@ import 'package:pms_manager/features/intro/widgets/custom_buton.dart';
 import 'package:pms_manager/features/property_details/side_menu/add_attachments.dart';
 import 'package:pms_manager/features/property_details/side_menu/rating.dart';
 import 'package:pms_manager/features/property_details/side_menu/reminders.dart';
+import 'package:pms_manager/router/router.dart';
 import 'package:pms_manager/utils/colors.dart';
 import 'package:pms_manager/utils/styles.dart';
 
@@ -146,7 +148,7 @@ class _ContractWidgetState extends ConsumerState<ContractWidget> {
                       'Start Date',
                       style: gooldTextStyle(),
                     ),
-                    SizedBox(width: 0.0, height: 5.0),
+                    const SizedBox(width: 0.0, height: 5.0),
                     Text('${yMD(date1)}')
                   ],
                 ),
@@ -431,7 +433,9 @@ class _ParkingWidgetState extends ConsumerState<ParkingWidget> {
                 )),
             const SizedBox(width: 0.0, height: 20.0),
             CustomElevatedButton(
-                text: 'Add Another Parking Spot', onPressed: () {}),
+                text: 'Add Another Parking Spot', onPressed: () {
+                  AutoRouter.of(context).push(AddParkingSpotRoute());
+            }),
             const SizedBox(width: 0.0, height: 10.0),
             CustomElevatedButton(
                 text: 'Continue Without Parking Spot', onPressed: () {}),
@@ -472,7 +476,7 @@ class TenantWidget extends ConsumerWidget {
               ),
             ],
           ),
-          SizedBox(width: 0.0, height: 40.0),
+          const SizedBox(width: 0.0, height: 40.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
