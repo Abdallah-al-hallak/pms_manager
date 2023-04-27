@@ -77,28 +77,10 @@ class _$AppRouter extends RootStackRouter {
         child: VerifyNumber(key: args.key),
       );
     },
-    RemindersPageRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const RemindersPage(),
-      );
-    },
     FirstFloorPageRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: const FirstFloorPage(),
-      );
-    },
-    AddAttachmentsPageRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const AddAttachmentsPage(),
-      );
-    },
-    RatingPageRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const RatingPage(),
       );
     },
     HomeRoute.name: (routeData) {
@@ -197,6 +179,36 @@ class _$AppRouter extends RootStackRouter {
         child: const BaseLeseDetails(),
       );
     },
+    RemindersPageRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const RemindersPage(),
+      );
+    },
+    RatingPageRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const RatingPage(),
+      );
+    },
+    AddAttachmentsPageRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const AddAttachmentsPage(),
+      );
+    },
+    AddParkingSpotRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const AddParkingSpot(),
+      );
+    },
+    CommonAreasPageRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const CommonAreas(),
+      );
+    },
   };
 
   @override
@@ -234,20 +246,8 @@ class _$AppRouter extends RootStackRouter {
           path: '/verify-number',
         ),
         RouteConfig(
-          RemindersPageRoute.name,
-          path: '/reminders-page',
-        ),
-        RouteConfig(
           FirstFloorPageRoute.name,
           path: '/first-floor-page',
-        ),
-        RouteConfig(
-          AddAttachmentsPageRoute.name,
-          path: '/add-attachments-page',
-        ),
-        RouteConfig(
-          RatingPageRoute.name,
-          path: '/rating-page',
         ),
         RouteConfig(
           HomeRoute.name,
@@ -301,6 +301,31 @@ class _$AppRouter extends RootStackRouter {
                 RouteConfig(
                   BaseLeseDetailsRoute.name,
                   path: 'base-lese-details',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  RemindersPageRoute.name,
+                  path: 'reminders-page',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  RatingPageRoute.name,
+                  path: 'rating-page',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  AddAttachmentsPageRoute.name,
+                  path: 'add-attachments-page',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  AddParkingSpotRoute.name,
+                  path: 'add-parking-spot',
+                  parent: HomePageRoutee.name,
+                ),
+                RouteConfig(
+                  CommonAreasPageRoute.name,
+                  path: 'common-areas',
                   parent: HomePageRoutee.name,
                 ),
               ],
@@ -487,18 +512,6 @@ class VerifyNumberRouteArgs {
 }
 
 /// generated route for
-/// [RemindersPage]
-class RemindersPageRoute extends PageRouteInfo<void> {
-  const RemindersPageRoute()
-      : super(
-          RemindersPageRoute.name,
-          path: '/reminders-page',
-        );
-
-  static const String name = 'RemindersPageRoute';
-}
-
-/// generated route for
 /// [FirstFloorPage]
 class FirstFloorPageRoute extends PageRouteInfo<void> {
   const FirstFloorPageRoute()
@@ -508,30 +521,6 @@ class FirstFloorPageRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'FirstFloorPageRoute';
-}
-
-/// generated route for
-/// [AddAttachmentsPage]
-class AddAttachmentsPageRoute extends PageRouteInfo<void> {
-  const AddAttachmentsPageRoute()
-      : super(
-          AddAttachmentsPageRoute.name,
-          path: '/add-attachments-page',
-        );
-
-  static const String name = 'AddAttachmentsPageRoute';
-}
-
-/// generated route for
-/// [RatingPage]
-class RatingPageRoute extends PageRouteInfo<void> {
-  const RatingPageRoute()
-      : super(
-          RatingPageRoute.name,
-          path: '/rating-page',
-        );
-
-  static const String name = 'RatingPageRoute';
 }
 
 /// generated route for
@@ -781,4 +770,64 @@ class BaseLeseDetailsRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'BaseLeseDetailsRoute';
+}
+
+/// generated route for
+/// [RemindersPage]
+class RemindersPageRoute extends PageRouteInfo<void> {
+  const RemindersPageRoute()
+      : super(
+          RemindersPageRoute.name,
+          path: 'reminders-page',
+        );
+
+  static const String name = 'RemindersPageRoute';
+}
+
+/// generated route for
+/// [RatingPage]
+class RatingPageRoute extends PageRouteInfo<void> {
+  const RatingPageRoute()
+      : super(
+          RatingPageRoute.name,
+          path: 'rating-page',
+        );
+
+  static const String name = 'RatingPageRoute';
+}
+
+/// generated route for
+/// [AddAttachmentsPage]
+class AddAttachmentsPageRoute extends PageRouteInfo<void> {
+  const AddAttachmentsPageRoute()
+      : super(
+          AddAttachmentsPageRoute.name,
+          path: 'add-attachments-page',
+        );
+
+  static const String name = 'AddAttachmentsPageRoute';
+}
+
+/// generated route for
+/// [AddParkingSpot]
+class AddParkingSpotRoute extends PageRouteInfo<void> {
+  const AddParkingSpotRoute()
+      : super(
+          AddParkingSpotRoute.name,
+          path: 'add-parking-spot',
+        );
+
+  static const String name = 'AddParkingSpotRoute';
+}
+
+/// generated route for
+/// [CommonAreas]
+class CommonAreasPageRoute extends PageRouteInfo<void> {
+  const CommonAreasPageRoute()
+      : super(
+          CommonAreasPageRoute.name,
+          path: 'common-areas',
+        );
+
+  static const String name = 'CommonAreasPageRoute';
 }
