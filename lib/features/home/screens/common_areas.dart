@@ -13,6 +13,7 @@ class CommonAreas extends StatefulWidget {
   State<CommonAreas> createState() => _CommonAreasState();
 }
 
+
 class _CommonAreasState extends State<CommonAreas> {
   @override
   Widget build(BuildContext context) {
